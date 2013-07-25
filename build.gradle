@@ -1,0 +1,22 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://github.com/novoda/public-mvn-repo/raw/master/releases'
+    }
+}
+
+
+configurations {
+    provided
+}
+
+sourceSets {
+    main { compileClasspath += configurations.provided }
+}
+
+dependencies {
+    provided 'com.google.android:android:4.1.1.4'
+    compile 'com.google.android:support-v4:r11'
+}
