@@ -15,27 +15,36 @@ Whats Included
 Adding to your project
 ======
 
-    <repositories>
-      <repository>
-        <id>public-mvn-repo-releases</id>
-        <url>
-          https://github.com/novoda/public-mvn-repo/raw/master/releases
-        </url>
-      </repository>
-    </repositories>
+````xml
+<repositories>
+  <repository>
+    <id>public-mvn-repo-releases</id>
+    <url>
+      https://github.com/novoda/public-mvn-repo/raw/master/releases
+    </url>
+  </repository>
+</repositories>
+````
 
-Android :
+##Android :
 
-    <dependency>
-      <groupId>com.novoda.notils</groupId>
-      <artifactId>android</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
 
-Java :
+````xml
+<dependency>
+  <groupId>com.novoda.notils</groupId>
+  <artifactId>android</artifactId>
+  <version>1.0</version>
+</dependency>
+````
 
-    <dependency>
-      <groupId>com.novoda.notils</groupId>
-      <artifactId>java</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
+
+##Java :
+
+
+````xml
+<dependency>
+  <groupId>com.novoda.notils</groupId>
+  <artifactId>java</artifactId>
+  <version>1.0</version>
+</dependency>
+````
