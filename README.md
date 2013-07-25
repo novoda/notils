@@ -3,6 +3,14 @@ NoTils
 
 Never again need a .utils. package yur scurvy sea dogs!
 
+Whats Included
+======
+
+- AndroidUtils, for showing the keyboard, checking running services etc
+- ClassCaster - to help with listeners between Activitys & Fragments
+- No need to cast when referencing Views / Fragments
+- No need to double type your types when creating collections
+
 
 Adding to your project
 ======
