@@ -1,4 +1,4 @@
-package com.novoda.notils;
+package com.novoda.notils.android;
 
 import android.app.ActivityManager;
 import android.app.Service;
