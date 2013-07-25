@@ -12,6 +12,7 @@
 bin/
 gen/
 out/
+.gradle/
 build.log
 build-log.xml
 
@@ -38,5 +39,8 @@ local.properties
 
 # MAC
 *.DS_Store
+
+# Windows
+thumbs.db
 
 *.orig
