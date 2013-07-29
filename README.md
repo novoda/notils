@@ -15,6 +15,9 @@ Whats Included
 Adding to your project
 ======
 
+Maven
+-
+
 ````xml
 <repositories>
   <repository>
@@ -47,4 +50,30 @@ Adding to your project
   <artifactId>java</artifactId>
   <version>1.0</version>
 </dependency>
+````
+
+Gradle
+-
+````gradle
+repositories {
+    maven {
+        url 'https://github.com/novoda/public-mvn-repo/raw/master/releases'
+    }
+}
+`````
+
+##Android :
+
+````gradle
+dependencies {
+    compile 'com.novoda.notils:android:1.0'
+}
+````
+
+##Java :
+
+````gradle
+dependencies {
+    compile 'com.novoda.notils:java:1.0'
+}
 ````
