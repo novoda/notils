@@ -6,8 +6,8 @@ public final class Log {
     private static final int DOT_CLASS = 5;
     private static final String HTTPTAG = "noTilsHttp";
 
-    private static boolean SHOW_LOGS = false;
-    private static String TAG = "NoTilsLog";
+    public static boolean SHOW_LOGS = false;
+    public static String TAG = "NoTilsLog";
 
     private Log() {
     }
@@ -21,7 +21,37 @@ public final class Log {
         SHOW_LOGS = false;
     }
 
+    public static void v(String msg) {
+        try {
+            if (SHOW_LOGS) {
+                android.util.Log.v(TAG, getDetailedLog(msg));
+            }
+        } catch (RuntimeException ignore) {
+            logError(ignore);
+        }
+    }
+
+    public static void v(String msg, Throwable t) {
+        try {
+            if (SHOW_LOGS) {
+                android.util.Log.v(TAG, getDetailedLog(msg), t);
+            }
+        } catch (RuntimeException ignore) {
+            logError(ignore);
+        }
+    }
+
     public static void i(String msg) {
+        try {
+            if (SHOW_LOGS) {
+                android.util.Log.i(TAG, getDetailedLog(msg));
+            }
+        } catch (RuntimeException ignore) {
+            logError(ignore);
+        }
+    }
+
+    public static void i(String msg, Throwable t) {
         try {
             if (SHOW_LOGS) {
                 android.util.Log.i(TAG, getDetailedLog(msg));
@@ -41,20 +71,20 @@ public final class Log {
         }
     }
 
-    public static void w(String msg) {
+    public static void d(String msg, Throwable t) {
         try {
             if (SHOW_LOGS) {
-                android.util.Log.w(TAG, getDetailedLog(msg));
+                android.util.Log.d(TAG, getDetailedLog(msg), t);
             }
         } catch (RuntimeException ignore) {
             logError(ignore);
         }
     }
 
-    public static void e(String msg) {
+    public static void w(String msg) {
         try {
             if (SHOW_LOGS) {
-                android.util.Log.e(TAG, getDetailedLog(msg));
+                android.util.Log.w(TAG, getDetailedLog(msg));
             }
         } catch (RuntimeException ignore) {
             logError(ignore);
@@ -71,10 +101,10 @@ public final class Log {
         }
     }
 
-    public static void d(String msg, Throwable t) {
+    public static void e(String msg) {
         try {
             if (SHOW_LOGS) {
-                android.util.Log.d(TAG, getDetailedLog(msg), t);
+                android.util.Log.e(TAG, getDetailedLog(msg));
             }
         } catch (RuntimeException ignore) {
             logError(ignore);
@@ -85,6 +115,26 @@ public final class Log {
         try {
             if (SHOW_LOGS) {
                 android.util.Log.e(TAG, getDetailedLog(msg), t);
+            }
+        } catch (RuntimeException ignore) {
+            logError(ignore);
+        }
+    }
+
+    public static void wtf(String msg) {
+        try {
+            if (SHOW_LOGS) {
+                android.util.Log.wtf(TAG, getDetailedLog(msg));
+            }
+        } catch (RuntimeException ignore) {
+            logError(ignore);
+        }
+    }
+
+    public static void wtf(String msg, Throwable t) {
+        try {
+            if (SHOW_LOGS) {
+                android.util.Log.wtf(TAG, getDetailedLog(msg), t);
             }
         } catch (RuntimeException ignore) {
             logError(ignore);
