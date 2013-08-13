@@ -1,0 +1,45 @@
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { deployment -> signing.signPom(deployment) }
+
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots") {
+                authentication(userName: nexusUsername, password: nexusPassword)
+            }
+
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2") {
+                authentication(userName: nexusUsername, password: nexusPassword)
+            }
+                
+			uniqueVersion = false
+
+            pom.project {
+
+                parent {
+                    groupId 'org.sonatype.oss'
+                    artifactId 'oss-parent'
+                    version '7'
+                }
+
+                name 'NoTils'
+				artifactId 'notils'
+                groupId 'com.novoda'
+                version '1.1-SNAPSHOT'
+                description 'Never again need a .utils. package yur scurvy sea dogs!'
+                url 'https://github.com/novoda/NoTils'
+                inceptionYear '2013'
+
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        distribution 'repo'
+                    }
+                }
+            }
+        }
+    }
+}

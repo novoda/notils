@@ -1,4 +1,4 @@
-package com.novoda.notils.android;
+package com.novoda.notils.cast;
 
 import android.support.v4.app.FragmentManager;
 
