@@ -1,0 +1,29 @@
+buildscript {
+    repositories {
+        maven { url 'http://repo.springsource.org/plugins-release' }
+    }
+    dependencies {
+        classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.4'
+    }
+}
+
+apply plugin: 'propdeps'
+apply plugin: 'propdeps-maven'
+apply plugin: 'propdeps-idea'
+apply plugin: 'propdeps-eclipse'
+
+apply from: script('deploy')
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    optional 'com.google.android:android:4.0.1.2'
+    optional 'com.google.android:support-v4:r7'
+}
+
+File script(String name) {
+    project.file("${name}.gradle")
+}
+

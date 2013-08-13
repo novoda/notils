@@ -1,4 +1,4 @@
-package com.novoda.notils.android;
+package com.novoda.notils.cast;
 
 import android.app.Activity;
 import android.view.View;
