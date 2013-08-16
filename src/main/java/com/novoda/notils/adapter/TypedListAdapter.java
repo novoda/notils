@@ -1,13 +1,12 @@
-package com.novoda.notils;
+package com.novoda.notils.adapter;
 
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ListAdapter<T> extends BaseAdapter {
+public abstract class TypedListAdapter<T> extends TypedBaseAdapter<T> {
 
     private final List<T> elements = new ArrayList<T>();
 
