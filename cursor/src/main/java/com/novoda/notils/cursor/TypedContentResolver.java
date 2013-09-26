@@ -4,13 +4,11 @@ import android.content.ContentResolver;
 import android.database.Cursor;
 import android.net.Uri;
 
-import java.util.List;
-
-public class TypedResolver {
+public class TypedContentResolver {
 
     private final ContentResolver resolver;
 
-    public TypedResolver(ContentResolver resolver) {
+    public TypedContentResolver(ContentResolver resolver) {
         this.resolver = resolver;
     }
 
@@ -28,27 +26,27 @@ public class TypedResolver {
 
     public <T> T get(Uri uri, String[] projection, String selection, String[] selectionArgs, CursorMarshaller<T> type) {
         Cursor cursor = resolver.query(uri, projection, selection, selectionArgs, null);
-        return new CursorList<T>(cursor, type).get(0);
+        return new SimpleCursorList<T>(cursor, type).get(0);
     }
 
-    public <T> List<T> query(Uri uri, CursorMarshaller<T> type) {
+    public <T> CursorList<T> query(Uri uri, CursorMarshaller<T> type) {
         return query(uri, null, null, type);
     }
 
-    public <T> List<T> query(Uri uri, String selection, String[] selectionArgs, CursorMarshaller<T> type) {
+    public <T> CursorList<T> query(Uri uri, String selection, String[] selectionArgs, CursorMarshaller<T> type) {
         return query(uri, null, selection, selectionArgs, null, type);
     }
 
-    public <T> List<T> query(Uri uri, String[] projection, String selection, String[] selectionArgs, CursorMarshaller<T> type) {
+    public <T> CursorList<T> query(Uri uri, String[] projection, String selection, String[] selectionArgs, CursorMarshaller<T> type) {
         return query(uri, projection, selection, selectionArgs, null, type);
     }
 
-    public <T> List<T> query(Uri uri, String selection, String[] selectionArgs, String sortOrder, CursorMarshaller<T> type) {
+    public <T> CursorList<T> query(Uri uri, String selection, String[] selectionArgs, String sortOrder, CursorMarshaller<T> type) {
         return query(uri, null, selection, selectionArgs, sortOrder, type);
     }
 
-    public <T> List<T> query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder, CursorMarshaller<T> type) {
+    public <T> CursorList<T> query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder, CursorMarshaller<T> type) {
         Cursor cursor = resolver.query(uri, projection, selection, selectionArgs, sortOrder);
-        return new CursorList<T>(cursor, type);
+        return new SimpleCursorList<T>(cursor, type);
     }
 }
