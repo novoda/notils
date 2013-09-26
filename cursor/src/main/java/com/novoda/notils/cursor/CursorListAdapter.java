@@ -6,13 +6,13 @@ import android.support.v4.widget.CursorAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
-public abstract class TypedCursorAdapter<T> extends CursorAdapter {
+public abstract class CursorListAdapter<T> extends CursorAdapter {
 
-    public TypedCursorAdapter(Context context, CursorList<T> c, boolean autoRequery) {
+    public CursorListAdapter(Context context, CursorList<T> c, boolean autoRequery) {
         super(context, c, autoRequery);
     }
 
-    public TypedCursorAdapter(Context context, CursorList<T> c, int flags) {
+    public CursorListAdapter(Context context, CursorList<T> c, int flags) {
         super(context, c, flags);
     }
 

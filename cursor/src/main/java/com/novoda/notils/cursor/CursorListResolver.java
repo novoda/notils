@@ -4,11 +4,11 @@ import android.content.ContentResolver;
 import android.database.Cursor;
 import android.net.Uri;
 
-public class TypedContentResolver {
+public class CursorListResolver {
 
     private final ContentResolver resolver;
 
-    public TypedContentResolver(ContentResolver resolver) {
+    public CursorListResolver(ContentResolver resolver) {
         this.resolver = resolver;
     }
 
