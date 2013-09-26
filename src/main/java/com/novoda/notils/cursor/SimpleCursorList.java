@@ -254,7 +254,7 @@ public class SimpleCursorList<T> implements CursorList<T> {
         if (cursor.moveToPosition(index)) {
             return marshaller.marshall(cursor);
         } else {
-            throw new CursorListException("CursorList tries to access data at index " + index + " while cursor has size " + cursor.getCount());
+            throw new CursorListException("CursorList tries to access data at index " + index + " while com.novoda.notils.cursor has size " + cursor.getCount());
         }
     }
 
