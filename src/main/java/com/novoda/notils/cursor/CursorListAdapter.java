@@ -2,37 +2,89 @@ package com.novoda.notils.cursor;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DataSetObserver;
 import android.support.v4.widget.CursorAdapter;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListAdapter;
 
-public abstract class CursorListAdapter<T> extends CursorAdapter {
+public abstract class CursorListAdapter<T> implements ListAdapter {
 
-    public CursorListAdapter(Context context, CursorList<T> c, boolean autoRequery) {
-        super(context, c, autoRequery);
-    }
+    private final CursorAdapter wrappedAdapter;
 
-    public CursorListAdapter(Context context, CursorList<T> c, int flags) {
-        super(context, c, flags);
+    public CursorListAdapter(Context context) {
+        wrappedAdapter = new CursorAdapter(context, null, 0) {
+            @Override
+            public View newView(Context context, Cursor cursor, ViewGroup parent) {
+                return null;
+            }
+
+            @Override
+            public void bindView(View view, Context context, Cursor cursor) {
+
+            }
+        };
     }
 
     @Override
-    @SuppressWarnings("unchecked")
-    public final View newView(Context context, Cursor cursor, ViewGroup parent) {
-        return newView(context, getElement((CursorList<T>) cursor), parent);
+    public boolean areAllItemsEnabled() {
+        return wrappedAdapter.areAllItemsEnabled();
     }
-
-    public abstract View newView(Context context, T element, ViewGroup parent);
 
     @Override
-    @SuppressWarnings("unchecked")
-    public final void bindView(View view, Context context, Cursor cursor) {
-        bindView(view, context, getElement((CursorList<T>) cursor));
+    public boolean isEnabled(int position) {
+        return wrappedAdapter.isEnabled(position);
     }
 
-    public abstract void bindView(View view, Context context, T element);
+    @Override
+    public void registerDataSetObserver(DataSetObserver observer) {
+        wrappedAdapter.registerDataSetObserver(observer);
+    }
 
-    private <T> T getElement(CursorList<T> cursorList) {
-        return cursorList.get(cursorList.getPosition());
+    @Override
+    public void unregisterDataSetObserver(DataSetObserver observer) {
+        wrappedAdapter.unregisterDataSetObserver(observer);
+    }
+
+    @Override
+    public int getCount() {
+        return wrappedAdapter.getCount();
+    }
+
+    @Override
+    public T getItem(int position) {
+        return ((CursorList<T>) wrappedAdapter.getCursor()).get(position);
+    }
+
+    public void swapList(CursorList<T> cursorList) {
+        wrappedAdapter.swapCursor(cursorList);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return wrappedAdapter.getItemId(position);
+    }
+
+    @Override
+    public boolean hasStableIds() {
+        return wrappedAdapter.hasStableIds();
+    }
+
+    @Override
+    public abstract View getView(int position, View convertView, ViewGroup parent);
+
+    @Override
+    public int getItemViewType(int position) {
+        return wrappedAdapter.getItemViewType(position);
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return wrappedAdapter.getViewTypeCount();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return wrappedAdapter.isEmpty();
     }
 }
