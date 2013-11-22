@@ -337,11 +337,13 @@ public class SimpleCursorList<T> implements CursorList<T> {
         List<T> list = new ArrayList<T>();
         if (start < end) {
             for (int m = start; m < end; m++) {
-                list.add(get(m));
+                T item = get(m);
+                if (item != null) list.add(item);
             }
         } else {
             for (int m = end - 1; m >= start; m--) {
-                list.add(get(m));
+                T item = get(m);
+                if (item != null) list.add(item);
             }
         }
         return list;
