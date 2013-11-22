@@ -12,6 +12,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.ArrayList;
 
 public class SimpleCursorList<T> implements CursorList<T> {
 
@@ -330,7 +331,20 @@ public class SimpleCursorList<T> implements CursorList<T> {
 
     @Override
     public List<T> subList(int i, int i1) {
-        throw new UnsupportedOperationException();
+        final int start = i;
+        final int end = i1;
+        //List<T> list = new SimpleCursorList<T>(cursor, marshaller);
+        List<T> list = new ArrayList<T>();
+        if (start < end) {
+            for (int m = start; m < end; m++) {
+                list.add(get(m));
+            }
+        } else {
+            for (int m = end - 1; m >= start; m--) {
+                list.add(get(m));
+            }
+        }
+        return list;
     }
 
     @Override
