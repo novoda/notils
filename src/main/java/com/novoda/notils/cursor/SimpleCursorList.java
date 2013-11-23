@@ -333,20 +333,38 @@ public class SimpleCursorList<T> implements CursorList<T> {
     public List<T> subList(int i, int i1) {
         final int start = i;
         final int end = i1;
-        //List<T> list = new SimpleCursorList<T>(cursor, marshaller);
+        //List<T> list = new SimpleCursorList<T>(cursor, marshaller); add() did not be implemented
         List<T> list = new ArrayList<T>();
         if (start < end) {
+            logD("CursorList", "< end: {{{ ");
             for (int m = start; m < end; m++) {
                 T item = get(m);
-                if (item != null) list.add(item);
+                //logD("CursorList", "< end: " + item);
+                //if (item != null)
+                list.add(item);
             }
+            logD("CursorList", "< end: }}} ");
         } else {
             for (int m = end - 1; m >= start; m--) {
                 T item = get(m);
-                if (item != null) list.add(item);
+                //logD("CursorList", "> end: " + item);
+                //if (item != null)
+                list.add(item);
             }
         }
         return list;
+    }
+
+    private static final String TAG = "CursorList";
+    private static final boolean DEBUG = false;
+
+    public static void logD(Object... arr) {
+        if (!DEBUG) return;
+        android.util.Log.d(TAG, java.util.Arrays.deepToString(arr));
+    }
+
+    public static void logE(Object... arr) {
+        android.util.Log.e(TAG, java.util.Arrays.deepToString(arr));
     }
 
     @Override
