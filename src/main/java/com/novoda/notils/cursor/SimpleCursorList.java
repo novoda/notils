@@ -12,7 +12,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.ArrayList;
 
 public class SimpleCursorList<T> implements CursorList<T> {
 
@@ -333,26 +332,7 @@ public class SimpleCursorList<T> implements CursorList<T> {
     public List<T> subList(int i, int i1) {
         final int start = i;
         final int end = i1;
-        //List<T> list = new SimpleCursorList<T>(cursor, marshaller); add() did not be implemented
-        List<T> list = new ArrayList<T>();
-        if (start < end) {
-            logD("CursorList", "< end: {{{ ");
-            for (int m = start; m < end; m++) {
-                T item = get(m);
-                //logD("CursorList", "< end: " + item);
-                //if (item != null)
-                list.add(item);
-            }
-            logD("CursorList", "< end: }}} ");
-        } else {
-            for (int m = end - 1; m >= start; m--) {
-                T item = get(m);
-                //logD("CursorList", "> end: " + item);
-                //if (item != null)
-                list.add(item);
-            }
-        }
-        return list;
+        return new SubCursorList<T>(cursor, marshaller, start, end);
     }
 
     private static final String TAG = "CursorList";
@@ -369,12 +349,18 @@ public class SimpleCursorList<T> implements CursorList<T> {
 
     @Override
     public Object[] toArray() {
-        throw new UnsupportedOperationException();
+        final int size = size();
+        Object[] array = new Object[size];
+        //for (int i = 0; i < size; i++) array[i] = get(i);
+        //return array;
+        return toArray(array);
     }
 
     @Override
     public <T> T[] toArray(T[] ts) {
-        throw new UnsupportedOperationException();
+        final int size = ts.length;
+        for (int i = 0; i < size; i++) ts[i] = (T) get(i);
+        return ts;
     }
 
     public static class CursorListException extends RuntimeException {
