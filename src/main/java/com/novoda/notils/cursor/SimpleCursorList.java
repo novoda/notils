@@ -220,6 +220,9 @@ public class SimpleCursorList<T> implements CursorList<T> {
 
     @Override
     public int size() {
+        if (cursor == null) {
+            return 0;
+        }
         if (cursor.isClosed()) {
             return 0;
         }
@@ -243,6 +246,9 @@ public class SimpleCursorList<T> implements CursorList<T> {
 
     @Override
     public ListIterator<T> listIterator(int i) {
+        if (cursor == null) {
+            return new EmptyListIterator<T>();
+        }
         if (cursor.isClosed()) {
             return new EmptyListIterator<T>();
         }
