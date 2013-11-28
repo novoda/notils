@@ -10,15 +10,19 @@ public class SubCursorList<T> extends SimpleCursorList<T> {
         this(cursor, marshaller, offset, Integer.MAX_VALUE);
     }
 
+    /**
+     * @param end the index one past the end of the sublist.
+     * @throws IndexOutOfBoundsException if start < 0, start > end or end > size()
+     */
     public SubCursorList(Cursor cursor, CursorMarshaller<T> marshaller, int start, int end) {
         super(cursor, marshaller);
         this.start = start;
-        this.end = (end < super.size()) ? end : super.size();
+        this.end = (end > super.size()) ? super.size() : end;
         if (start < 0) {
-            throw new CursorListException("start: " + start + ", end: " + end);
+            throw new IndexOutOfBoundsException("start: " + start + ", end: " + end);
         }
         if (start > end) {
-            throw new CursorListException("start: " + start + " > end: " + end);
+            throw new IndexOutOfBoundsException("start: " + start + " > end: " + end);
         }
     }
 
