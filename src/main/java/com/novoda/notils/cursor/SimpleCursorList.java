@@ -8,6 +8,7 @@ import android.database.DataSetObserver;
 import android.net.Uri;
 import android.os.Bundle;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -338,7 +339,30 @@ public class SimpleCursorList<T> implements CursorList<T> {
     public List<T> subList(int i, int i1) {
         final int start = i;
         final int end = i1;
+        //return subArrayList(start, end);
         return new SubCursorList<T>(cursor, marshaller, start, end);
+    }
+
+    @SuppressWarnings("unused")
+    private List<T> subArrayList(int start, int end) {
+        //List<T> list = new SimpleCursorList<T>(cursor, marshaller); add() did not be implemented
+        List<T> list = new ArrayList<T>();
+        if (start < end) {
+            for (int m = start; m < end; m++) {
+                T item = get(m);
+                //logD("CursorList", "< end: " + item);
+                //if (item != null)
+                list.add(item);
+            }
+        } else {
+            for (int m = end - 1; m >= start; m--) {
+                T item = get(m);
+                //logD("CursorList", "> end: " + item);
+                //if (item != null)
+                list.add(item);
+            }
+        }
+        return list;
     }
 
     private static final String TAG = "CursorList";
