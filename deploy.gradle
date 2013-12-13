@@ -6,12 +6,14 @@ uploadArchives {
         mavenDeployer {
             beforeDeployment { deployment -> signing.signPom(deployment) }
 
-            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots") {
-                authentication(userName: nexusUsername, password: nexusPassword)
-            }
+            if (project.hasProperty('nexusUsername') && project.hasProperty('nexusPassword')) {
+                snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots") {
+                    authentication(userName: nexusUsername, password: nexusPassword)
+                }
 
-            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2") {
-                authentication(userName: nexusUsername, password: nexusPassword)
+                repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2") {
+                    authentication(userName: nexusUsername, password: nexusPassword)
+                }
             }
 
             uniqueVersion = false
@@ -25,7 +27,7 @@ uploadArchives {
                 }
 
                 name 'NoTils'
-				artifactId 'notils'
+                artifactId 'notils'
                 groupId 'com.novoda'
                 version '2.1-SNAPSHOT'
                 description 'Never again need a .utils. package yur scurvy sea dogs!'
