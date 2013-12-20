@@ -87,9 +87,13 @@ public class AndroidLogger extends AbsLogger {
 
     @Override
     protected LogCommand getCommandForLevel(LogLevel level) {
-        if (enabledLevel.ordinal() >= level.ordinal()) {
+        if (hasEqualsOrMorePriority(level)) {
             return commands.get(level);
         }
         return NO_OP;
+    }
+
+    private boolean hasEqualsOrMorePriority(LogLevel level) {
+        return level.ordinal() >= enabledLevel.ordinal()
     }
 }
