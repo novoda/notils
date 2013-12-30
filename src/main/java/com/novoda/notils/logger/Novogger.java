@@ -1,9 +1,6 @@
 package com.novoda.notils.logger;
 
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.os.Build;
 
 public class Novogger {
 
@@ -16,7 +13,6 @@ public class Novogger {
     }
 
     private Novogger() {
-
     }
 
     public static void enable() {
@@ -28,14 +24,8 @@ public class Novogger {
     }
 
     private static String appNameFromContext(Context context) {
-        final PackageManager pm = context.getApplicationContext().getPackageManager();
-        ApplicationInfo ai;
-        try {
-            ai = pm.getApplicationInfo(context.getPackageName(), 0);
-        } catch (final PackageManager.NameNotFoundException e) {
-            ai = null;
-        }
-        return (String) (ai != null ? pm.getApplicationLabel(ai) : DEFAULT_TAG);
+        String appName = AndroidHelper.AppName.fromContext(context);
+        return appName != null ? appName : DEFAULT_TAG;
     }
 
     public static void enable(String tag) {
@@ -59,12 +49,8 @@ public class Novogger {
     }
 
     private static Platform findPlatform() {
-        try {
-            Class.forName("android.os.Build");
-            if (Build.VERSION.SDK_INT != 0) {
-                return Platform.ANDROID;
-            }
-        } catch (ClassNotFoundException ignored) {
+        if (AndroidHelper.isAndroid()) {
+            return Platform.ANDROID;
         }
         return Platform.JAVA;
     }
