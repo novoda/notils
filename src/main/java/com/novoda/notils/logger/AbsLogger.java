@@ -14,10 +14,17 @@ abstract class AbsLogger implements Logger {
 
     private static final int DEPTH = 5;
     private static final int CLASS_SUFFIX = 5;
+    private final LogLevel minimumLogLevel;
+
+    public AbsLogger(LogLevel minimumLogLevel) {
+        this.minimumLogLevel = minimumLogLevel;
+    }
 
     protected void log(String msg, Throwable tr, LogLevel level) {
         String message = getDetailedLog(msg) + "\n" + getStackTraceString(tr);
-        getCommandForLevel(level).log(message);
+        if (level.isEnabledAt(minimumLogLevel)) {
+            getCommandForLevel(level).log(message);
+        }
     }
 
     protected String getDetailedLog(String msg) {

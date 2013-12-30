@@ -10,15 +10,14 @@ public class AndroidLogger extends AbsLogger {
     private final Map<LogLevel, LogCommand> commands = new HashMap<LogLevel, LogCommand>();
 
     private final String tag;
-    private final LogLevel enabledLevel;
 
     AndroidLogger(String tag) {
         this(tag, LogLevel.DEBUG);
     }
 
     AndroidLogger(String tag, LogLevel enabledLevel) {
+        super(enabledLevel);
         this.tag = tag;
-        this.enabledLevel = enabledLevel;
         initCommands();
     }
 
@@ -87,9 +86,6 @@ public class AndroidLogger extends AbsLogger {
 
     @Override
     protected LogCommand getCommandForLevel(LogLevel level) {
-        if (level.isEnabledAt(enabledLevel)) {
-            return commands.get(level);
-        }
-        return NO_OP;
+        return commands.get(level);
     }
 }

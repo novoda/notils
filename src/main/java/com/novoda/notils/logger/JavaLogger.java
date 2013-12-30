@@ -9,21 +9,16 @@ public class JavaLogger extends AbsLogger {
         }
     };
 
-    private final LogLevel enabledLevel;
-
     JavaLogger() {
         this(LogLevel.DEBUG);
     }
 
     JavaLogger(LogLevel enabledLevel) {
-        this.enabledLevel = enabledLevel;
+        super(enabledLevel);
     }
 
     @Override
     protected LogCommand getCommandForLevel(LogLevel level) {
-        if (level.isEnabledAt(enabledLevel)) {
-            return PRINT;
-        }
-        return NO_OP;
+        return PRINT;
     }
 }
