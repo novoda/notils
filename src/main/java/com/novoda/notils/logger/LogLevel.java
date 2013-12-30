@@ -6,5 +6,9 @@ public enum LogLevel {
     INFO,
     WARN,
     ERROR,
-    ASSERT
+    ASSERT;
+
+    public boolean isEnabledAt(LogLevel other) {
+        return ordinal() >= other.ordinal();
+    }
 }

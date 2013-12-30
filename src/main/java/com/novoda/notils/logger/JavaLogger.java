@@ -21,7 +21,7 @@ public class JavaLogger extends AbsLogger {
 
     @Override
     protected LogCommand getCommandForLevel(LogLevel level) {
-        if (enabledLevel.ordinal() >= level.ordinal()) {
+        if (level.isEnabledAt(enabledLevel)) {
             return PRINT;
         }
         return NO_OP;
