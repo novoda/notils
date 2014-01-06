@@ -10,13 +10,12 @@ public final class AndroidHelper {
     public static final class AppName {
         public static String fromContext(Context context) {
             final PackageManager pm = context.getApplicationContext().getPackageManager();
-            ApplicationInfo ai;
             try {
-                ai = pm.getApplicationInfo(context.getPackageName(), 0);
-            } catch (final PackageManager.NameNotFoundException e) {
-                ai = null;
+                ApplicationInfo ai = pm.getApplicationInfo(context.getPackageName(), 0);
+                return (String) pm.getApplicationLabel(ai);
+            } catch (PackageManager.NameNotFoundException ignored) {
+                return null;
             }
-            return ai != null ? (String) pm.getApplicationLabel(ai) : null;
         }
     }
 
