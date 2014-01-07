@@ -1,5 +1,6 @@
 package com.novoda.notils.logger;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
@@ -8,7 +9,6 @@ abstract class AbsLogger implements Logger {
     static final LogCommand NO_OP = new LogCommand() {
         @Override
         public void log(String message) {
-
         }
     };
 
@@ -21,10 +21,14 @@ abstract class AbsLogger implements Logger {
     }
 
     protected void log(String msg, Throwable tr, LogLevel level) {
-        String message = getDetailedLog(msg) + "\n" + getStackTraceString(tr);
-        if (level.isEnabledAt(minimumLogLevel)) {
-            getCommandForLevel(level).log(message);
+        if (!level.isEnabledAt(minimumLogLevel)) {
+            return;
         }
+        String message = getDetailedLog(msg);
+        if (tr != null) {
+            message += "\n" + getStackTraceString(tr);
+        }
+        getCommandForLevel(level).log(message);
     }
 
     protected String getDetailedLog(String msg) {
@@ -36,14 +40,19 @@ abstract class AbsLogger implements Logger {
     }
 
     protected String getStackTraceString(Throwable tr) {
-        if (tr == null) {
-            return "";
-        }
 
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
-        tr.printStackTrace(pw);
-        return sw.toString();
+        try {
+            tr.printStackTrace(pw);
+            return sw.toString().trim();
+        } finally {
+            try {
+                pw.close();
+                sw.close();
+            } catch (IOException e) {
+            }
+        }
     }
 
     protected abstract LogCommand getCommandForLevel(LogLevel level);
