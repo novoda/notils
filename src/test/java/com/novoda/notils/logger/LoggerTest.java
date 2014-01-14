@@ -6,79 +6,70 @@ import static org.junit.Assert.*;
 
 public class LoggerTest {
 
-    private static final class ValidatingLogCommand implements LogCommand {
-        public String lastMessage;
-
-        @Override
-        public void log(String message) {
-            lastMessage = message;
-        }
-    }
-
     private final ValidatingLogCommand validatingLogCommand = new ValidatingLogCommand();
 
     @Test
     public void testDebugLogPrinting() {
         Logger logger = createLogger(LogLevel.DEBUG);
-        String debug = "debug";
-        logger.debug(debug);
-        assertLastMessage(debug);
+        String message = "debug";
+        logger.debug(message);
+        assertLastLogMessageEquals(message);
     }
 
     @Test
     public void testDisabledDebugLogPrinting() {
         Logger logger = createLogger(LogLevel.INFO);
-        String debug = "debug";
-        logger.debug(debug);
-        assertLastMessageIsNull();
+        String message = "debug";
+        logger.debug(message);
+        assertNothingIsLogged();
     }
-
 
     @Test
     public void testInfoLogPrinting() {
         Logger logger = createLogger(LogLevel.DEBUG);
-        String info = "info";
-        logger.info(info);
-        assertLastMessage(info);
+        String message = "info";
+        logger.info(message);
+        assertLastLogMessageEquals(message);
     }
+
     @Test
     public void testDisabledInfoLogPrinting() {
         Logger logger = createLogger(LogLevel.WARN);
-        String info = "info";
-        logger.info(info);
-        assertLastMessageIsNull();
+        String message = "info";
+        logger.info(message);
+        assertNothingIsLogged();
     }
 
     @Test
     public void testWarnLogPrinting() {
         Logger logger = createLogger(LogLevel.DEBUG);
-        String warn = "warn";
-        logger.warn(warn);
-        assertLastMessage(warn);
+        String message = "warn";
+        logger.warn(message);
+        assertLastLogMessageEquals(message);
     }
 
     @Test
     public void testDisabledWarnLogPrinting() {
         Logger logger = createLogger(LogLevel.ERROR);
-        String warn = "warn";
-        logger.warn(warn);
-        assertLastMessageIsNull();
+        String message = "warn";
+        logger.warn(message);
+        assertNothingIsLogged();
     }
 
     @Test
     public void testErrorLogPrinting() {
         Logger logger = createLogger(LogLevel.DEBUG);
-        String error = "error";
-        logger.error(error);
-        assertLastMessage(error);
+        String message = "error";
+        logger.error(message);
+        assertLastLogMessageEquals(message);
     }
 
     @Test
     public void testWtfLogPrinting() {
         Logger logger = createLogger(LogLevel.DEBUG);
-        String wtf = "wtf";
-        logger.wtf(wtf);
-        assertLastMessage(wtf);
+        String message = "wtf";
+        logger.wtf(message);
+        assertLastLogMessageEquals(message);
     }
 
     private Logger createLogger(LogLevel logLevel) {
@@ -90,11 +81,20 @@ public class LoggerTest {
         };
     }
 
-    private void assertLastMessage(String value) {
+    private void assertLastLogMessageEquals(String value) {
         assertTrue("unexpected log message", validatingLogCommand.lastMessage.contains(value));
     }
 
-    private void assertLastMessageIsNull() {
+    private void assertNothingIsLogged() {
         assertTrue("unexpected log message", validatingLogCommand.lastMessage == null);
+    }
+
+    private static final class ValidatingLogCommand implements LogCommand {
+        public String lastMessage;
+
+        @Override
+        public void log(String message) {
+            lastMessage = message;
+        }
     }
 }

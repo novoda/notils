@@ -20,31 +20,31 @@ abstract class AbsLogger implements Logger {
         this.minimumLogLevel = minimumLogLevel;
     }
 
-    protected void log(String msg, Throwable tr, LogLevel level) {
+    protected void log(String message, Throwable throwable, LogLevel level) {
         if (!level.isEnabledAt(minimumLogLevel)) {
             return;
         }
-        String message = getDetailedLog(msg);
-        if (tr != null) {
-            message += "\n" + getStackTraceString(tr);
+        String detailedMessage = getDetailedLog(message);
+        if (throwable != null) {
+            detailedMessage += "\n" + getStackTraceString(throwable);
         }
-        getCommandForLevel(level).log(message);
+        getCommandForLevel(level).log(detailedMessage);
     }
 
-    protected String getDetailedLog(String msg) {
+    protected String getDetailedLog(String message) {
         Thread current = Thread.currentThread();
         final StackTraceElement trace = current.getStackTrace()[DEPTH];
         final String filename = trace.getFileName();
         return "[" + current.getName() + "][" + filename.substring(0, filename.length() - CLASS_SUFFIX) + "."
-                + trace.getMethodName() + ":" + trace.getLineNumber() + "] " + msg;
+                + trace.getMethodName() + ":" + trace.getLineNumber() + "] " + message;
     }
 
-    protected String getStackTraceString(Throwable tr) {
+    protected String getStackTraceString(Throwable throwable) {
 
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
         try {
-            tr.printStackTrace(pw);
+            throwable.printStackTrace(pw);
             return sw.toString().trim();
         } finally {
             try {
@@ -63,8 +63,8 @@ abstract class AbsLogger implements Logger {
     }
 
     @Override
-    public void debug(String msg, Throwable tr) {
-        log(msg, tr, LogLevel.DEBUG);
+    public void debug(String msg, Throwable throwable) {
+        log(msg, throwable, LogLevel.DEBUG);
 
     }
 
@@ -74,8 +74,8 @@ abstract class AbsLogger implements Logger {
     }
 
     @Override
-    public void error(String msg, Throwable tr) {
-        log(msg, tr, LogLevel.ERROR);
+    public void error(String msg, Throwable throwable) {
+        log(msg, throwable, LogLevel.ERROR);
     }
 
     @Override
@@ -84,8 +84,8 @@ abstract class AbsLogger implements Logger {
     }
 
     @Override
-    public void info(String msg, Throwable tr) {
-        log(msg, tr, LogLevel.INFO);
+    public void info(String msg, Throwable throwable) {
+        log(msg, throwable, LogLevel.INFO);
     }
 
     @Override
@@ -94,8 +94,8 @@ abstract class AbsLogger implements Logger {
     }
 
     @Override
-    public void verbose(String msg, Throwable tr) {
-        log(msg, tr, LogLevel.VERBOSE);
+    public void verbose(String msg, Throwable throwable) {
+        log(msg, throwable, LogLevel.VERBOSE);
     }
 
     @Override
@@ -104,8 +104,8 @@ abstract class AbsLogger implements Logger {
     }
 
     @Override
-    public void warn(String msg, Throwable tr) {
-        log(msg, tr, LogLevel.WARN);
+    public void warn(String msg, Throwable throwable) {
+        log(msg, throwable, LogLevel.WARN);
     }
 
     @Override
@@ -114,12 +114,12 @@ abstract class AbsLogger implements Logger {
     }
 
     @Override
-    public void wtf(Throwable tr) {
-        log("", tr, LogLevel.ASSERT);
+    public void wtf(Throwable throwable) {
+        log("", throwable, LogLevel.ASSERT);
     }
 
     @Override
-    public void wtf(String msg, Throwable tr) {
-        log(msg, tr, LogLevel.ASSERT);
+    public void wtf(String msg, Throwable throwable) {
+        log(msg, throwable, LogLevel.ASSERT);
     }
 }
