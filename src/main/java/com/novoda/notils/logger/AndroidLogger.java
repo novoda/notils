@@ -3,7 +3,6 @@ package com.novoda.notils.logger;
 import android.util.Log;
 
 import java.util.EnumMap;
-import java.util.HashMap;
 import java.util.Map;
 
 public class AndroidLogger extends AbsLogger {
