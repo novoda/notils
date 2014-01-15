@@ -29,7 +29,7 @@ public class SubCursorList<T> extends SimpleCursorList<T> {
     @Override
     public T get(int index) {
         int i = index + start;
-        if (i > end) {
+        if (i >= end) {
             throw new CursorListException("CursorList tries to access data at index " + index);
         }
         return (T) super.get(i);
