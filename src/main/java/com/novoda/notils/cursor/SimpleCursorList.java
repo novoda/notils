@@ -18,8 +18,8 @@ import java.util.ListIterator;
 
 public class SimpleCursorList<T> implements CursorList<T> {
 
-    private Cursor cursor;
-    private final CursorMarshaller<T> marshaller;
+    protected Cursor cursor;
+    protected final CursorMarshaller<T> marshaller;
 
     public SimpleCursorList(Cursor cursor, CursorMarshaller<T> marshaller) {
         this.cursor = cursor;

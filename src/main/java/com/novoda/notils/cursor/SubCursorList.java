@@ -1,5 +1,7 @@
 package com.novoda.notils.cursor;
 
+import java.util.List;
+
 import android.database.Cursor;
 
 public class SubCursorList<T> extends SimpleCursorList<T> {
@@ -38,6 +40,13 @@ public class SubCursorList<T> extends SimpleCursorList<T> {
     @Override
     public int size() {
         return (end - start);
+    }
+
+    @Override
+    public List<T> subList(int i, int i1) {
+        final int start = i + this.start;
+        final int end = i1 + this.start;
+        return new SubCursorList<T>(cursor, marshaller, start, end);
     }
 
     private static final String TAG = "CursorList";
