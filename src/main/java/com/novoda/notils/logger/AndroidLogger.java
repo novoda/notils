@@ -2,12 +2,12 @@ package com.novoda.notils.logger;
 
 import android.util.Log;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 public class AndroidLogger extends AbsLogger {
 
-    private final Map<LogLevel, LogCommand> commands = new HashMap<LogLevel, LogCommand>();
+    private final Map<LogLevel, LogCommand> commands = new EnumMap<LogLevel, LogCommand>(LogLevel.class);
 
     private final String tag;
 
