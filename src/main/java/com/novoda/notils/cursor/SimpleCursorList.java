@@ -11,19 +11,33 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Map;
 
 public class SimpleCursorList<T> implements CursorList<T> {
 
     protected Cursor cursor;
     protected final CursorMarshaller<T> marshaller;
+    protected Map<T, Integer> indexMap;
+    protected ArrayList<Integer> currentToOriginIndex;
+    protected int[] originToCurrentIndex;
 
     public SimpleCursorList(Cursor cursor, CursorMarshaller<T> marshaller) {
         this.cursor = cursor;
         this.marshaller = marshaller;
+        indexMap = new HashMap<T, Integer>();
+
+        currentToOriginIndex = new ArrayList<Integer>(cursor.getCount() + 1);
+        originToCurrentIndex = new int[cursor.getCount() + 1];
+        for (int i = 0; i <= cursor.getCount(); i++) {
+            currentToOriginIndex.add(i);
+            originToCurrentIndex[i] = i;
+        }
     }
 
     @Override
@@ -34,62 +48,70 @@ public class SimpleCursorList<T> implements CursorList<T> {
         if (cursor.isClosed()) {
             return 0;
         }
-        return cursor.getCount();
+
+        return currentToOriginIndex.size() - 1;
     }
 
     @Override
     public int getPosition() {
-        return cursor.getPosition();
+        return toCurrentIndex(cursor.getPosition());
     }
 
     @Override
     public boolean move(int offset) {
-        return cursor.move(offset);
+        return moveToPosition(getPosition() + offset);
     }
 
     @Override
     public boolean moveToPosition(int position) {
-        return cursor.moveToPosition(position);
+        return cursor.moveToPosition(toOriginIndex(position));
     }
 
     @Override
     public boolean moveToFirst() {
-        return cursor.moveToFirst();
+        return moveToPosition(0);
     }
 
     @Override
     public boolean moveToLast() {
-        return cursor.moveToLast();
+        return moveToPosition(getCount() - 1);
     }
 
     @Override
     public boolean moveToNext() {
-        return cursor.moveToNext();
+        return move(1);
     }
 
     @Override
     public boolean moveToPrevious() {
-        return cursor.moveToPrevious();
+        return move(-1);
     }
 
     @Override
     public boolean isFirst() {
-        return cursor.isFirst();
+        return getPosition() == 0 && getCount() != 0;
     }
 
     @Override
     public boolean isLast() {
-        return cursor.isLast();
+        int cnt = getCount();
+        return getPosition() == (cnt - 1) && cnt != 0;
     }
 
     @Override
     public boolean isBeforeFirst() {
-        return cursor.isBeforeFirst();
+        if (getCount() == 0) {
+            return true;
+        }
+        return getPosition() == -1;
     }
 
     @Override
     public boolean isAfterLast() {
-        return cursor.isAfterLast();
+        if (getCount() == 0) {
+            return true;
+        }
+        return getPosition() == getCount();
     }
 
     @Override
@@ -261,15 +283,27 @@ public class SimpleCursorList<T> implements CursorList<T> {
     @Override
     synchronized public T get(int index) {
         if (moveToPosition(index)) {
-            return marshaller.marshall(cursor);
+            T ret = marshaller.marshall(cursor);
+            indexMap.put(ret, toOriginIndex(index));
+            return ret;
         } else {
-            throw new CursorListException("CursorList tries to access data at index " + index + " while com.novoda.notils.cursor has size " + cursor.getCount());
+            throw new CursorListException("CursorList tries to access data at index "
+                    + index + "(" + toOriginIndex(index) + ")"
+                    + " while com.novoda.notils.cursor has size " + getCount()
+                    + "(" + cursor.getCount() + ")");
         }
     }
 
     @Override
     public boolean remove(Object o) {
-        throw new UnsupportedOperationException();
+        int index = indexOf(o);
+
+        if (index == -1) {
+            return false;
+        }
+
+        remove(index);
+        return true;
     }
 
     @Override
@@ -282,7 +316,24 @@ public class SimpleCursorList<T> implements CursorList<T> {
         if (c instanceof Cursor) {
             if (cursor.getCount() == 0) {
                 cursor = (Cursor)c;
+
+                currentToOriginIndex = new ArrayList<Integer>(cursor.getCount() + 1);
+                originToCurrentIndex = new int[cursor.getCount() + 1];
+                for (int i = 0; i <= cursor.getCount(); i++) {
+                    currentToOriginIndex.add(i);
+                    originToCurrentIndex[i] = i;
+                }
             } else {
+                int size = cursor.getCount();
+                int addSize = ((Cursor) c).getCount();
+
+                currentToOriginIndex.remove(currentToOriginIndex.size() - 1);
+                originToCurrentIndex = Arrays.copyOf(originToCurrentIndex, size + addSize + 1);
+                for (int i = size; i <= size + addSize; i++) {
+                    currentToOriginIndex.add(i);
+                    originToCurrentIndex[i] = i;
+                }
+
                 cursor = new MergeCursor(new Cursor[] {cursor, (Cursor)c});
             }
         } else {
@@ -309,6 +360,8 @@ public class SimpleCursorList<T> implements CursorList<T> {
     @Override
     public void clear() {
         cursor = new MatrixCursor(cursor.getColumnNames());
+        currentToOriginIndex = null;
+        originToCurrentIndex = null;
     }
 
     @Override
@@ -318,32 +371,66 @@ public class SimpleCursorList<T> implements CursorList<T> {
 
     @Override
     public void add(int index, T element) {
-        throw new UnsupportedOperationException();
+        Integer orgIndex = indexMap.get(element);
+        if (orgIndex == null) {
+            throw new UnsupportedOperationException();
+        }
+
+        currentToOriginIndex.add(index, orgIndex);
+
+        for (int i = 0; i < originToCurrentIndex.length; i++) {
+            if (originToCurrentIndex[i] >= index) {
+                originToCurrentIndex[i]++;
+            }
+        }
+        originToCurrentIndex[orgIndex] = index;
     }
 
     @Override
-    public boolean add(T t) {
-        throw new UnsupportedOperationException();
+    public boolean add(T element) {
+        add(size(), element);
+        return true;
     }
 
     @Override
     public T remove(int index) {
-        throw new UnsupportedOperationException();
+        T ret = get(index);
+        int orgIndex = toOriginIndex(index);
+
+        currentToOriginIndex.remove(index);
+
+        originToCurrentIndex[orgIndex] = -1;
+        for (int i = 0; i < originToCurrentIndex.length; i++) {
+            if (originToCurrentIndex[i] > index) {
+                originToCurrentIndex[i]--;
+            }
+        }
+
+        return ret;
     }
 
     @Override
     public int indexOf(Object o) {
-        throw new UnsupportedOperationException();
+        Integer index = indexMap.get(o);
+
+        if (index == null) {
+            return -1;
+        }
+
+        return toCurrentIndex(index);
     }
 
     @Override
     public int lastIndexOf(Object o) {
-        throw new UnsupportedOperationException();
+        return indexOf(o);
     }
 
     @Override
     public boolean contains(Object o) {
-        throw new UnsupportedOperationException();
+        if (indexOf(o) != -1) {
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -374,6 +461,14 @@ public class SimpleCursorList<T> implements CursorList<T> {
             }
         }
         return list;
+    }
+
+    protected int toCurrentIndex(int index) {
+        return originToCurrentIndex[index];
+    }
+
+    protected int toOriginIndex(int index) {
+        return currentToOriginIndex.get(index);
     }
 
     private static final String TAG = "CursorList";

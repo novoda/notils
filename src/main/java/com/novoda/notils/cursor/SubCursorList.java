@@ -18,8 +18,8 @@ public class SubCursorList<T> extends SimpleCursorList<T> {
      */
     public SubCursorList(Cursor cursor, CursorMarshaller<T> marshaller, int start, int end) {
         super(cursor, marshaller);
-        this.start = start;
-        this.end = (end > super.size()) ? super.size() : end;
+        setStart(start);
+        setEnd(end);
         if (start < 0) {
             throw new IndexOutOfBoundsException("start: " + start + ", end: " + end);
         }
@@ -28,14 +28,30 @@ public class SubCursorList<T> extends SimpleCursorList<T> {
         }
     }
 
+    private void setStart(int start) {
+        this.start = toOriginIndex(start);
+    }
+
+    private int getStart() {
+        return toCurrentIndex(start);
+    }
+
+    private void setEnd(int end) {
+        this.end = (toOriginIndex(end) > super.getCount()) ? super.getCount() : toOriginIndex(end);
+    }
+
+    private int getEnd() {
+        return toCurrentIndex(end);
+    }
+
     @Override
     public int getCount() {
-        return (end - start);
+        return (getEnd() - getStart());
     }
 
     @Override
     public int getPosition() {
-        int position = super.getPosition() - start;
+        int position = super.getPosition() - getStart();
         if (position > getCount()) {
             moveToPosition(getCount());
             return getCount();
@@ -65,7 +81,7 @@ public class SubCursorList<T> extends SimpleCursorList<T> {
             ret = false;
         }
 
-        cursor.moveToPosition(position + start);
+        super.moveToPosition(position + getStart());
         return ret;
     }
 
@@ -117,10 +133,31 @@ public class SubCursorList<T> extends SimpleCursorList<T> {
     }
 
     @Override
-    public List<T> subList(int i, int i1) {
-        final int start = i + this.start;
-        final int end = i1 + this.start;
+    public List<T> subList(int start, int end) {
+        start += getStart();
+        end += getStart();
         return new SubCursorList<T>(cursor, marshaller, start, end);
+    }
+
+    @Override
+    public void add(int index, T element) {
+        super.add(index + getStart(), element);
+    }
+
+    @Override
+    public T remove(int index) {
+        return super.remove(index + getStart());
+    }
+
+    @Override
+    public int indexOf(Object o) {
+        int index = super.indexOf(o);
+
+        if ((index < getStart()) || (index >= getEnd())) {
+            return -1;
+        }
+
+        return index - getStart();
     }
 
     private static final String TAG = "CursorList";
