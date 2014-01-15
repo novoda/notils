@@ -1,24 +1,20 @@
 package com.novoda.notils.cursor;
 
-import android.database.Cursor;
-
 import java.util.ListIterator;
 
 public class CursorListIterator<T> implements ListIterator<T> {
 
-    private final Cursor cursor;
-    private final CursorMarshaller<T> marshaller;
+    private final CursorList<T> cursorList;
     private int index;
 
-    public CursorListIterator(Cursor cursor, CursorMarshaller<T> marshaller, int index) {
-        this.cursor = cursor;
-        this.marshaller = marshaller;
+    public CursorListIterator(CursorList<T> cursorList, int index) {
+        this.cursorList = cursorList;
         this.index = index;
     }
 
     @Override
     public boolean hasNext() {
-        return index < cursor.getCount();
+        return index < cursorList.getCount();
     }
 
     @Override
@@ -28,8 +24,7 @@ public class CursorListIterator<T> implements ListIterator<T> {
 
     @Override
     public T next() {
-        cursor.moveToPosition(index++);
-        return marshaller.marshall(cursor);
+        return cursorList.get(index++);
     }
 
     @Override
@@ -39,8 +34,7 @@ public class CursorListIterator<T> implements ListIterator<T> {
 
     @Override
     public T previous() {
-        cursor.moveToPosition(--index);
-        return marshaller.marshall(cursor);
+        return cursorList.get(--index);
     }
 
     @Override

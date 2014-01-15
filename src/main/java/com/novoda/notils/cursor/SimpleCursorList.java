@@ -255,7 +255,7 @@ public class SimpleCursorList<T> implements CursorList<T> {
         if (cursor.isClosed()) {
             return new EmptyListIterator<T>();
         }
-        return new CursorListIterator<T>(cursor, marshaller, i);
+        return new CursorListIterator<T>(this, i);
     }
 
     @Override
