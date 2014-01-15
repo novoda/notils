@@ -1,6 +1,5 @@
 package com.novoda.notils.logger;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
@@ -47,11 +46,7 @@ abstract class AbsLogger implements Logger {
             throwable.printStackTrace(pw);
             return sw.toString().trim();
         } finally {
-            try {
-                pw.close();
-                sw.close();
-            } catch (IOException e) {
-            }
+            pw.close();
         }
     }
 
