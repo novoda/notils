@@ -28,6 +28,12 @@ public class SimpleCursorList<T> implements CursorList<T> {
 
     @Override
     public int getCount() {
+        if (cursor == null) {
+            return 0;
+        }
+        if (cursor.isClosed()) {
+            return 0;
+        }
         return cursor.getCount();
     }
 
@@ -223,13 +229,7 @@ public class SimpleCursorList<T> implements CursorList<T> {
 
     @Override
     public int size() {
-        if (cursor == null) {
-            return 0;
-        }
-        if (cursor.isClosed()) {
-            return 0;
-        }
-        return cursor.getCount();
+        return getCount();
     }
 
     @Override
@@ -259,8 +259,8 @@ public class SimpleCursorList<T> implements CursorList<T> {
     }
 
     @Override
-    public T get(int index) {
-        if (cursor.moveToPosition(index)) {
+    synchronized public T get(int index) {
+        if (moveToPosition(index)) {
             return marshaller.marshall(cursor);
         } else {
             throw new CursorListException("CursorList tries to access data at index " + index + " while com.novoda.notils.cursor has size " + cursor.getCount());
