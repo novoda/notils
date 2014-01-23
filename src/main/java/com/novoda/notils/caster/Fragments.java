@@ -1,7 +1,5 @@
 package com.novoda.notils.caster;
 
-import android.app.FragmentManager;
-
 public final class Fragments {
 
     private Fragments() {
@@ -21,12 +19,12 @@ public final class Fragments {
     }
 
     @SuppressWarnings("unchecked")
-    public static <T> T findFragmentById(FragmentManager fragmentManager, int fragmentId) {
+    public static <T> T findFragmentById(android.app.FragmentManager fragmentManager, int fragmentId) {
         return (T) fragmentManager.findFragmentById(fragmentId);
     }
 
     @SuppressWarnings("unchecked")
-    public static <T> T findFragmentByTag(FragmentManager fragmentManager, String fragmentTag) {
+    public static <T> T findFragmentByTag(android.app.FragmentManager fragmentManager, String fragmentTag) {
         return (T) fragmentManager.findFragmentByTag(fragmentTag);
     }
 
