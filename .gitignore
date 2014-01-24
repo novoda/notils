@@ -12,6 +12,7 @@
 bin/
 gen/
 out/
+build/
 .gradle/
 build.log
 build-log.xml
