@@ -13,6 +13,7 @@ Whats Included
 - Simple Fade animations in & out done for you
 - Logging Novogger & Simple Log to give to give automatic details of where the Log executed
 - StrictMode Management - enable strict mode in one line
+- WebViews , allowing custom loading of different scenarios (raw assets, external urls)
 
 
 Adding to your project
