@@ -12,6 +12,7 @@ Whats Included
 - No need to double type your types when creating collections
 - Simple Fade animations in & out done for you
 - Logging Novogger & Simple Log to give to give automatic details of where the Log executed
+- StrictMode Management - enable strict mode in one line
 
 
 Adding to your project
