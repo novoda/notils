@@ -10,10 +10,28 @@ Whats Included
 - ClassCaster - to help with listeners between Activitys & Fragments
 - No need to cast when referencing Views / Fragments
 - No need to double type your types when creating collections
+- Simple Fade animations in & out done for you
 
 
 Adding to your project
 ======
+
+Gradle
+-
+````groovy
+repositories {
+    maven {
+        url 'https://github.com/novoda/public-mvn-repo/raw/master/releases'
+    }
+}
+`````
+
+````groovy
+dependencies {
+    compile 'com.novoda:notils:2.1-SNAPSHOT'
+}
+````
+
 
 Maven
 -
@@ -29,51 +47,10 @@ Maven
 </repositories>
 ````
 
-##Android :
-
-
 ````xml
 <dependency>
-  <groupId>com.novoda.notils</groupId>
-  <artifactId>android</artifactId>
-  <version>1.0</version>
+  <groupId>com.novoda</groupId>
+  <artifactId>notils</artifactId>
+  <version>2.1-SNAPSHOT</version>
 </dependency>
-````
-
-
-##Java :
-
-
-````xml
-<dependency>
-  <groupId>com.novoda.notils</groupId>
-  <artifactId>java</artifactId>
-  <version>1.0</version>
-</dependency>
-````
-
-Gradle
--
-````gradle
-repositories {
-    maven {
-        url 'https://github.com/novoda/public-mvn-repo/raw/master/releases'
-    }
-}
-`````
-
-##Android :
-
-````gradle
-dependencies {
-    compile 'com.novoda.notils:android:1.0'
-}
-````
-
-##Java :
-
-````gradle
-dependencies {
-    compile 'com.novoda.notils:java:1.0'
-}
 ````
