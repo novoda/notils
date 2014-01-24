@@ -11,6 +11,7 @@ Whats Included
 - No need to cast when referencing Views / Fragments
 - No need to double type your types when creating collections
 - Simple Fade animations in & out done for you
+- Logging Novogger & Simple Log to give to give automatic details of where the Log executed
 
 
 Adding to your project
