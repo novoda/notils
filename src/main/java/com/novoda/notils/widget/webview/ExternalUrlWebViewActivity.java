@@ -11,6 +11,11 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 
+/**
+ * An Activity hosting a webview that can load a URL
+ * Don't forget to declare in the AndroidManifest:
+ * <code><activity android:name="com.novoda.notils.widget.webview.ExternalUrlWebViewActivity" /></code>
+ */
 public class ExternalUrlWebViewActivity extends Activity {
 
     public static final String EXTRA_URL = "com.novoda.notils.EXTRA_URL";
@@ -20,10 +25,40 @@ public class ExternalUrlWebViewActivity extends Activity {
 
     private WebView webView;
 
+    /**
+     * This will load an Activity hosting a webview to the provided URL
+     * ensure you declare me in your manifest
+     * <code><activity android:name="com.novoda.notils.widget.webview.ExternalUrlWebViewActivity" /></code>
+     *
+     * @param context Any context
+     * @param url     A valid url to navigate to
+     */
     public static void toUrl(Context context, String url) {
-        toUrl(context, url, "");
+        toUrl(context, url, android.R.string.untitled);
     }
 
+    /**
+     * This will load an Activity hosting a webview to the provided URL
+     * ensure you declare me in your manifest
+     * <code><activity android:name="com.novoda.notils.widget.webview.ExternalUrlWebViewActivity" /></code>
+     *
+     * @param context    Any context
+     * @param url        A valid url to navigate to
+     * @param titleResId A String resource to display as the title
+     */
+    public static void toUrl(Context context, String url, int titleResId) {
+        toUrl(context, url, context.getString(titleResId));
+    }
+
+    /**
+     * This will load an Activity hosting a webview to the provided URL
+     * ensure you declare me in your manifest
+     * <code><activity android:name="com.novoda.notils.widget.webview.ExternalUrlWebViewActivity" /></code>
+     *
+     * @param context Any context
+     * @param url     A valid url to navigate to
+     * @param title   A title to display
+     */
     public static void toUrl(Context context, String url, String title) {
         Intent intent = new Intent(context, ExternalUrlWebViewActivity.class);
         intent.putExtra(EXTRA_URL, url);
@@ -34,7 +69,7 @@ public class ExternalUrlWebViewActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle(getTitleResId());
+        setTitle(getWebViewTitle());
         createWebView();
         enableJavascript();
         enableCaching();
@@ -51,8 +86,9 @@ public class ExternalUrlWebViewActivity extends Activity {
         webView.setLayoutParams(p);
     }
 
-    private int getTitleResId() {
-        return getIntent().getIntExtra(EXTRA_TITLE, 0);
+    private String getWebViewTitle() {
+        String title = getIntent().getStringExtra(EXTRA_TITLE);
+        return title == null ? "" : title;
     }
 
     private void enableCustomClients() {
