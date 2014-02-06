@@ -18,13 +18,16 @@ public class RawWebView extends WebView {
     private static final String TEXT_HTML = "text/html";
     private static final String ANDROID_RAW_BASE_URL = "file:///android_res/raw";
     private static final String FAIL_URL = null;
+    private final StreamTils streamTils;
 
     public RawWebView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        streamTils = new StreamTils();
     }
 
     public RawWebView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        streamTils = new StreamTils();
     }
 
     public void loadRawData(String html) {
@@ -48,25 +51,30 @@ public class RawWebView extends WebView {
         InputStream input = null;
         try {
             input = getResources().openRawResource(rawResourceId);
-            String html = loadFrom(input);
+            String html = streamTils.loadFrom(input);
             loadRawData(html);
         } finally {
-            tryClose(input);
+            streamTils.tryClose(input);
         }
     }
 
-    private String loadFrom(InputStream input) {
-        Scanner scanner = new Scanner(input, DEFAULT_ENCODING).useDelimiter("\\A");
-        return scanner.hasNext() ? scanner.next() : "";
-    }
+    private static class StreamTils {
 
-    private void tryClose(Closeable input) {
-        try {
-            if (input != null) {
-                input.close();
+        private static final String END_OF_STREAM = "\\A";
+
+        private String loadFrom(InputStream input) {
+            Scanner scanner = new Scanner(input, DEFAULT_ENCODING).useDelimiter(END_OF_STREAM);
+            return scanner.hasNext() ? scanner.next() : "";
+        }
+
+        private void tryClose(Closeable input) {
+            try {
+                if (input != null) {
+                    input.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
