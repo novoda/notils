@@ -34,6 +34,7 @@ public class RawWebView extends WebView {
     /**
      * Using this method with Proguard may result it missing file behaviour.
      * Recommended {@link #loadRawResource(int)} instead.
+     *
      * @param rawFileName a filename in your /raw/ directory i.e. "novoda.html"
      */
     public void loadRawUrl(String rawFileName) {
@@ -41,7 +42,6 @@ public class RawWebView extends WebView {
     }
 
     /**
-     *
      * @param rawResourceId the corresponding id of a filename in your /raw/ directory i.e. "R.raw.novoda"
      */
     public void loadRawResource(int rawResourceId) {
