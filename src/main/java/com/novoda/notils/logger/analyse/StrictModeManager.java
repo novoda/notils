@@ -8,6 +8,7 @@ import android.os.StrictMode;
  * See http://developer.android.com/reference/android/os/StrictMode.html for more
  */
 public final class StrictModeManager {
+    
     /**
      * Flag to enable or disable StrictMode
      * Recommended you set this to BuildConfig.DEBUG in your class that extends Application
@@ -19,36 +20,31 @@ public final class StrictModeManager {
     }
 
     /**
-     * Initializes StrictMode with defaults to close activity and log to console when a violation occurs.
+     * Initializes StrictMode to close activity and log to console when a violation occurs.
      */
     public static void initializeStrictMode() {
         if (ON) {
-            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-                    .detectAll()
-                    .penaltyLog()
-                    .penaltyDeath()
-                    .build());
-            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-                    .detectAll()
-                    .penaltyLog()
-                    .penaltyDeath()
-                    .build());
+            StrictMode.setThreadPolicy(newThreadPolicyBuilderWithDefaults().penaltyDeath().build());
+            StrictMode.setVmPolicy(newVmPolicyBuilderWithDefaults().penaltyDeath().build());
         }
     }
 
     /**
-     * Initializes StrictMode with defaults to log to console when a violation occurs.
+     * Initializes StrictMode to log to console when a violation occurs.
      */
     public static void initializeStrictModeLogOnly() {
         if (ON) {
-            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-                    .detectAll()
-                    .penaltyLog()
-                    .build());
-            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-                    .detectAll()
-                    .penaltyLog()
-                    .build());
+            StrictMode.setThreadPolicy(newThreadPolicyBuilderWithDefaults().build());
+            StrictMode.setVmPolicy(newVmPolicyBuilderWithDefaults().build());
         }
     }
+
+    private static StrictMode.VmPolicy.Builder newVmPolicyBuilderWithDefaults() {
+        return new StrictMode.VmPolicy.Builder().detectAll().penaltyLog();
+    }
+
+    private static StrictMode.ThreadPolicy.Builder newThreadPolicyBuilderWithDefaults() {
+        return new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog();
+    }
+
 }
