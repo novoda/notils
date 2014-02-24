@@ -5,9 +5,6 @@ import android.os.StrictMode;
 /**
  * Enables StrictMode with defaults to detect all wrong doing.
  * <p/>
- * {@link #initializeStrictMode()} will set penalty to close the activity and log to console.
- * {@link #initializeStrictModeLogOnly()} will set penalty to log to console only.
- * <p/>
  * See http://developer.android.com/reference/android/os/StrictMode.html for more
  */
 public final class StrictModeManager {
@@ -21,6 +18,9 @@ public final class StrictModeManager {
         throw new IllegalStateException("This class should not be instantiated");
     }
 
+    /**
+     * Initializes StrictMode with defaults to close activity and log to console when a violation occurs.
+     */
     public static void initializeStrictMode() {
         if (ON) {
             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
@@ -36,6 +36,9 @@ public final class StrictModeManager {
         }
     }
 
+    /**
+     * Initializes StrictMode with defaults to log to console when a violation occurs.
+     */
     public static void initializeStrictModeLogOnly() {
         if (ON) {
             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
