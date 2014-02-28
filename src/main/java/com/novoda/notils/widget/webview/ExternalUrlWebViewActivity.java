@@ -71,6 +71,7 @@ public class ExternalUrlWebViewActivity extends Activity {
         super.onCreate(savedInstanceState);
         setTitle(getWebViewTitle());
         createWebView();
+        setContentView(webView);
         enableJavascript();
         enableCaching();
         enableCustomClients();
