@@ -31,7 +31,7 @@ repositories {
 
 ````groovy
 dependencies {
-    compile 'com.novoda:notils:2.2.3'
+    compile 'com.novoda:notils:2.2.4'
 }
 ````
 
@@ -54,6 +54,6 @@ Maven
 <dependency>
   <groupId>com.novoda</groupId>
   <artifactId>notils</artifactId>
-  <version>2.2.1</version>
+  <version>2.2.4</version>
 </dependency>
 ````
