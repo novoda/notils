@@ -1,0 +1,25 @@
+mvn deploy:deploy-file \
+  -DgroupId=com.novoda \
+  -DartifactId=notils \
+  -Dversion=2.2.4 \
+  -Dpackaging=jar \
+  -Dfile=NoTils.jar \
+  -Durl=file:////Users/Blundell/Developer/git_repo/public-mvn-repo/releases/
+
+  mvn deploy:deploy-file \
+ -DgroupId=com.novoda \
+ -DartifactId=notils \
+ -Dversion=2.2.4 \
+ -Dpackaging=java-source \
+ -Dfile=NoTils-sources.jar \
+ -Durl=file:////Users/Blundell/Developer/git_repo/public-mvn-repo/releases/ \
+ -DgeneratePom=false
+
+ mvn deploy:deploy-file \
+     -DgroupId=com.novoda \
+     -DartifactId=notils \
+     -Dversion=2.2.4 \
+     -Dfile=NoTils-javadoc.jar \
+     -Dpackaging=jar \
+     -Durl=file:////Users/Blundell/Developer/git_repo/public-mvn-repo/releases/ \
+     -Dclassifier=javadoc
