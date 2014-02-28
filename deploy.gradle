@@ -29,7 +29,7 @@ uploadArchives {
                 name 'NoTils'
                 artifactId 'notils'
                 groupId 'com.novoda'
-                version '2.2.5'
+                version '2.2.4'
                 description 'Never again need a .utils. package yur scurvy sea dogs!'
                 url 'https://github.com/novoda/NoTils'
                 inceptionYear '2013'
