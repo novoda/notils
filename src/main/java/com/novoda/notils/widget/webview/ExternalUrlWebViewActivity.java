@@ -83,7 +83,7 @@ public class ExternalUrlWebViewActivity extends Activity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // Check if the key event was the Back button and if there's history
-        if ((keyCode == KeyEvent.KEYCODE_BACK) && canGoBack()) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK) && canGoBackInWebViewHistory()) {
             webView.goBack();
             return true;
         }
@@ -97,7 +97,7 @@ public class ExternalUrlWebViewActivity extends Activity {
      * Override to prevent the webView to navigate Backwards.
      * @return if the activity can navigate in webView history
      */
-    protected boolean canGoBack() {
+    protected boolean canGoBackInWebViewHistory() {
         return webView.canGoBack();
     }
 
