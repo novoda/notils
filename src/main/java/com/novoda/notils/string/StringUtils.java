@@ -9,8 +9,9 @@ public abstract class StringUtils {
 
     /**
      * Joins a Collection of typed objects using their toString method, separated by delimiter
+     *
      * @param collection Collection of objects
-     * @param delimiter (optional) String to separate the items of the collection in the joined string - <code>null</code> is interpreted as empty string
+     * @param delimiter  (optional) String to separate the items of the collection in the joined string - <code>null</code> is interpreted as empty string
      * @return the joined string
      */
     public static String join(Collection<?> collection, String delimiter) {
@@ -28,7 +29,7 @@ public abstract class StringUtils {
             builder.append(it.next()).append(delimiter);
         }
 
-        int length = builder.toString().length();
+        int length = builder.length();
         builder.delete(length - delimiter.length(), length);
         return builder.toString();
     }
