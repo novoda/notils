@@ -100,6 +100,8 @@ public class Toaster {
         if (context != null) {
             toast = Toast.makeText(context, msgId, length);
             toast.show();
+        } else {
+            Log.e("Unable to toast message (context is null).");
         }
     }
 
