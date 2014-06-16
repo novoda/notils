@@ -13,13 +13,13 @@ public class StackingToastDisplayer implements ToastDisplayer {
     private final Context context;
     private final Collection<Toast> toasts;
 
-    public static StackingToastDisplayer newInstance(Context context) {
-        return new StackingToastDisplayer(context, new ArrayList<Toast>());
-    }
-
     private StackingToastDisplayer(Context context, Collection<Toast> toasts) {
         this.context = context;
         this.toasts = toasts;
+    }
+
+    public static StackingToastDisplayer newInstance(Context context) {
+        return new StackingToastDisplayer(context, new ArrayList<Toast>());
     }
 
     @Override
