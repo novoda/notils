@@ -15,9 +15,9 @@ public interface ToastDisplayer {
     /**
      * Displays Toast for the standard Toast.LENGTH_SHORT period
      *
-     * @param resId
+     * @param stringResourceId
      */
-    void display(int resId);
+    void display(int stringResourceId);
 
     /**
      * Displays Toast for the longer Toast.LENGTH_LONG period
@@ -29,9 +29,9 @@ public interface ToastDisplayer {
     /**
      * Displays Toast for the longer Toast.LENGTH_LONG period
      *
-     * @param resId
+     * @param stringResourceId
      */
-    void displayLong(int resId);
+    void displayLong(int stringResourceId);
 
     /**
      * Cancels any Toast that is currently showing, or is waiting to be shown.

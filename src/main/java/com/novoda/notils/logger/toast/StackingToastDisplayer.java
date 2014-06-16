@@ -28,8 +28,8 @@ public class StackingToastDisplayer implements ToastDisplayer {
     }
 
     @Override
-    public void display(int resId) {
-        display(resId, Toast.LENGTH_SHORT);
+    public void display(int stringResourceId) {
+        display(stringResourceId, Toast.LENGTH_SHORT);
     }
 
     @Override
@@ -38,8 +38,8 @@ public class StackingToastDisplayer implements ToastDisplayer {
     }
 
     @Override
-    public void displayLong(int resId) {
-        display(resId, Toast.LENGTH_SHORT);
+    public void displayLong(int stringResourceId) {
+        display(stringResourceId, Toast.LENGTH_SHORT);
     }
 
     private void display(String message, int lengthMillis) {
@@ -52,9 +52,9 @@ public class StackingToastDisplayer implements ToastDisplayer {
         }
     }
 
-    private void display(int resId, int lengthMillis) {
+    private void display(int stringResourceId, int lengthMillis) {
         if (contextIsStillAlive()) {
-            Toast toast = Toast.makeText(context, resId, lengthMillis);
+            Toast toast = Toast.makeText(context, stringResourceId, lengthMillis);
             toast.show();
             toasts.add(toast);
         } else {

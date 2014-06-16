@@ -35,12 +35,12 @@ public class Toaster implements ToastDisplayer {
     /**
      * Toast.LENGTH_SHORT
      *
-     * @param resId
+     * @param stringResourceId
      * @deprecated use {@link #display(int)} instead
      */
     @Deprecated
-    public void popToast(int resId) {
-        display(resId);
+    public void popToast(int stringResourceId) {
+        display(stringResourceId);
     }
 
     /**
@@ -57,12 +57,12 @@ public class Toaster implements ToastDisplayer {
     /**
      * Toast.LENGTH_LONG
      *
-     * @param resId
+     * @param stringResourceId
      * @deprecated use {@link #displayLong(int)} instead
      */
     @Deprecated
-    public void popBurntToast(int resId) {
-        displayLong(resId);
+    public void popBurntToast(int stringResourceId) {
+        displayLong(stringResourceId);
     }
 
     /**
@@ -82,8 +82,8 @@ public class Toaster implements ToastDisplayer {
     }
 
     @Override
-    public void display(int resId) {
-        toastDisplayer.display(resId);
+    public void display(int stringResourceId) {
+        toastDisplayer.display(stringResourceId);
     }
 
     @Override
@@ -92,8 +92,8 @@ public class Toaster implements ToastDisplayer {
     }
 
     @Override
-    public void displayLong(int resId) {
-        toastDisplayer.displayLong(resId);
+    public void displayLong(int stringResourceId) {
+        toastDisplayer.displayLong(stringResourceId);
     }
 
     @Override
