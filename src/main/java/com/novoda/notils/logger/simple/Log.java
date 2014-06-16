@@ -23,93 +23,158 @@ public final class Log {
 
     private static final int DOT_CLASS = 5;
 
+    /**
+     * Default separator for the concatenation of the vaargs
+     */
+    private static final String DEFAULT_SEPARATOR = " ";
+
     private Log() {
     }
 
-    public static void v(String msg) {
+    public static void v(Object... msg) {
+        v(DEFAULT_SEPARATOR, msg);
+    }
+
+    public static void v(String separator, Object... msg) {
         try {
             if (SHOW_LOGS) {
-                android.util.Log.v(TAG, getDetailedLog(msg));
+                android.util.Log.v(TAG, getDetailedLog(formatString(separator, msg)));
             }
         } catch (RuntimeException ignore) {
             logError(ignore);
         }
     }
 
-    public static void i(String msg) {
+    public static void i(Object... msg) {
+        i(DEFAULT_SEPARATOR, msg);
+    }
+
+    public static void i(String separator, Object... msg) {
         try {
             if (SHOW_LOGS) {
-                android.util.Log.i(TAG, getDetailedLog(msg));
+                android.util.Log.i(TAG, getDetailedLog(formatString(separator, msg)));
             }
         } catch (RuntimeException ignore) {
             logError(ignore);
         }
     }
 
-    public static void d(String msg) {
+    public static void d(Object... msg) {
+        d(DEFAULT_SEPARATOR, msg);
+    }
+
+    public static void d(String separator, Object... msg) {
         try {
             if (SHOW_LOGS) {
-                android.util.Log.d(TAG, getDetailedLog(msg));
+                android.util.Log.d(TAG, getDetailedLog(formatString(separator, msg)));
             }
         } catch (RuntimeException ignore) {
             logError(ignore);
         }
     }
 
-    public static void w(String msg) {
+    public static void w(Object... msg) {
+        w(DEFAULT_SEPARATOR, msg);
+    }
+
+    public static void w(String separator, Object... msg) {
         try {
             if (SHOW_LOGS) {
-                android.util.Log.w(TAG, getDetailedLog(msg));
+                android.util.Log.w(TAG, getDetailedLog(formatString(separator, msg)));
             }
         } catch (RuntimeException ignore) {
             logError(ignore);
         }
     }
 
-    public static void e(String msg) {
+    public static void e(Object... msg) {
+        e(DEFAULT_SEPARATOR, msg);
+    }
+
+    public static void e(String separator, Object... msg) {
         try {
             if (SHOW_LOGS) {
-                android.util.Log.e(TAG, getDetailedLog(msg));
+                android.util.Log.e(TAG, getDetailedLog(formatString(separator, msg)));
             }
         } catch (RuntimeException ignore) {
             logError(ignore);
         }
     }
 
+    @Deprecated
     public static void w(String msg, Throwable t) {
+        w(t,msg);
+    }
+
+    public static void w(Throwable t, Object... msg) {
+        w(t, DEFAULT_SEPARATOR, msg);
+    }
+
+    public static void w(Throwable t, String separator, Object... msg) {
         try {
             if (SHOW_LOGS) {
-                android.util.Log.w(TAG, getDetailedLog(msg), t);
+                android.util.Log.w(TAG, getDetailedLog(formatString(separator, msg)), t);
             }
         } catch (RuntimeException ignore) {
             logError(ignore);
         }
     }
 
+    /**
+     * @deprecated use (Throwable t, Object... msg) or (Throwable t, String separator, Object... msg) instead
+     */
     public static void d(String msg, Throwable t) {
+        d(t, msg);
+    }
+
+    public static void d(Throwable t, Object... msg) {
+        d(t, DEFAULT_SEPARATOR, msg);
+    }
+
+    public static void d(Throwable t, String separator, Object... msg) {
         try {
             if (SHOW_LOGS) {
-                android.util.Log.d(TAG, getDetailedLog(msg), t);
+                android.util.Log.d(TAG, getDetailedLog(formatString(separator, msg)), t);
             }
         } catch (RuntimeException ignore) {
             logError(ignore);
         }
     }
 
+    /**
+     * @deprecated use (Throwable t, Object... msg) or (Throwable t, String separator, Object... msg) instead
+     */
     public static void e(String msg, Throwable t) {
+        e(t, msg);
+    }
+    public static void e(Throwable t, Object... msg) {
+        e(t, DEFAULT_SEPARATOR, msg);
+    }
+
+    public static void e(Throwable t, String separator, Object... msg) {
         try {
             if (SHOW_LOGS) {
-                android.util.Log.e(TAG, getDetailedLog(msg), t);
+                android.util.Log.e(TAG, getDetailedLog(formatString(separator, msg)), t);
             }
         } catch (RuntimeException ignore) {
             logError(ignore);
         }
     }
 
+    /**
+     * @deprecated use (Throwable t, Object... msg) or (Throwable t, String separator, Object... msg) instead
+     */
     public static void wtf(String msg, Throwable t) {
+        wtf(t, msg);
+    }
+    public static void wtf(Throwable t, Object... msg) {
+        wtf(t, DEFAULT_SEPARATOR, msg);
+    }
+
+    public static void wtf(Throwable t, String separator, Object... msg) {
         try {
             if (SHOW_LOGS) {
-                android.util.Log.wtf(TAG, getDetailedLog(msg), t);
+                android.util.Log.wtf(TAG, getDetailedLog(formatString(separator, msg)), t);
             }
         } catch (RuntimeException ignore) {
             logError(ignore);
@@ -133,5 +198,13 @@ public final class Log {
 
     private static void logError(Throwable ignore) {
         android.util.Log.e(TAG, "Error", ignore);
+    }
+
+    private static String formatString(String sep, Object... msg) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Object o : msg) {
+            stringBuilder.append(String.valueOf(o)).append(sep);
+        }
+        return stringBuilder.toString();
     }
 }
