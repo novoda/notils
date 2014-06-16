@@ -6,18 +6,18 @@ import android.widget.Toast;
 import com.novoda.notils.logger.simple.Log;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 public class StackingToastDisplayer implements ToastDisplayer {
 
     private final Context context;
-    private final List<Toast> toasts;
+    private final Collection<Toast> toasts;
 
     public static StackingToastDisplayer newInstance(Context context) {
         return new StackingToastDisplayer(context, new ArrayList<Toast>());
     }
 
-    private StackingToastDisplayer(Context context, List<Toast> toasts) {
+    private StackingToastDisplayer(Context context, Collection<Toast> toasts) {
         this.context = context;
         this.toasts = toasts;
     }

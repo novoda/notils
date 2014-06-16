@@ -6,18 +6,18 @@ import android.widget.Toast;
 import com.novoda.notils.logger.simple.Log;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 public class NonStackingToastDisplayer implements ToastDisplayer {
 
     private final Context context;
-    private final List<Toast> toasts;
+    private final Collection<Toast> toasts;
 
     public static NonStackingToastDisplayer newInstance(Context context) {
         return new NonStackingToastDisplayer(context, new ArrayList<Toast>());
     }
 
-    private NonStackingToastDisplayer(Context context, List<Toast> toasts) {
+    private NonStackingToastDisplayer(Context context, Collection<Toast> toasts) {
         this.context = context;
         this.toasts = toasts;
     }
