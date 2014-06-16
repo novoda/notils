@@ -120,7 +120,9 @@ public final class Log {
         }
     }
 
-    @Deprecated
+    /**
+     * @deprecated use (Throwable t, Object... msg) or (Throwable t, String separator, Object... msg) instead
+     */
     public static void d(String msg, Throwable t) {
         d(t, msg);
     }
@@ -139,7 +141,9 @@ public final class Log {
         }
     }
 
-    @Deprecated
+    /**
+     * @deprecated use (Throwable t, Object... msg) or (Throwable t, String separator, Object... msg) instead
+     */
     public static void e(String msg, Throwable t) {
         e(t, msg);
     }
@@ -157,7 +161,9 @@ public final class Log {
         }
     }
 
-    @Deprecated
+    /**
+     * @deprecated use (Throwable t, Object... msg) or (Throwable t, String separator, Object... msg) instead
+     */
     public static void wtf(String msg, Throwable t) {
         wtf(t, msg);
     }
