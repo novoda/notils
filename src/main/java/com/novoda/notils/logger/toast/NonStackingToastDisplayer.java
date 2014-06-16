@@ -3,6 +3,8 @@ package com.novoda.notils.logger.toast;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.novoda.notils.logger.simple.Log;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -21,39 +23,49 @@ public class NonStackingToastDisplayer implements ToastDisplayer {
     }
 
     @Override
-    public Toast display(String message) {
-        return display(message, Toast.LENGTH_SHORT);
+    public void display(String message) {
+        display(message, Toast.LENGTH_SHORT);
     }
 
     @Override
-    public Toast display(int resId) {
-        return display(resId, Toast.LENGTH_SHORT);
+    public void display(int resId) {
+        display(resId, Toast.LENGTH_SHORT);
     }
 
     @Override
-    public Toast displayLong(String message) {
-        return display(message, Toast.LENGTH_LONG);
+    public void displayLong(String message) {
+        display(message, Toast.LENGTH_LONG);
     }
 
     @Override
-    public Toast displayLong(int resId) {
-        return display(resId, Toast.LENGTH_SHORT);
+    public void displayLong(int resId) {
+        display(resId, Toast.LENGTH_SHORT);
     }
 
-    private Toast display(String message, int lengthMillis) {
-        cancelAll();
-        Toast toast = Toast.makeText(context, message, lengthMillis);
-        toast.show();
-        toasts.add(toast);
-        return toast;
+    private void display(String message, int lengthMillis) {
+        if (contextIsStillAlive()) {
+            cancelAll();
+            Toast toast = Toast.makeText(context, message, lengthMillis);
+            toast.show();
+            toasts.add(toast);
+        } else {
+            Log.e("Couldn't toast, context has become null. Attempted message: " + message);
+        }
     }
 
-    private Toast display(int resId, int lengthMillis) {
-        cancelAll();
-        Toast toast = Toast.makeText(context, resId, lengthMillis);
-        toast.show();
-        toasts.add(toast);
-        return toast;
+    private void display(int resId, int lengthMillis) {
+        if (contextIsStillAlive()) {
+            cancelAll();
+            Toast toast = Toast.makeText(context, resId, lengthMillis);
+            toast.show();
+            toasts.add(toast);
+        } else {
+            Log.e("Couldn't toast, context has become null.");
+        }
+    }
+
+    private boolean contextIsStillAlive() {
+        return context != null;
     }
 
     @Override
