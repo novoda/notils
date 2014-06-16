@@ -45,8 +45,7 @@ public class StackingToastDisplayer implements ToastDisplayer {
     private void display(String message, int lengthMillis) {
         if (contextIsStillAlive()) {
             Toast toast = Toast.makeText(context, message, lengthMillis);
-            toast.show();
-            toasts.add(toast);
+            display(toast);
         } else {
             Log.e("Couldn't toast, context has become null. Attempted message: " + message);
         }
@@ -55,8 +54,7 @@ public class StackingToastDisplayer implements ToastDisplayer {
     private void display(int stringResourceId, int lengthMillis) {
         if (contextIsStillAlive()) {
             Toast toast = Toast.makeText(context, stringResourceId, lengthMillis);
-            toast.show();
-            toasts.add(toast);
+            display(toast);
         } else {
             Log.e("Couldn't toast, context has become null.");
         }
@@ -64,6 +62,11 @@ public class StackingToastDisplayer implements ToastDisplayer {
 
     private boolean contextIsStillAlive() {
         return context != null;
+    }
+
+    private void display(Toast toast) {
+        toasts.add(toast);
+        toast.show();
     }
 
     @Override
