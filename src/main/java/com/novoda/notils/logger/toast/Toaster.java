@@ -6,7 +6,7 @@ import android.content.Context;
  * A Toast helper giving a short hand to show toasts.
  * Also checks for the validity of your context and Log's if it cannot toast.
  *
- * @deprecated StackingToastDisplayer subsumes the functionality of this Toaster
+ * @deprecated {@link StackingToastDisplayer} subsumes the functionality of this Toaster
  */
 @Deprecated
 public class Toaster implements ToastDisplayer {
@@ -17,7 +17,7 @@ public class Toaster implements ToastDisplayer {
      * A helper in Toasting messages to the screen
      *
      * @param context
-     * @deprecated use Toaster.newInstance(Context) instead
+     * @deprecated use {@link Toaster#newInstance(Context)} instead
      */
     @Deprecated
     public Toaster(Context context) {
@@ -36,7 +36,7 @@ public class Toaster implements ToastDisplayer {
      * Toast.LENGTH_SHORT
      *
      * @param resId
-     * @deprecated use display(int) instead
+     * @deprecated use {@link #display(int)} instead
      */
     @Deprecated
     public void popToast(int resId) {
@@ -47,7 +47,7 @@ public class Toaster implements ToastDisplayer {
      * Toast.LENGTH_SHORT
      *
      * @param message
-     * @deprecated use display(String)
+     * @deprecated use {@link #display(String)}
      */
     @Deprecated
     public void popToast(String message) {
@@ -58,7 +58,7 @@ public class Toaster implements ToastDisplayer {
      * Toast.LENGTH_LONG
      *
      * @param resId
-     * @deprecated use displayLong(int) instead
+     * @deprecated use {@link #displayLong(int)} instead
      */
     @Deprecated
     public void popBurntToast(int resId) {
@@ -69,7 +69,7 @@ public class Toaster implements ToastDisplayer {
      * Toast.LENGTH_LONG
      *
      * @param message
-     * @deprecated use displayLong(String) instead
+     * @deprecated use {@link #displayLong(String)} instead
      */
     @Deprecated
     public void popBurntToast(String message) {
