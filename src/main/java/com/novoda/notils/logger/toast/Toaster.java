@@ -1,75 +1,104 @@
 package com.novoda.notils.logger.toast;
 
 import android.content.Context;
-import android.widget.Toast;
-
-import com.novoda.notils.logger.simple.Log;
 
 /**
  * A Toast helper giving a short hand to show toasts.
  * Also checks for the validity of your context and Log's if it cannot toast.
+ *
+ * @deprecated StackingToastDisplayer subsumes the functionality of this Toaster
  */
-public class Toaster {
+@Deprecated
+public class Toaster implements ToastDisplayer {
 
-    private final Context context;
+    private final StackingToastDisplayer toastDisplayer;
 
     /**
      * A helper in Toasting messages to the screen
      *
      * @param context
+     * @deprecated use Toaster.newInstance(Context) instead
      */
+    @Deprecated
     public Toaster(Context context) {
-        this.context = context;
+        this(StackingToastDisplayer.newInstance(context));
+    }
+
+    private Toaster(StackingToastDisplayer toastDisplayer) {
+        this.toastDisplayer = toastDisplayer;
+    }
+
+    public static Toaster newInstance(Context context) {
+        return new Toaster(StackingToastDisplayer.newInstance(context));
     }
 
     /**
      * Toast.LENGTH_SHORT
      *
-     * @param msgId
+     * @param resId
+     * @deprecated use display(int) instead
      */
-    public void popToast(int msgId) {
-        popToast(msgId, Toast.LENGTH_SHORT);
+    @Deprecated
+    public void popToast(int resId) {
+        display(resId);
     }
 
     /**
      * Toast.LENGTH_SHORT
      *
-     * @param msg
+     * @param message
+     * @deprecated use display(String)
      */
-    public void popToast(String msg) {
-        popToast(msg, Toast.LENGTH_SHORT);
+    @Deprecated
+    public void popToast(String message) {
+        display(message);
     }
 
     /**
      * Toast.LENGTH_LONG
      *
-     * @param msgId
+     * @param resId
+     * @deprecated use displayLong(int) instead
      */
-    public void popBurntToast(int msgId) {
-        popToast(msgId, Toast.LENGTH_LONG);
+    @Deprecated
+    public void popBurntToast(int resId) {
+        displayLong(resId);
     }
 
     /**
      * Toast.LENGTH_LONG
      *
-     * @param msg
+     * @param message
+     * @deprecated use displayLong(String) instead
      */
-    public void popBurntToast(String msg) {
-        popToast(msg, Toast.LENGTH_LONG);
+    @Deprecated
+    public void popBurntToast(String message) {
+        displayLong(message);
     }
 
-    private void popToast(String msg, int length) {
-        if (context != null) {
-            Toast.makeText(context, msg, length).show();
-        } else {
-            Log.e("Couldn't toast, context has become null. Attempted msg: " + msg);
-        }
+    @Override
+    public void display(String message) {
+        toastDisplayer.display(message);
     }
 
-    private void popToast(int msgId, int length) {
-        if (context != null) {
-            Toast.makeText(context, msgId, length).show();
-        }
+    @Override
+    public void display(int resId) {
+        toastDisplayer.display(resId);
+    }
+
+    @Override
+    public void displayLong(String message) {
+        toastDisplayer.displayLong(message);
+    }
+
+    @Override
+    public void displayLong(int resId) {
+        toastDisplayer.displayLong(resId);
+    }
+
+    @Override
+    public void cancelAll() {
+        toastDisplayer.cancelAll();
     }
 
 }
