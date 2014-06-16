@@ -177,10 +177,10 @@ public final class Log {
     }
 
     private static String formatString(String sep, Object... msg) {
-        String m = "";
+        StringBuilder stringBuilder = new StringBuilder();
         for (Object o : msg) {
-            m += String.valueOf(o) + sep;
+            stringBuilder.append(String.valueOf(o)).append(sep);
         }
-        return m;
+        return stringBuilder.toString();
     }
 }
