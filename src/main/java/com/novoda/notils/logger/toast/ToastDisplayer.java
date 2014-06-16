@@ -34,7 +34,7 @@ public interface ToastDisplayer {
     void displayLong(int stringResourceId);
 
     /**
-     * Cancels any Toast that is currently showing, or is waiting to be shown.
+     * Cancels all Toasts
      */
     void cancelAll();
 
