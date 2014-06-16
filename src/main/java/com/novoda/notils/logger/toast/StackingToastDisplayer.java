@@ -5,19 +5,19 @@ import android.widget.Toast;
 
 import com.novoda.notils.logger.simple.Log;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StackingToastDisplayer implements ToastDisplayer {
 
     private final Context context;
-    private final Queue<Toast> toasts;
+    private final List<Toast> toasts;
 
     public static StackingToastDisplayer newInstance(Context context) {
-        return new StackingToastDisplayer(context, new LinkedList<Toast>());
+        return new StackingToastDisplayer(context, new ArrayList<Toast>());
     }
 
-    private StackingToastDisplayer(Context context, Queue<Toast> toasts) {
+    private StackingToastDisplayer(Context context, List<Toast> toasts) {
         this.context = context;
         this.toasts = toasts;
     }
