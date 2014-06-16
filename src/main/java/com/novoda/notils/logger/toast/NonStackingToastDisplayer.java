@@ -13,30 +13,54 @@ public class NonStackingToastDisplayer implements ToastDisplayer {
     private final Context context;
     private final Collection<Toast> toasts;
 
-    public static NonStackingToastDisplayer newInstance(Context context) {
-        return new NonStackingToastDisplayer(context, new ArrayList<Toast>());
-    }
-
     private NonStackingToastDisplayer(Context context, Collection<Toast> toasts) {
         this.context = context;
         this.toasts = toasts;
     }
 
+    public static NonStackingToastDisplayer newInstance(Context context) {
+        return new NonStackingToastDisplayer(context, new ArrayList<Toast>());
+    }
+
+    /**
+     * {@inheritDoc}
+     * Cancels all previous Toasts before displaying this one.
+     *
+     * @param message
+     */
     @Override
     public void display(String message) {
         display(message, Toast.LENGTH_SHORT);
     }
 
+    /**
+     * {@inheritDoc}
+     * Cancels all previous Toasts before displaying this one.
+     *
+     * @param stringResourceId
+     */
     @Override
     public void display(int stringResourceId) {
         display(stringResourceId, Toast.LENGTH_SHORT);
     }
 
+    /**
+     * {@inheritDoc}
+     * Cancels all previous Toasts before displaying this one.
+     *
+     * @param message
+     */
     @Override
     public void displayLong(String message) {
         display(message, Toast.LENGTH_LONG);
     }
 
+    /**
+     * {@inheritDoc}
+     * Cancels all previous Toasts before displaying this one.
+     *
+     * @param stringResourceId
+     */
     @Override
     public void displayLong(int stringResourceId) {
         display(stringResourceId, Toast.LENGTH_SHORT);
