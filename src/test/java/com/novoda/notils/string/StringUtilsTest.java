@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
-public class StringUtilsTest extends TestCase {
+import static org.junit.Assert.assertEquals;
 
+public class StringUtilsTest {
+
+    @Test
     public void testJoinStringsWithComma() throws Exception {
 
         String string1 = "cool";
@@ -24,6 +27,7 @@ public class StringUtilsTest extends TestCase {
         assertEquals("Strings get concatenated with delimiter", expected, StringUtils.join(strings, delim));
     }
 
+    @Test
     public void testJoinStringsWith2CharDelimiter() throws Exception {
 
         String string1 = "a";
@@ -43,6 +47,7 @@ public class StringUtilsTest extends TestCase {
 
     }
 
+    @Test
     public void testJoinWithNullCollection() throws Exception {
 
         Collection<?> strings = null;
@@ -52,6 +57,7 @@ public class StringUtilsTest extends TestCase {
         assertEquals(expected, StringUtils.join(strings, delim));
     }
 
+    @Test
     public void testJoinEmptyCollection() throws Exception {
 
         ArrayList<String> strings = new ArrayList<String>(0);
@@ -61,6 +67,7 @@ public class StringUtilsTest extends TestCase {
         assertEquals("Joining empty collection returns empty string", expected, StringUtils.join(strings, delim));
     }
 
+    @Test
     public void testJoinStringsWithNullDelimiter() throws Exception {
 
         String string1 = "a";
@@ -79,6 +86,7 @@ public class StringUtilsTest extends TestCase {
         assertEquals("Delimiter=null is interpreted as empty string", expected, StringUtils.join(strings, delim));
     }
 
+    @Test
     public void testJoinIntegersWithSemicolon() throws Exception {
 
         Integer integer1 = 1;
