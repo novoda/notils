@@ -13,13 +13,17 @@ public class NonStackingToastDisplayer implements ToastDisplayer {
     private final Context context;
     private final Collection<Toast> toasts;
 
+    /**
+     * @param context Application context should be passed
+     * @param toasts an empty, modifiable Collection of Toasts
+     */
     private NonStackingToastDisplayer(Context context, Collection<Toast> toasts) {
         this.context = context;
         this.toasts = toasts;
     }
 
     public static NonStackingToastDisplayer newInstance(Context context) {
-        return new NonStackingToastDisplayer(context, new ArrayList<Toast>());
+        return new NonStackingToastDisplayer(context.getApplicationContext(), new ArrayList<Toast>());
     }
 
     /**
