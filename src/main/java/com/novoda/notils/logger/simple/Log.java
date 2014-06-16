@@ -101,6 +101,10 @@ public final class Log {
         }
     }
 
+    public static void w(String msg, Throwable t) {
+        w(t,msg);
+    }
+
     public static void w(Throwable t, Object... msg) {
         w(t, DEFAULT_SEPARATOR, msg);
     }
@@ -115,8 +119,12 @@ public final class Log {
         }
     }
 
+    public static void d(String msg, Throwable t) {
+        d(t, msg);
+    }
+
     public static void d(Throwable t, Object... msg) {
-    d(t, DEFAULT_SEPARATOR, msg);
+        d(t, DEFAULT_SEPARATOR, msg);
     }
 
     public static void d(Throwable t, String separator, Object... msg) {
@@ -129,8 +137,11 @@ public final class Log {
         }
     }
 
+    public static void e(String msg, Throwable t) {
+        e(t, msg);
+    }
     public static void e(Throwable t, Object... msg) {
-    e(t, DEFAULT_SEPARATOR, msg);
+        e(t, DEFAULT_SEPARATOR, msg);
     }
 
     public static void e(Throwable t, String separator, Object... msg) {
@@ -143,6 +154,9 @@ public final class Log {
         }
     }
 
+    public static void wtf(String msg, Throwable t) {
+        wtf(t, msg);
+    }
     public static void wtf(Throwable t, Object... msg) {
         wtf(t, DEFAULT_SEPARATOR, msg);
     }
