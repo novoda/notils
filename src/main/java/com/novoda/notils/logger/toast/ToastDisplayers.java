@@ -21,9 +21,9 @@ public class ToastDisplayers {
     }
 
     /**
-     * Creates a ToastDisplayer which cancels all pending Toasts before showing the requested one.
+     * Creates a new ToastDisplayer which cancels all pending Toasts before showing the requested one.
      * <p/>
-     * Cancels Toasts requested using this ToastDisplayer.
+     * Cancels pending Toasts requested using this ToastDisplayer.
      *
      * @param context
      * @return toastDisplayer
