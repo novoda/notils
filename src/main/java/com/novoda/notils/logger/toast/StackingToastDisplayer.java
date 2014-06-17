@@ -3,8 +3,6 @@ package com.novoda.notils.logger.toast;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.novoda.notils.logger.simple.Log;
-
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -15,15 +13,14 @@ public class StackingToastDisplayer implements ToastDisplayer {
 
     /**
      * @param context Application context should be passed
-     * @param toasts  an empty, modifiable Collection of Toasts
      */
-    private StackingToastDisplayer(Context context, Collection<Toast> toasts) {
+    private StackingToastDisplayer(Context context) {
         this.context = context;
-        this.toasts = toasts;
+        this.toasts = new ArrayList<Toast>();
     }
 
     public static StackingToastDisplayer newInstance(Context context) {
-        return new StackingToastDisplayer(context.getApplicationContext(), new ArrayList<Toast>());
+        return new StackingToastDisplayer(context.getApplicationContext());
     }
 
     @Override
@@ -47,25 +44,13 @@ public class StackingToastDisplayer implements ToastDisplayer {
     }
 
     private void display(String message, int lengthMillis) {
-        if (contextIsStillAlive()) {
-            Toast toast = Toast.makeText(context, message, lengthMillis);
-            display(toast);
-        } else {
-            Log.e("Couldn't toast, context has become null. Attempted message: " + message);
-        }
+        Toast toast = Toast.makeText(context, message, lengthMillis);
+        display(toast);
     }
 
     private void display(int stringResourceId, int lengthMillis) {
-        if (contextIsStillAlive()) {
-            Toast toast = Toast.makeText(context, stringResourceId, lengthMillis);
-            display(toast);
-        } else {
-            Log.e("Couldn't toast, context has become null.");
-        }
-    }
-
-    private boolean contextIsStillAlive() {
-        return context != null;
+        Toast toast = Toast.makeText(context, stringResourceId, lengthMillis);
+        display(toast);
     }
 
     private void display(Toast toast) {
