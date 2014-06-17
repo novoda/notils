@@ -5,11 +5,8 @@ import android.content.Context;
 /**
  * A Toast helper giving a short hand to show toasts.
  * Also checks for the validity of your context and Log's if it cannot toast.
- *
- * @deprecated {@link StackingToastDisplayer} subsumes the functionality of this Toaster
  */
-@Deprecated
-public class Toaster implements ToastDisplayer {
+public class Toaster {
 
     private final StackingToastDisplayer toastDisplayer;
 
@@ -17,14 +14,14 @@ public class Toaster implements ToastDisplayer {
      * A helper in Toasting messages to the screen
      *
      * @param context
-     * @deprecated use {@link Toaster#newInstance(Context)} instead
+     * @deprecated this ctor will be made private, use {@link #newInstance(android.content.Context)}
      */
     @Deprecated
     public Toaster(Context context) {
-        this(new StackingToastDisplayer(context));
+        this(new StackingToastDisplayer(context.getApplicationContext()));
     }
 
-    private Toaster(StackingToastDisplayer toastDisplayer) {
+    Toaster(StackingToastDisplayer toastDisplayer) {
         this.toastDisplayer = toastDisplayer;
     }
 
@@ -36,68 +33,42 @@ public class Toaster implements ToastDisplayer {
      * Toast.LENGTH_SHORT
      *
      * @param stringResourceId
-     * @deprecated use {@link #display(int)} instead
      */
-    @Deprecated
     public void popToast(int stringResourceId) {
-        display(stringResourceId);
+        toastDisplayer.display(stringResourceId);
     }
 
     /**
      * Toast.LENGTH_SHORT
      *
      * @param message
-     * @deprecated use {@link #display(String)}
      */
-    @Deprecated
     public void popToast(String message) {
-        display(message);
+        toastDisplayer.display(message);
     }
 
     /**
      * Toast.LENGTH_LONG
      *
      * @param stringResourceId
-     * @deprecated use {@link #displayLong(int)} instead
      */
-    @Deprecated
     public void popBurntToast(int stringResourceId) {
-        displayLong(stringResourceId);
+        toastDisplayer.displayLong(stringResourceId);
     }
 
     /**
      * Toast.LENGTH_LONG
      *
      * @param message
-     * @deprecated use {@link #displayLong(String)} instead
      */
-    @Deprecated
     public void popBurntToast(String message) {
-        displayLong(message);
-    }
-
-    @Override
-    public void display(String message) {
-        toastDisplayer.display(message);
-    }
-
-    @Override
-    public void display(int stringResourceId) {
-        toastDisplayer.display(stringResourceId);
-    }
-
-    @Override
-    public void displayLong(String message) {
         toastDisplayer.displayLong(message);
     }
 
-    @Override
-    public void displayLong(int stringResourceId) {
-        toastDisplayer.displayLong(stringResourceId);
-    }
-
-    @Override
-    public void cancelAll() {
+    /**
+     * Cancels all Toasts created by this Toaster.
+     */
+    public void dropInBath() {
         toastDisplayer.cancelAll();
     }
 
