@@ -26,13 +26,13 @@ public final class Log {
     /**
      * Separator for the concatenation of the vaargs
      */
-    private static String SEPARATOR = " ";
+    private static String separator = " ";
 
     private Log() {
     }
 
-    public static void setSeparator(String sep) {
-        SEPARATOR = sep;
+    public static void setSeparator(String separator) {
+        Log.separator = separator;
     }
 
     public static void v(Object... msg) {
@@ -179,7 +179,7 @@ public final class Log {
     private static String formatString(Object... msg) {
         StringBuilder stringBuilder = new StringBuilder();
         for (Object o : msg) {
-            stringBuilder.append(String.valueOf(o)).append(SEPARATOR);
+            stringBuilder.append(String.valueOf(o)).append(separator);
         }
         return stringBuilder.toString();
     }
