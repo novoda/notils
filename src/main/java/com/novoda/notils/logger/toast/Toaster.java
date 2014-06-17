@@ -21,7 +21,7 @@ public class Toaster implements ToastDisplayer {
      */
     @Deprecated
     public Toaster(Context context) {
-        this(StackingToastDisplayer.newInstance(context));
+        this(new StackingToastDisplayer(context));
     }
 
     private Toaster(StackingToastDisplayer toastDisplayer) {
@@ -29,7 +29,7 @@ public class Toaster implements ToastDisplayer {
     }
 
     public static Toaster newInstance(Context context) {
-        return new Toaster(StackingToastDisplayer.newInstance(context));
+        return new Toaster(new StackingToastDisplayer(context.getApplicationContext()));
     }
 
     /**

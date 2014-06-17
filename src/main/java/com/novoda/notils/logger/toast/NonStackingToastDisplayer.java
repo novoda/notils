@@ -12,12 +12,8 @@ public class NonStackingToastDisplayer implements ToastDisplayer {
     /**
      * @param context Application context should be passed
      */
-    private NonStackingToastDisplayer(Context context) {
+    NonStackingToastDisplayer(Context context) {
         this.context = context;
-    }
-
-    public static NonStackingToastDisplayer newInstance(Context context) {
-        return new NonStackingToastDisplayer(context.getApplicationContext());
     }
 
     /**

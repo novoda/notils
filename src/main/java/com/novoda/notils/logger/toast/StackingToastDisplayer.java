@@ -14,13 +14,9 @@ public class StackingToastDisplayer implements ToastDisplayer {
     /**
      * @param context Application context should be passed
      */
-    private StackingToastDisplayer(Context context) {
+    StackingToastDisplayer(Context context) {
         this.context = context;
         this.toasts = new ArrayList<Toast>();
-    }
-
-    public static StackingToastDisplayer newInstance(Context context) {
-        return new StackingToastDisplayer(context.getApplicationContext());
     }
 
     @Override
