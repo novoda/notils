@@ -3,27 +3,21 @@ package com.novoda.notils.logger.toast;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.novoda.notils.logger.simple.Log;
-
-import java.util.ArrayList;
-import java.util.Collection;
-
 public class NonStackingToastDisplayer implements ToastDisplayer {
 
     private final Context context;
-    private final Collection<Toast> toasts;
+
+    private Toast toast;
 
     /**
      * @param context Application context should be passed
-     * @param toasts an empty, modifiable Collection of Toasts
      */
-    private NonStackingToastDisplayer(Context context, Collection<Toast> toasts) {
+    private NonStackingToastDisplayer(Context context) {
         this.context = context;
-        this.toasts = toasts;
     }
 
     public static NonStackingToastDisplayer newInstance(Context context) {
-        return new NonStackingToastDisplayer(context.getApplicationContext(), new ArrayList<Toast>());
+        return new NonStackingToastDisplayer(context.getApplicationContext());
     }
 
     /**
@@ -50,7 +44,7 @@ public class NonStackingToastDisplayer implements ToastDisplayer {
 
     /**
      * {@inheritDoc}
-     * Cancels all previous Toasts before displaying this one.
+     * Cancels all pending Toasts before displaying this one.
      *
      * @param message
      */
@@ -61,7 +55,7 @@ public class NonStackingToastDisplayer implements ToastDisplayer {
 
     /**
      * {@inheritDoc}
-     * Cancels all previous Toasts before displaying this one.
+     * Cancels all pending Toasts before displaying this one.
      *
      * @param stringResourceId
      */
@@ -71,40 +65,20 @@ public class NonStackingToastDisplayer implements ToastDisplayer {
     }
 
     private void display(String message, int lengthMillis) {
-        if (contextIsStillAlive()) {
-            cancelAll();
-            Toast toast = Toast.makeText(context, message, lengthMillis);
-            display(toast);
-        } else {
-            Log.e("Couldn't toast, context has become null. Attempted message: " + message);
-        }
+        cancelAll();
+        toast = Toast.makeText(context, message, lengthMillis);
+        toast.show();
     }
 
     private void display(int stringResourceId, int lengthMillis) {
-        if (contextIsStillAlive()) {
-            cancelAll();
-            Toast toast = Toast.makeText(context, stringResourceId, lengthMillis);
-            display(toast);
-        } else {
-            Log.e("Couldn't toast, context has become null.");
-        }
-    }
-
-    private boolean contextIsStillAlive() {
-        return context != null;
-    }
-
-    private void display(Toast toast) {
-        toasts.add(toast);
+        cancelAll();
+        toast = Toast.makeText(context, stringResourceId, lengthMillis);
         toast.show();
     }
 
     @Override
     public void cancelAll() {
-        for (Toast toast : toasts) {
-            toast.cancel();
-        }
-        toasts.clear();
+        toast.cancel();
     }
 
 }
