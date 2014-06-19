@@ -13,7 +13,8 @@ Whats Included
 - Simple Fade animations in & out done for you
 - Logging Novogger & Simple Log to give to give automatic details of where the Log executed
 - StrictMode Management - enable strict mode in one line
-- WebViews , allowing custom loading of different scenarios (raw assets, external urls)
+- WebViews, allowing custom loading of different scenarios (raw assets, external urls)
+- ToastDisplayers for saner displaying of Toast notifications
 
 
 Adding to your project
@@ -31,7 +32,7 @@ repositories {
 
 ````groovy
 dependencies {
-    compile 'com.novoda:notils:2.2.6'
+    compile 'com.novoda:notils:2.2.7'
 }
 ````
 
@@ -54,7 +55,7 @@ Maven
 <dependency>
   <groupId>com.novoda</groupId>
   <artifactId>notils</artifactId>
-  <version>2.2.6</version>
+  <version>2.2.7</version>
 </dependency>
 ````
 
