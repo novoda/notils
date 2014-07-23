@@ -74,6 +74,9 @@ public class NonStackingToastDisplayer implements ToastDisplayer {
 
     @Override
     public void cancelAll() {
+        if (toast == null) {
+            return;
+        }
         toast.cancel();
     }
 
