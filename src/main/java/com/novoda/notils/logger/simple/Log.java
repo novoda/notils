@@ -14,7 +14,7 @@ public final class Log {
      * <p/>
      * Recommended you set this to {@code BuildConfig.DEBUG} in your class that extends Application
      */
-    public static boolean SHOW_LOGS;
+    public static boolean SHOW_LOGS = false;
 
     /**
      * Log tag to use - Default is 'NoTils'
