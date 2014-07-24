@@ -8,7 +8,7 @@ package com.novoda.notils.logger.simple;
 public final class Log {
 
     /**
-     * <b>Deprecated</b>: Use getter <code>shouldShowLogs()</code> and setter <code>setShowLogs(bool)</code> instead<br/>
+     * <b>Deprecated</b>: Use getter {@link #shouldShowLogs()} and setter {@link #setShowLogs(boolean)} instead<br/>
      * <br/>
      * Flag to enable or disable logs<br/>
      * Recommended you set this to <code>BuildConfig.DEBUG</code> in your class that extends Application
