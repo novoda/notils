@@ -8,10 +8,14 @@ package com.novoda.notils.logger.simple;
 public final class Log {
 
     /**
-     * Flag to enable or disable logs
-     * Recommended you set this to BuildConfig.DEBUG in your class that extends Application
+     * <b>Deprecated</b>: Use getter <code>shouldShowLogs()</code> and setter <code>setShowLogs(bool)</code> instead<br/>
+     * <br/>
+     * Flag to enable or disable logs<br/>
+     * Recommended you set this to <code>BuildConfig.DEBUG</code> in your class that extends Application
      */
-    public static boolean SHOW_LOGS = false;
+    @Deprecated
+    public static boolean SHOW_LOGS;
+
     /**
      * Log tag to use - Default is 'NoTils'
      */
@@ -90,7 +94,7 @@ public final class Log {
      * @deprecated use (Throwable t, Object... msg) 
      */
     public static void w(String msg, Throwable t) {
-        w(t,msg);
+        w(t, msg);
     }
 
     public static void w(Throwable t, Object... msg) {
@@ -186,9 +190,18 @@ public final class Log {
 
     /**
      * Toggle if logs should be output or not. Recommended to bind against BuildConfig.DEBUG
+     *
      * @param showLogs <code>true</code> for showing logs, <code>false</code> to deactivate
      */
     public static void setShowLogs(boolean showLogs) {
         Log.SHOW_LOGS = showLogs;
+    }
+
+    /**
+     * Returns the active status of the log switch
+     * @return <code>true</code> if logs are active, <code>false</code> if deactivated
+     */
+    public static boolean shouldShowLogs() {
+        return SHOW_LOGS;
     }
 }
