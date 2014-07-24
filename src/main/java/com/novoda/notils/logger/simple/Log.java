@@ -12,7 +12,7 @@ public final class Log {
      * <p/>
      * Flag to enable or disable logs
      * <p/>
-     * Recommended you set this to {@code BuildConfig.DEBUG} in your class that extends Application</p>
+     * Recommended you set this to {@code BuildConfig.DEBUG} in your class that extends Application
      */
     public static boolean SHOW_LOGS;
 
