@@ -11,7 +11,7 @@ public final class Log {
      * <b>Deprecated</b>: Use getter {@link #shouldShowLogs()} and setter {@link #setShowLogs(boolean)} instead<br/>
      * <br/>
      * Flag to enable or disable logs<br/>
-     * Recommended you set this to <code>BuildConfig.DEBUG</code> in your class that extends Application
+     * Recommended you set this to {@code BuildConfig.DEBUG} in your class that extends Application
      */
     @Deprecated
     public static boolean SHOW_LOGS;
@@ -189,9 +189,9 @@ public final class Log {
     }
 
     /**
-     * Toggle if logs should be output or not. Recommended to bind against BuildConfig.DEBUG
+     * Toggle if logs should be output or not. Recommended to bind against {@code BuildConfig.DEBUG}
      *
-     * @param showLogs <code>true</code> for showing logs, <code>false</code> to deactivate
+     * @param showLogs {@code true} for showing logs, {@code false} to deactivate them
      */
     public static void setShowLogs(boolean showLogs) {
         Log.SHOW_LOGS = showLogs;
@@ -199,7 +199,7 @@ public final class Log {
 
     /**
      * Returns the active status of the log switch
-     * @return <code>true</code> if logs are active, <code>false</code> if deactivated
+     * @return {@code true} if logs are active, {@code false} if deactivated
      */
     public static boolean shouldShowLogs() {
         return SHOW_LOGS;
