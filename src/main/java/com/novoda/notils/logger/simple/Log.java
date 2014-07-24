@@ -38,7 +38,7 @@ public final class Log {
     public static void v(Object... msg) {
         try {
             if (SHOW_LOGS) {
-                android.util.Log.v(TAG, getDetailedLog(formatString(msg)));
+                Log.v(TAG, getDetailedLog(formatString(msg)));
             }
         } catch (RuntimeException ignore) {
             logError(ignore);
@@ -48,7 +48,7 @@ public final class Log {
     public static void i(Object... msg) {
         try {
             if (SHOW_LOGS) {
-                android.util.Log.i(TAG, getDetailedLog(formatString(msg)));
+                Log.i(TAG, getDetailedLog(formatString(msg)));
             }
         } catch (RuntimeException ignore) {
             logError(ignore);
@@ -58,7 +58,7 @@ public final class Log {
     public static void d(Object... msg) {
         try {
             if (SHOW_LOGS) {
-                android.util.Log.d(TAG, getDetailedLog(formatString(msg)));
+                Log.d(TAG, getDetailedLog(formatString(msg)));
             }
         } catch (RuntimeException ignore) {
             logError(ignore);
@@ -68,7 +68,7 @@ public final class Log {
     public static void w(Object... msg) {
         try {
             if (SHOW_LOGS) {
-                android.util.Log.w(TAG, getDetailedLog(formatString(msg)));
+                Log.w(TAG, getDetailedLog(formatString(msg)));
             }
         } catch (RuntimeException ignore) {
             logError(ignore);
@@ -78,7 +78,7 @@ public final class Log {
     public static void e(Object... msg) {
         try {
             if (SHOW_LOGS) {
-                android.util.Log.e(TAG, getDetailedLog(formatString(msg)));
+                Log.e(TAG, getDetailedLog(formatString(msg)));
             }
         } catch (RuntimeException ignore) {
             logError(ignore);
@@ -90,13 +90,13 @@ public final class Log {
      * @deprecated use (Throwable t, Object... msg) 
      */
     public static void w(String msg, Throwable t) {
-        w(t,msg);
+        w(t, msg);
     }
 
     public static void w(Throwable t, Object... msg) {
         try {
             if (SHOW_LOGS) {
-                android.util.Log.w(TAG, getDetailedLog(formatString(msg)), t);
+                Log.w(TAG, getDetailedLog(formatString(msg)), t);
             }
         } catch (RuntimeException ignore) {
             logError(ignore);
@@ -114,7 +114,7 @@ public final class Log {
     public static void d(Throwable t, Object... msg) {
         try {
             if (SHOW_LOGS) {
-                android.util.Log.d(TAG, getDetailedLog(formatString(msg)), t);
+                Log.d(TAG, getDetailedLog(formatString(msg)), t);
             }
         } catch (RuntimeException ignore) {
             logError(ignore);
@@ -132,7 +132,7 @@ public final class Log {
     public static void e(Throwable t, Object... msg) {
         try {
             if (SHOW_LOGS) {
-                android.util.Log.e(TAG, getDetailedLog(formatString(msg)), t);
+                Log.e(TAG, getDetailedLog(formatString(msg)), t);
             }
         } catch (RuntimeException ignore) {
             logError(ignore);
@@ -150,7 +150,7 @@ public final class Log {
     public static void wtf(Throwable t, Object... msg) {
         try {
             if (SHOW_LOGS) {
-                android.util.Log.wtf(TAG, getDetailedLog(formatString(msg)), t);
+                Log.wtf(TAG, getDetailedLog(formatString(msg)), t);
             }
         } catch (RuntimeException ignore) {
             logError(ignore);
@@ -173,7 +173,7 @@ public final class Log {
     }
 
     private static void logError(Throwable ignore) {
-        android.util.Log.e(TAG, "Error", ignore);
+        Log.e(TAG, "Error", ignore);
     }
 
     private static String formatString(Object... msg) {
@@ -182,5 +182,13 @@ public final class Log {
             stringBuilder.append(String.valueOf(o)).append(separator);
         }
         return stringBuilder.toString();
+    }
+
+    /**
+     * Toggle if logs should be output or not. Recommended to bind against BuildConfig.DEBUG
+     * @param showLogs <code>true</code> for showing logs, <code>false</code> to deactivate
+     */
+    public static void setShowLogs(boolean showLogs) {
+        Log.SHOW_LOGS = showLogs;
     }
 }
