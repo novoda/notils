@@ -20,6 +20,8 @@ Whats Included
 Adding to your project
 ======
 
+Check the latest version of NoTils on the [releases page](https://github.com/novoda/NoTils/releases). We tag releases as "v1.2.3" so below, where `VERSION` is written, you'd put "1.2.3".
+
 Gradle
 -
 ````groovy
@@ -32,7 +34,7 @@ repositories {
 
 ````groovy
 dependencies {
-    compile 'com.novoda:notils:2.2.7'
+    compile 'com.novoda:notils:VERSION'
 }
 ````
 
@@ -55,7 +57,7 @@ Maven
 <dependency>
   <groupId>com.novoda</groupId>
   <artifactId>notils</artifactId>
-  <version>2.2.7</version>
+  <version>VERSION</version>
 </dependency>
 ````
 
