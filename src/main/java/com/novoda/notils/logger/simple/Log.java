@@ -8,12 +8,12 @@ package com.novoda.notils.logger.simple;
 public final class Log {
 
     /**
-     * <p><b>Deprecated</b>: Use getter {@link #shouldShowLogs()} and setter {@link #setShowLogs(boolean)} instead</p>
-     *
-     * <p>Flag to enable or disable logs<br/>
+     * @deprecated Use getter {@link #shouldShowLogs()} and setter {@link #setShowLogs(boolean)} instead
+     * <p/>
+     * Flag to enable or disable logs
+     * <p/>
      * Recommended you set this to {@code BuildConfig.DEBUG} in your class that extends Application</p>
      */
-    @Deprecated
     public static boolean SHOW_LOGS;
 
     /**
