@@ -90,10 +90,11 @@ public final class Log {
         }
     }
 
-    @Deprecated
+
     /**
-     * @deprecated use (Throwable t, Object... msg) 
+     * @deprecated use (Throwable t, Object... msg)
      */
+    @Deprecated
     public static void w(String msg, Throwable t) {
         w(t, msg);
     }
@@ -108,10 +109,10 @@ public final class Log {
         }
     }
 
-    @Deprecated
     /**
      * @deprecated use (Throwable t, Object... msg)
      */
+    @Deprecated
     public static void d(String msg, Throwable t) {
         d(t, msg);
     }
@@ -126,10 +127,11 @@ public final class Log {
         }
     }
 
-    @Deprecated
+
     /**
      * @deprecated use (Throwable t, Object... msg) 
      */
+    @Deprecated
     public static void e(String msg, Throwable t) {
         e(t, msg);
     }
@@ -144,10 +146,10 @@ public final class Log {
         }
     }
 
-    @Deprecated
     /**
      * @deprecated use (Throwable t, Object... msg)
      */
+    @Deprecated
     public static void wtf(String msg, Throwable t) {
         wtf(t, msg);
     }
