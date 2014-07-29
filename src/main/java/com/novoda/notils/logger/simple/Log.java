@@ -8,10 +8,15 @@ package com.novoda.notils.logger.simple;
 public final class Log {
 
     /**
+     * @deprecated Use getter {@link #shouldShowLogs()} and setter {@link #setShowLogs(boolean)} instead
+     * <p/>
      * Flag to enable or disable logs
-     * Recommended you set this to BuildConfig.DEBUG in your class that extends Application
+     * <p/>
+     * Recommended you set this to {@code BuildConfig.DEBUG} in your class that extends Application
      */
+    @Deprecated
     public static boolean SHOW_LOGS = false;
+
     /**
      * Log tag to use - Default is 'NoTils'
      */
@@ -85,12 +90,13 @@ public final class Log {
         }
     }
 
-    @Deprecated
+
     /**
-     * @deprecated use (Throwable t, Object... msg) 
+     * @deprecated use (Throwable t, Object... msg)
      */
+    @Deprecated
     public static void w(String msg, Throwable t) {
-        w(t,msg);
+        w(t, msg);
     }
 
     public static void w(Throwable t, Object... msg) {
@@ -103,10 +109,10 @@ public final class Log {
         }
     }
 
-    @Deprecated
     /**
      * @deprecated use (Throwable t, Object... msg)
      */
+    @Deprecated
     public static void d(String msg, Throwable t) {
         d(t, msg);
     }
@@ -121,10 +127,11 @@ public final class Log {
         }
     }
 
-    @Deprecated
+
     /**
      * @deprecated use (Throwable t, Object... msg) 
      */
+    @Deprecated
     public static void e(String msg, Throwable t) {
         e(t, msg);
     }
@@ -139,10 +146,10 @@ public final class Log {
         }
     }
 
-    @Deprecated
     /**
      * @deprecated use (Throwable t, Object... msg)
      */
+    @Deprecated
     public static void wtf(String msg, Throwable t) {
         wtf(t, msg);
     }
@@ -182,5 +189,23 @@ public final class Log {
             stringBuilder.append(String.valueOf(o)).append(separator);
         }
         return stringBuilder.toString();
+    }
+
+    /**
+     * Toggle if logs should be output or not. Recommended to bind against {@code BuildConfig.DEBUG}
+     *
+     * @param showLogs {@code true} for showing logs, {@code false} to deactivate them
+     */
+    public static void setShowLogs(boolean showLogs) {
+        Log.SHOW_LOGS = showLogs;
+    }
+
+    /**
+     * Returns the active status of the log switch
+     *
+     * @return {@code true} if logs are active, {@code false} if deactivated
+     */
+    public static boolean shouldShowLogs() {
+        return SHOW_LOGS;
     }
 }
