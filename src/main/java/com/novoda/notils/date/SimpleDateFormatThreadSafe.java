@@ -22,6 +22,7 @@ public class SimpleDateFormatThreadSafe extends SimpleDateFormat {
     public SimpleDateFormatThreadSafe(final String pattern, final DateFormatSymbols formatSymbols) {
         super(pattern, formatSymbols);
         localSimpleDateFormat = new ThreadLocal<SimpleDateFormat>() {
+            @Override
             protected SimpleDateFormat initialValue() {
                 return new SimpleDateFormat(pattern, formatSymbols);
             }
@@ -34,6 +35,7 @@ public class SimpleDateFormatThreadSafe extends SimpleDateFormat {
     public SimpleDateFormatThreadSafe(final String pattern, final Locale locale) {
         super(pattern, locale);
         localSimpleDateFormat = new ThreadLocal<SimpleDateFormat>() {
+            @Override
             protected SimpleDateFormat initialValue() {
                 return new SimpleDateFormat(pattern, locale);
             }
