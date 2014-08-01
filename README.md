@@ -15,6 +15,7 @@ Whats Included
 - StrictMode Management - enable strict mode in one line
 - WebViews, allowing custom loading of different scenarios (raw assets, external urls)
 - ToastDisplayers for saner displaying of Toast notifications
+- SimpleDateFormatThreadSafe allowing you to use date formatting from multiple threads
 
 
 Adding to your project
