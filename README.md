@@ -16,7 +16,7 @@ Whats Included
 - WebViews, allowing custom loading of different scenarios (raw assets, external urls)
 - ToastDisplayers for saner displaying of Toast notifications
 - SimpleDateFormatThreadSafe allowing you to use date formatting from multiple threads
-
+- DeveloperError - custom exceptions for explicit declaration / faster feedback when something goes wrong
 
 Adding to your project
 ======
