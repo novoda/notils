@@ -58,11 +58,14 @@ public final class StrictModeManager {
     }
 
     private static StrictMode.VmPolicy.Builder newVmPolicyBuilderWithDefaultViolations() {
-        return new StrictMode.VmPolicy.Builder().detectAll();
+        return new StrictMode.VmPolicy.Builder()
+                .detectLeakedSqlLiteObjects()
+                .detectLeakedRegistrationObjects();
     }
 
     private static StrictMode.ThreadPolicy.Builder newThreadPolicyBuilderWithDefaultViolations() {
-        return new StrictMode.ThreadPolicy.Builder().detectAll();
+        return new StrictMode.ThreadPolicy.Builder()
+                .detectCustomSlowCalls();
     }
 
 }
