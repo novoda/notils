@@ -1,5 +1,6 @@
 package com.novoda.notils.logger.analyse;
 
+import android.os.Build;
 import android.os.StrictMode;
 
 /**
@@ -58,9 +59,11 @@ public final class StrictModeManager {
     }
 
     private static StrictMode.VmPolicy.Builder newVmPolicyBuilderWithDefaultViolations() {
-        return new StrictMode.VmPolicy.Builder()
-                .detectLeakedSqlLiteObjects()
-                .detectLeakedRegistrationObjects();
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder().detectLeakedSqlLiteObjects();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            builder.detectLeakedRegistrationObjects();
+        }
+        return builder;
     }
 
     private static StrictMode.ThreadPolicy.Builder newThreadPolicyBuilderWithDefaultViolations() {
