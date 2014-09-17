@@ -113,7 +113,7 @@ public class StringUtilsTest {
     @Test
     public void testLongStringLengthIsCropAtMaximum() throws Exception {
 
-        String string = StringUtils.cropStringIfLengthMoreThan(SHORT_STRING_LENGTH, RANDOM_STRING);
+        String string = StringUtils.truncateIfLengthMoreThan(SHORT_STRING_LENGTH, RANDOM_STRING);
 
         assertEquals(string.length(), SHORT_STRING_LENGTH);
     }
@@ -121,7 +121,7 @@ public class StringUtilsTest {
     @Test
     public void testStringLengthUnchangedIfStringLengthIsLessThanMaximum() throws Exception {
 
-        String croppedString = StringUtils.cropStringIfLengthMoreThan(LONG_STRING_LENGTH, RANDOM_STRING);
+        String croppedString = StringUtils.truncateIfLengthMoreThan(LONG_STRING_LENGTH, RANDOM_STRING);
 
         assertEquals(croppedString.length(), RANDOM_STRING.length());
     }
@@ -129,7 +129,7 @@ public class StringUtilsTest {
     @Test
     public void testLongStringHasThreeDotsWhenLenghtIsMoreThanMaximum() throws Exception {
 
-        String croppedString = StringUtils.cropStringIfLengthMoreThan(SHORT_STRING_LENGTH, RANDOM_STRING);
+        String croppedString = StringUtils.truncateIfLengthMoreThan(SHORT_STRING_LENGTH, RANDOM_STRING);
 
         assertEquals(String.valueOf(croppedString.charAt(SHORT_STRING_LENGTH - 1)), THREE_DOTS);
     }
@@ -137,7 +137,7 @@ public class StringUtilsTest {
     @Test
     public void testStringIsUntouchedWhenLengthIsLessThanMaximum() throws Exception {
 
-        String croppedString = StringUtils.cropStringIfLengthMoreThan(LONG_STRING_LENGTH, RANDOM_STRING);
+        String croppedString = StringUtils.truncateIfLengthMoreThan(LONG_STRING_LENGTH, RANDOM_STRING);
 
         assertEquals(RANDOM_STRING, croppedString);
     }

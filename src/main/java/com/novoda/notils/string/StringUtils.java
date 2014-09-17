@@ -36,16 +36,16 @@ public abstract class StringUtils {
     }
 
     /**
-     * Cuts the string provided if its length is more than the value provided, and replaces
+     * Truncates the string provided if its length is more than the value provided, and replaces
      * the extra text by "…" ensuring that the resulting length of the string will be
      * as maximum as the param maximumLengthAllowed
      *
      * @param maximumLengthAllowed The maximum allowed length for the provided string
-     * @param string The string that will be cropped if necessary
+     * @param string The string that will be truncated if necessary
      * @return The original string if its length is less than maximumLengthAllowed,
      * or the string cropped and … appended at the end if it's length is more than maximumLengthAllowed
      */
-    public static String cropStringIfLengthMoreThan(final int maximumLengthAllowed, String string) {
+    public static String truncateIfLengthMoreThan(final int maximumLengthAllowed, String string) {
         if (string.length() > maximumLengthAllowed) {
             return string.substring(0, maximumLengthAllowed - THREE_DOTS.length()).concat(THREE_DOTS);
         } else {
