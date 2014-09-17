@@ -10,6 +10,11 @@ import static org.junit.Assert.assertEquals;
 
 public class StringUtilsTest {
 
+    private final static String THREE_DOTS = "…";
+    public static final String RANDOM_STRING = "thisismystring";
+    public static final int SHORT_STRING_LENGTH = 2;
+    public static final int LONG_STRING_LENGTH = 30;
+
     @Test
     public void testJoinStringsWithComma() throws Exception {
 
@@ -103,5 +108,37 @@ public class StringUtilsTest {
 
         String expected = integer1.toString() + delim + integer2.toString() + delim + integer3.toString() + delim + integer4.toString();
         assertEquals("Collection of Integer will be joined properly using the toString-method", expected, StringUtils.join(integers, delim));
+    }
+
+    @Test
+    public void testLongStringLengthIsCropAtMaximum() throws Exception {
+
+        String string = StringUtils.cropStringIfLengthMoreThan(SHORT_STRING_LENGTH, RANDOM_STRING);
+
+        assertEquals(string.length(), SHORT_STRING_LENGTH);
+    }
+
+    @Test
+    public void testStringLengthUnchangedIfStringLengthIsLessThanMaximum() throws Exception {
+
+        String croppedString = StringUtils.cropStringIfLengthMoreThan(LONG_STRING_LENGTH, RANDOM_STRING);
+
+        assertEquals(croppedString.length(), RANDOM_STRING.length());
+    }
+
+    @Test
+    public void testLongStringHasThreeDotsWhenLenghtIsMoreThanMaximum() throws Exception {
+
+        String croppedString = StringUtils.cropStringIfLengthMoreThan(SHORT_STRING_LENGTH, RANDOM_STRING);
+
+        assertEquals(String.valueOf(croppedString.charAt(SHORT_STRING_LENGTH - 1)), THREE_DOTS);
+    }
+
+    @Test
+    public void testStringIsUntouchedWhenLengthIsLessThanMaximum() throws Exception {
+
+        String croppedString = StringUtils.cropStringIfLengthMoreThan(LONG_STRING_LENGTH, RANDOM_STRING);
+
+        assertEquals(RANDOM_STRING, croppedString);
     }
 }
