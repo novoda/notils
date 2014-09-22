@@ -28,5 +28,6 @@ android {
 }
 
 dependencies {
+    compile project(':core')
     supportCompile 'com.android.support:support-v4:20+'
 }
