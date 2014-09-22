@@ -20,6 +20,7 @@ uploadArchives {
 
             pom.project {
 
+                packaging 'aar'
                 parent {
                     groupId 'org.sonatype.oss'
                     artifactId 'oss-parent'

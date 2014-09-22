@@ -1,0 +1,32 @@
+apply plugin: 'com.android.library'
+
+buildscript {
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.13.0'
+    }
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId 'com.novoda.notils'
+        testApplicationId 'com.novoda.notils-tests'
+
+        minSdkVersion rootProject.ext.minVersion
+        targetSdkVersion rootProject.ext.targetVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "com.google.android.apps.common.testing.testrunner.GoogleInstrumentationTestRunner"
+    }
+
+    productFlavors {
+        support
+    }
+
+}
+
+dependencies {
+    supportCompile 'com.android.support:support-v4:20+'
+}

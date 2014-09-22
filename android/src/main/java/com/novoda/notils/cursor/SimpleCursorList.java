@@ -204,6 +204,11 @@ public class SimpleCursorList<T> implements CursorList<T> {
     }
 
     @Override
+    public Uri getNotificationUri() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
     public boolean getWantsAllOnMoveCalls() {
         return cursor.getWantsAllOnMoveCalls();
     }
