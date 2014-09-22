@@ -1,14 +1,11 @@
 package com.novoda.notils.logger;
 
-import org.junit.Test;
+import junit.framework.TestCase;
 
-import static org.junit.Assert.*;
-
-public class LoggerTest {
+public class LoggerTest extends TestCase {
 
     private final ValidatingLogCommand validatingLogCommand = new ValidatingLogCommand();
 
-    @Test
     public void testDebugLogPrinting() {
         Logger logger = createLogger(LogLevel.DEBUG);
         String message = "debug";
@@ -16,7 +13,6 @@ public class LoggerTest {
         assertLastLogMessageEquals(message);
     }
 
-    @Test
     public void testDisabledDebugLogPrinting() {
         Logger logger = createLogger(LogLevel.INFO);
         String message = "debug";
@@ -24,7 +20,6 @@ public class LoggerTest {
         assertNothingIsLogged();
     }
 
-    @Test
     public void testInfoLogPrinting() {
         Logger logger = createLogger(LogLevel.DEBUG);
         String message = "info";
@@ -32,7 +27,6 @@ public class LoggerTest {
         assertLastLogMessageEquals(message);
     }
 
-    @Test
     public void testDisabledInfoLogPrinting() {
         Logger logger = createLogger(LogLevel.WARN);
         String message = "info";
@@ -40,7 +34,6 @@ public class LoggerTest {
         assertNothingIsLogged();
     }
 
-    @Test
     public void testWarnLogPrinting() {
         Logger logger = createLogger(LogLevel.DEBUG);
         String message = "warn";
@@ -48,7 +41,6 @@ public class LoggerTest {
         assertLastLogMessageEquals(message);
     }
 
-    @Test
     public void testDisabledWarnLogPrinting() {
         Logger logger = createLogger(LogLevel.ERROR);
         String message = "warn";
@@ -56,7 +48,6 @@ public class LoggerTest {
         assertNothingIsLogged();
     }
 
-    @Test
     public void testErrorLogPrinting() {
         Logger logger = createLogger(LogLevel.DEBUG);
         String message = "error";
@@ -64,7 +55,6 @@ public class LoggerTest {
         assertLastLogMessageEquals(message);
     }
 
-    @Test
     public void testWtfLogPrinting() {
         Logger logger = createLogger(LogLevel.DEBUG);
         String message = "wtf";
