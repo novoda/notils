@@ -12,7 +12,7 @@ subprojects {
 
 ext {
     javaCommonProject = project(':core')
-    topAppsProject = project(':android')
+    androidProject = project(':android')
     androidDebugClassesFolder = "intermediates/classes/live/debug"
     javaTestClassesFolder = "classes/test"
 
