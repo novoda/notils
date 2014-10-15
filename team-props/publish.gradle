@@ -1,7 +1,7 @@
 ext {
     PUBLISH_GROUP_ID = 'com.novoda'
     PUBLISH_ARTIFACT_ID = 'notils'
-    PUBLISH_VERSION = '2.2.7'
+    PUBLISH_VERSION = '2.2.8-SNAPSHOT'
 
     UPLOAD_NAME = 'NoTils'
     UPLOAD_DESCRIPTION = 'Never again need a .utils. package yur scurvy sea dogs!'
