@@ -27,9 +27,7 @@ Gradle
 -
 ````groovy
 repositories {
-    maven {
-        url 'https://github.com/novoda/public-mvn-repo/raw/master/releases'
-    }
+    jcenter()
 }
 `````
 
@@ -45,12 +43,10 @@ Maven
 
 ````xml
 <repositories>
-  <repository>
-    <id>public-mvn-repo-releases</id>
-    <url>
-      https://github.com/novoda/public-mvn-repo/raw/master/releases
-    </url>
-  </repository>
+    <repository>
+      <id>bintray-jcenter</id>
+      <url>http://jcenter.bintray.com</url>
+    </repository>
 </repositories>
 ````
 
