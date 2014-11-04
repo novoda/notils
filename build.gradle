@@ -16,8 +16,6 @@ apply plugin: 'propdeps-maven'
 apply plugin: 'propdeps-idea'
 apply plugin: 'propdeps-eclipse'
 
-apply plugin: 'android-bintray-release'
-
 repositories {
     mavenCentral()
 }
@@ -29,6 +27,8 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.+'
 }
 
+apply plugin: 'android-bintray-release'
+
 publish {
     userOrg = 'novoda'
     groupId = 'com.novoda'
@@ -39,5 +39,3 @@ publish {
     description = 'Never again need a .utils. package yur scurvy sea dogs!'
     website = 'https://github.com/novoda/NoTils'
 }
-
-apply from: 'team-props/publish.gradle'
