@@ -5,7 +5,6 @@ buildscript {
     }
     dependencies {
         classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.4'
-        classpath 'com.android.tools.build:gradle:0.13.2'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:0.6'
         classpath 'com.novoda:android-bintray-release:0.1.0'
     }
