@@ -3,7 +3,7 @@ NoTils
 
 Never again need a .utils. package yur scurvy sea dogs!
 
-![](http://ci.novoda.com/buildStatus/icon?job=Gradle%20Android%20Command%20Plugin%20(develop))
+![](http://ci.novoda.com/buildStatus/icon?job=NoTils)
 
 Whats Included
 ======
