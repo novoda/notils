@@ -31,6 +31,6 @@ publish {
     groupId = 'com.novoda'
     artifactId = 'notils'
     version = '2.2.8-SNAPSHOT'
-    description = 'Never again need a .utils. package yur scurvy sea dogs!
+    description = 'Never again need a .utils. package yur scurvy sea dogs!'
     website = 'https://github.com/novoda/NoTils'
 }
