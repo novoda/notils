@@ -1,4 +1,4 @@
-NoTils ![](http://ci.novoda.com/buildStatus/icon?job=NoTils)
+NoTils [![](http://ci.novoda.com/buildStatus/icon?job=NoTils)](http://ci.novoda.com/job/NoTils/lastSuccessfulBuild/console)
 ======
 
 Never again need a .utils. package yur scurvy sea dogs!
