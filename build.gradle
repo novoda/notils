@@ -34,5 +34,3 @@ publish {
     description = 'Never again need a .utils. package yur scurvy sea dogs!
     website = 'https://github.com/novoda/NoTils'
 }
-
-apply from: 'team-props/publish.gradle'
