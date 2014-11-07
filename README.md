@@ -1,9 +1,7 @@
-NoTils
+NoTils ![](http://ci.novoda.com/buildStatus/icon?job=NoTils)
 ======
 
 Never again need a .utils. package yur scurvy sea dogs!
-
-![](http://ci.novoda.com/buildStatus/icon?job=NoTils)
 
 Whats Included
 ======
