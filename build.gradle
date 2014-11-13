@@ -5,7 +5,7 @@ buildscript {
     }
     dependencies {
         classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.4'
-        classpath 'com.novoda:android-bintray-release:0.2.3'
+        classpath 'com.novoda:bintray-release:0.2.4'
     }
 }
 
@@ -13,7 +13,7 @@ apply plugin: 'propdeps'
 apply plugin: 'propdeps-maven'
 apply plugin: 'propdeps-idea'
 apply plugin: 'propdeps-eclipse'
-apply plugin: 'android-bintray-release'
+apply plugin: 'bintray-release'
 
 repositories {
     mavenCentral()
