@@ -57,7 +57,6 @@ Here are a few examples.
      break;
      default:
          throw new DeveloperError("Unhandled case in switch statement!");
-     break;
  }
  ```
  
