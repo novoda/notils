@@ -1,76 +1,76 @@
-notils [![](http://ci.novoda.com/buildStatus/icon?job=NoTils)](http://ci.novoda.com/job/NoTils/lastSuccessfulBuild/console)
-======
+# notils [![](http://ci.novoda.com/buildStatus/icon?job=notils)](http://ci.novoda.com/job/notils/lastSuccessfulBuild/console) [![](https://raw.githubusercontent.com/novoda/novoda/master/assets/btn_apache_lisence.png)](LICENSE.txt)
 
 Never again need a .utils. package yur scurvy sea dogs!
 
-Whats Included
-======
 
-- AndroidUtils, for showing the keyboard, checking running services etc
-- ClassCaster - to help with listeners between Activitys & Fragments
-- No need to cast when referencing Views / Fragments
-- No need to double type your types when creating collections
-- Simple Fade animations in & out done for you
-- Logging Novogger & Simple Log to give to give automatic details of where the Log executed
-- StrictMode Management - enable strict mode in one line
-- WebViews, allowing custom loading of different scenarios (raw assets, external urls)
-- ToastDisplayers for saner displaying of Toast notifications
-- SimpleDateFormatThreadSafe allowing you to use date formatting from multiple threads
-- DeveloperError - custom exceptions for explicit declaration / faster feedback when something goes wrong
+## Description
 
-Adding to your project
-======
+notils contains a set of common classes that we use in our projects:
 
-Check the latest version of NoTils on the [releases page](https://github.com/novoda/notils/releases). We tag releases as "v1.2.3" so below, where `VERSION` is written, you'd put "1.2.3".
+  - `AndroidUtils`, for showing the keyboard, checking running services, etc.
+  - `ClassCaster` - to help with listeners between Activitys & Fragments
+  - No need to cast when referencing Views / Fragments
+  - No need to double type your types when creating collections
+  - Simple Fade animations in & out done for you
+  - Simple `Log` to give to give automatic details of where the Log executed
+  - `StrictMode` Management - enable strict mode in one line
+  - `WebViews`, allowing custom loading of different scenarios (raw assets, external urls)
+  - `ToastDisplayers` for saner displaying of Toast notifications
+  - `SimpleDateFormatThreadSafe` allowing you to use date formatting from multiple threads
+  - `DeveloperError` - custom exceptions for explicit declaration / faster feedback when something goes wrong
 
-Gradle
--
-````groovy
+
+## Adding to your project
+
+To start using this library, add these lines to the `build.gradle` of your project:
+
+```groovy
 repositories {
     jcenter()
 }
-`````
 
-````groovy
 dependencies {
-    compile 'com.novoda:notils:VERSION'
+    compile 'com.novoda:notils:2.2.11'
 }
-````
+```
 
 
-Maven
--
+## Simple usage
 
-````xml
-<repositories>
-    <repository>
-      <id>bintray-jcenter</id>
-      <url>http://jcenter.bintray.com</url>
-    </repository>
-</repositories>
-````
+Here are a few examples.
 
-````xml
-<dependency>
-  <groupId>com.novoda</groupId>
-  <artifactId>notils</artifactId>
-  <version>VERSION</version>
-</dependency>
-````
+ * Use the `Views` class to avoid casting your views over and over!
+ ```java
+ TextView username = Views.findById(this, R.id.username); // this can be an Activity or a View.
+ ```
+ * Use `DeveloperError` to let other devs know a problem in the code or prevent potential issues:
+ ```java
+ switch (menuOptionId) {
+     case R.id.menu_take_picture:
+         // Start the camera...
+     break;
+     case R.id.menu_from_gallery:
+         // Open the gallery...
+     break;
+     default:
+         throw new DeveloperError("Unhandled case in switch statement!");
+     break;
+ }
+ ```
+ * Object-oriented Toasts!
+ ```java
+ Toaster toaster = new Toaster(context);
+ toaster.popToast("Good morning!"); // Short toast
+ toaster.popBurntToast("Good night!"); // Long toast
+ toaster.dropInBath(); // Cancells all active toasts this toaster created
+ ```
+ * Check the javadoc for more! The package structure allows you to easily see what's in each package.
 
-License
--------
+## Links
 
-    (c) Copyright 2014 Novoda
+Here are a list of useful links:
 
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
+ * We always welcome people to contribute new features or bug fixes, [here is how](https://github.com/novoda/novoda/blob/master/CONTRIBUTING.md)
+ * If you have a problem check the [Issues Page](https://github.com/novoda/notils/issues) first to see if we are working on it
+ * For further usage or to delve more deeply checkout the [Project Wiki](https://github.com/novoda/notils/wiki)
+ * Looking for community help, browse the already asked [Stack Overflow Questions](http://stackoverflow.com/questions/tagged/support-notils) or use the tag: `support-notils` when posting a new question
