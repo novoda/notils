@@ -40,10 +40,13 @@ dependencies {
 Here are a few examples.
 
  * Use the `Views` class to avoid casting your views over and over!
+ 
  ```java
  TextView username = Views.findById(this, R.id.username); // this can be an Activity or a View.
  ```
+
  * Use `DeveloperError` to let other devs know a problem in the code or prevent potential issues:
+ 
  ```java
  switch (menuOptionId) {
      case R.id.menu_take_picture:
@@ -57,14 +60,18 @@ Here are a few examples.
      break;
  }
  ```
+ 
  * Object-oriented Toasts!
+ 
  ```java
  Toaster toaster = new Toaster(context);
  toaster.popToast("Good morning!"); // Short toast
  toaster.popBurntToast("Good night!"); // Long toast
  toaster.dropInBath(); // Cancells all active toasts this toaster created
  ```
+ 
  * Check the javadoc for more! The package structure allows you to easily see what's in each package.
+
 
 ## Links
 
