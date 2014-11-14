@@ -21,7 +21,7 @@ Whats Included
 Adding to your project
 ======
 
-Check the latest version of NoTils on the [releases page](https://github.com/novoda/NoTils/releases). We tag releases as "v1.2.3" so below, where `VERSION` is written, you'd put "1.2.3".
+Check the latest version of NoTils on the [releases page](https://github.com/novoda/notils/releases). We tag releases as "v1.2.3" so below, where `VERSION` is written, you'd put "1.2.3".
 
 Gradle
 -
