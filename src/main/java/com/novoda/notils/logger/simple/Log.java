@@ -213,8 +213,8 @@ public final class Log {
             return SHOW_LOGS;
         } else {
             throw new DeveloperError("#rekt - To use simple logger you need to have called setShowLogs(boolean). "
-                    + "The typical way is to use Log .setShowLogs(BuildConfig.DEBUG)"
-                    + " in onCreate of your class that extends Application."
+                    + "The typical way is to use Log.setShowLogs(BuildConfig.DEBUG) "
+                    + "in onCreate() of your class that extends Application."
                     + "(It's ok we've all been there.)");
         }
     }
