@@ -1,5 +1,7 @@
 package com.novoda.notils.logger.simple;
 
+import com.novoda.notils.exception.DeveloperError;
+
 /**
  * Wrapper around Android Log that will print
  * <p/>
@@ -16,6 +18,8 @@ public final class Log {
      */
     @Deprecated
     public static boolean SHOW_LOGS = false;
+
+    private static boolean INITIALISED = false;
 
     /**
      * Log tag to use - Default is 'NoTils'
@@ -42,7 +46,7 @@ public final class Log {
 
     public static void v(Object... msg) {
         try {
-            if (SHOW_LOGS) {
+            if (shouldShowLogs()) {
                 android.util.Log.v(TAG, getDetailedLog(formatString(msg)));
             }
         } catch (RuntimeException ignore) {
@@ -52,7 +56,7 @@ public final class Log {
 
     public static void i(Object... msg) {
         try {
-            if (SHOW_LOGS) {
+            if (shouldShowLogs()) {
                 android.util.Log.i(TAG, getDetailedLog(formatString(msg)));
             }
         } catch (RuntimeException ignore) {
@@ -62,7 +66,7 @@ public final class Log {
 
     public static void d(Object... msg) {
         try {
-            if (SHOW_LOGS) {
+            if (shouldShowLogs()) {
                 android.util.Log.d(TAG, getDetailedLog(formatString(msg)));
             }
         } catch (RuntimeException ignore) {
@@ -72,7 +76,7 @@ public final class Log {
 
     public static void w(Object... msg) {
         try {
-            if (SHOW_LOGS) {
+            if (shouldShowLogs()) {
                 android.util.Log.w(TAG, getDetailedLog(formatString(msg)));
             }
         } catch (RuntimeException ignore) {
@@ -82,7 +86,7 @@ public final class Log {
 
     public static void e(Object... msg) {
         try {
-            if (SHOW_LOGS) {
+            if (shouldShowLogs()) {
                 android.util.Log.e(TAG, getDetailedLog(formatString(msg)));
             }
         } catch (RuntimeException ignore) {
@@ -100,7 +104,7 @@ public final class Log {
 
     public static void w(Throwable t, Object... msg) {
         try {
-            if (SHOW_LOGS) {
+            if (shouldShowLogs()) {
                 android.util.Log.w(TAG, getDetailedLog(formatString(msg)), t);
             }
         } catch (RuntimeException ignore) {
@@ -118,7 +122,7 @@ public final class Log {
 
     public static void d(Throwable t, Object... msg) {
         try {
-            if (SHOW_LOGS) {
+            if (shouldShowLogs()) {
                 android.util.Log.d(TAG, getDetailedLog(formatString(msg)), t);
             }
         } catch (RuntimeException ignore) {
@@ -136,7 +140,7 @@ public final class Log {
 
     public static void e(Throwable t, Object... msg) {
         try {
-            if (SHOW_LOGS) {
+            if (shouldShowLogs()) {
                 android.util.Log.e(TAG, getDetailedLog(formatString(msg)), t);
             }
         } catch (RuntimeException ignore) {
@@ -154,7 +158,7 @@ public final class Log {
 
     public static void wtf(Throwable t, Object... msg) {
         try {
-            if (SHOW_LOGS) {
+            if (shouldShowLogs()) {
                 android.util.Log.wtf(TAG, getDetailedLog(formatString(msg)), t);
             }
         } catch (RuntimeException ignore) {
@@ -167,7 +171,7 @@ public final class Log {
     }
 
     private static String getDetailedLog(String msg, int depth) {
-        if (!SHOW_LOGS) {
+        if (!shouldShowLogs()) {
             return msg;
         }
         Thread current = Thread.currentThread();
@@ -195,6 +199,7 @@ public final class Log {
      * @param showLogs {@code true} for showing logs, {@code false} to deactivate them
      */
     public static void setShowLogs(boolean showLogs) {
+        Log.INITIALISED = true;
         Log.SHOW_LOGS = showLogs;
     }
 
@@ -204,6 +209,13 @@ public final class Log {
      * @return {@code true} if logs are active, {@code false} if deactivated
      */
     public static boolean shouldShowLogs() {
-        return SHOW_LOGS;
+        if (INITIALISED) {
+            return SHOW_LOGS;
+        } else {
+            throw new DeveloperError("#rekt - To use simple logger you need to have called setShowLogs(boolean). "
+                    + "The typical way is to use Log .setShowLogs(BuildConfig.DEBUG)"
+                    + " in onCreate of your class that extends Application."
+                    + "(It's ok we've all been there.)");
+        }
     }
 }
