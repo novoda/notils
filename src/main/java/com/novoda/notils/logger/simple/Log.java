@@ -90,7 +90,6 @@ public final class Log {
         }
     }
 
-
     /**
      * @deprecated use (Throwable t, Object... msg)
      */
@@ -127,9 +126,8 @@ public final class Log {
         }
     }
 
-
     /**
-     * @deprecated use (Throwable t, Object... msg) 
+     * @deprecated use (Throwable t, Object... msg)
      */
     @Deprecated
     public static void e(String msg, Throwable t) {
