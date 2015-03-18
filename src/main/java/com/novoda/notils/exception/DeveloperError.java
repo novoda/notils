@@ -12,7 +12,7 @@ public class DeveloperError extends RuntimeException {
         super(detailMessage);
     }
 
-    public DeveloperError(String messageTemplate, String... args) {
+    public DeveloperError(String messageTemplate, Object... args) {
         super(String.format(messageTemplate, args));
     }
 
