@@ -6,7 +6,7 @@ package com.novoda.notils.exception;
  * get feedback on the situation.
  * <b>You should never try catch a DeveloperError</b>
  */
-public class DeveloperError extends RuntimeException {
+public class DeveloperError extends Error {
 
     public DeveloperError(String detailMessage) {
         super(detailMessage);
