@@ -177,8 +177,8 @@ public final class Log {
         Thread current = Thread.currentThread();
         final StackTraceElement trace = current.getStackTrace()[depth];
         final String filename = trace.getFileName();
-        return "[" + current.getName() + "][" + filename.substring(0, filename.length() - DOT_CLASS) + "."
-                + trace.getMethodName() + ":" + trace.getLineNumber() + "] " + msg;
+        return "[" + current.getName() + "][" + "(" + filename.substring(0, filename.length() - DOT_CLASS) + ".java:"
+                + trace.getLineNumber() + ")." + trace.getMethodName() + "] " + msg;
     }
 
     private static void logError(Throwable ignore) {
