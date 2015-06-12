@@ -174,11 +174,12 @@ public final class Log {
         if (!shouldShowLogs()) {
             return msg;
         }
-        Thread current = Thread.currentThread();
-        final StackTraceElement trace = current.getStackTrace()[depth];
+        Thread currentThread = Thread.currentThread();
+        final StackTraceElement trace = currentThread.getStackTrace()[depth];
         final String filename = trace.getFileName();
-        return "[" + current.getName() + "][" + filename.substring(0, filename.length() - DOT_CLASS) + "."
-                + trace.getMethodName() + ":" + trace.getLineNumber() + "] " + msg;
+        final String linkableSourcePosition = String.format("(%s.java:%d)", filename.substring(0, filename.length() - DOT_CLASS), trace.getLineNumber());
+        final String logPrefix = String.format("[%s][%s.%s] ", currentThread.getName(), linkableSourcePosition, trace.getMethodName());
+        return logPrefix + msg;
     }
 
     private static void logError(Throwable ignore) {
