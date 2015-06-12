@@ -30,7 +30,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.novoda:notils:2.2.11'
+    compile 'com.novoda:notils:2.2.12'
 }
 ```
 
