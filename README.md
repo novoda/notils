@@ -18,6 +18,7 @@ notils contains a set of common classes that we use in our projects:
   - `ToastDisplayers` for saner displaying of Toast notifications
   - `SimpleDateFormatThreadSafe` allowing you to use date formatting from multiple threads
   - `DeveloperError` - custom exceptions for explicit declaration / faster feedback when something goes wrong
+  - `SimpleTextWatcher` - simple implementation of `android.text.TextWatcher` with stub implementations of each method
 
 
 ## Adding to your project
