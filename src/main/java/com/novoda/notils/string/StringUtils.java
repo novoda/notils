@@ -52,4 +52,19 @@ public abstract class StringUtils {
             return string;
         }
     }
+
+    /**
+     * Create a String array from a generic Object array
+     *
+     * @param objects The array of objects to be converted to Strings
+     * @return An String array in which every element is the String representation of an element from the input array
+     */
+    public static String[] toStringArray(Object[] objects) {
+        int length = objects.length;
+        String[] stringArray = new String[length];
+        for (int i = 0; i < length; i++) {
+            stringArray[i] = String.valueOf(objects[i]);
+        }
+        return stringArray;
+    }
 }
