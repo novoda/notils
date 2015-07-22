@@ -19,6 +19,7 @@ notils contains a set of common classes that we use in our projects:
   - `SimpleDateFormatThreadSafe` allowing you to use date formatting from multiple threads
   - `DeveloperError` - custom exceptions for explicit declaration / faster feedback when something goes wrong
   - `SimpleTextWatcher` - simple implementation of `android.text.TextWatcher` with stub implementations of each method
+  - `QueryUtils` - easily create placeholders for ContentResolver operations selection
 
 
 ## Adding to your project
