@@ -1,7 +1,5 @@
 package com.novoda.notils.string;
 
-import java.util.Arrays;
-
 public class QueryUtils {
 
     /**
@@ -12,12 +10,20 @@ public class QueryUtils {
      * @return Example: for size == 3 : "?, ?, ?"
      */
     public static String createSelectionPlaceholdersOfSize(int size) {
-        String[] questionMarks = new String[size];
-        for (int i = 0; i < size; i++) {
-            questionMarks[i] = "?";
+        if (size == 0) {
+            return "";
         }
 
-        return StringUtils.join(Arrays.asList(questionMarks), ", ");
+        int sizeOfResult = size * 3 - 2;
+        char[] result = new char[sizeOfResult];
+        for (int i = 0; i < sizeOfResult - 1; i += 3) {
+            result[i] = '?';
+            result[i + 1] = ',';
+            result[i + 2] = ' ';
+        }
+        result[sizeOfResult - 1] = '?';
+
+        return new String(result);
     }
 
 }
