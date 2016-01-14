@@ -95,6 +95,10 @@ public class SimpleDateFormatThreadSafe {
         return localSimpleDateFormat.get().format(date, toAppendTo, position);
     }
 
+    public String format(Date date) {
+        return localSimpleDateFormat.get().format(date);
+    }
+
     public AttributedCharacterIterator formatToCharacterIterator(Object object) {
         return localSimpleDateFormat.get().formatToCharacterIterator(object);
     }
