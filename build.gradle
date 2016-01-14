@@ -30,7 +30,7 @@ publish {
     userOrg = 'novoda'
     groupId = 'com.novoda'
     artifactId = 'notils'
-    version = '2.2.13'
+    version = '2.2.14'
     description = 'Never again need a .utils. package yur scurvy sea dogs!'
     website = 'https://github.com/novoda/NoTils'
 }
