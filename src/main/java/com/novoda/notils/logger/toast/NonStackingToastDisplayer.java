@@ -57,7 +57,7 @@ public class NonStackingToastDisplayer implements ToastDisplayer {
      */
     @Override
     public void displayLong(int stringResourceId) {
-        display(stringResourceId, Toast.LENGTH_SHORT);
+        display(stringResourceId, Toast.LENGTH_LONG);
     }
 
     private void display(String message, int lengthMillis) {
