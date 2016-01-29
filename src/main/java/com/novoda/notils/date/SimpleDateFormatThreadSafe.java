@@ -30,7 +30,7 @@ public class SimpleDateFormatThreadSafe {
         this(new SimpleDateFormat(pattern, locale));
     }
 
-    private SimpleDateFormatThreadSafe(final SimpleDateFormat localSimpleDateFormat) {
+    public SimpleDateFormatThreadSafe(final SimpleDateFormat localSimpleDateFormat) {
         this.localSimpleDateFormat = new ThreadLocal<SimpleDateFormat>() {
             @Override
             protected SimpleDateFormat initialValue() {
