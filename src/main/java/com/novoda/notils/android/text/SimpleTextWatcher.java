@@ -1,4 +1,4 @@
-package com.novoda.notils.text;
+package com.novoda.notils.android.text;
 
 import android.text.Editable;
 import android.text.TextWatcher;

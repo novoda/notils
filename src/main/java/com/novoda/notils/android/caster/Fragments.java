@@ -1,4 +1,4 @@
-package com.novoda.notils.caster;
+package com.novoda.notils.android.caster;
 
 public final class Fragments {
 

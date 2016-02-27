@@ -2,7 +2,7 @@ package com.novoda.notils.meta;
 
 import android.util.DisplayMetrics;
 
-import com.novoda.notils.java.AndroidUtils;
+import com.novoda.notils.android.AndroidUtils;
 
 import org.junit.Test;
 

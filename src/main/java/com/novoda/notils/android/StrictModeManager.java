@@ -1,4 +1,4 @@
-package com.novoda.notils.logger.analyse;
+package com.novoda.notils.android;
 
 import android.os.StrictMode;
 

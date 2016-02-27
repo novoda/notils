@@ -1,4 +1,4 @@
-package com.novoda.notils.logger.toast;
+package com.novoda.notils.android.toast;
 
 /**
  * Displays Android Toast notifications
