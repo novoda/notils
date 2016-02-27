@@ -1,28 +1,29 @@
 buildscript {
-    repositories {
-        jcenter()
-        maven { url 'http://repo.springsource.org/plugins-release' }
-    }
+    repositories { jcenter() }
     dependencies {
-        classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.4'
-        classpath 'com.novoda:bintray-release:0.2.4'
+        classpath 'com.android.tools.build:gradle:1.5.0'
+        classpath 'com.novoda:bintray-release:0.2.7'
     }
 }
 
-apply plugin: 'propdeps'
-apply plugin: 'propdeps-maven'
-apply plugin: 'propdeps-idea'
-apply plugin: 'propdeps-eclipse'
+apply plugin: 'com.android.library'
 apply plugin: 'bintray-release'
 
 repositories {
-    mavenCentral()
+    jcenter()
+}
+
+android {
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 22
+    }
+
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
 }
 
 dependencies {
-    optional 'com.google.android:android:4.0.1.2'
-    optional 'com.google.android:support-v4:r7'
-
     testCompile group: 'junit', name: 'junit', version: '4.+'
 }
 
