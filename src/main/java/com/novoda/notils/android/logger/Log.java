@@ -201,7 +201,7 @@ public final class Log {
      */
     public static void setShowLogs(boolean showLogs) {
         Log.INITIALISED = true;
-        SHOW_LOGS = showLogs;
+        Log.SHOW_LOGS = showLogs;
     }
 
     /**
