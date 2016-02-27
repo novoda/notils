@@ -1,7 +1,5 @@
-package com.novoda.notils.string;
+package com.novoda.notils.java.string;
 
-
-import com.novoda.notils.java.string.QueryUtils;
 
 import org.junit.Test;
 

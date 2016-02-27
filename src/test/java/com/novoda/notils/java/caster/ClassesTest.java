@@ -1,6 +1,4 @@
-package com.novoda.notils.caster;
-
-import com.novoda.notils.java.caster.Classes;
+package com.novoda.notils.java.caster;
 
 import org.junit.Test;
 

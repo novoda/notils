@@ -1,8 +1,6 @@
-package com.novoda.notils.meta;
+package com.novoda.notils.android;
 
 import android.util.DisplayMetrics;
-
-import com.novoda.notils.android.AndroidUtils;
 
 import org.junit.Test;
 
