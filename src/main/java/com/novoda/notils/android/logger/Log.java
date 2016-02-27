@@ -200,8 +200,8 @@ public final class Log {
      * @param showLogs {@code true} for showing logs, {@code false} to deactivate them
      */
     public static void setShowLogs(boolean showLogs) {
-        com.novoda.notils.logger.simple.Log.INITIALISED = true;
-        com.novoda.notils.logger.simple.Log.SHOW_LOGS = showLogs;
+        Log.INITIALISED = true;
+        SHOW_LOGS = showLogs;
     }
 
     /**
