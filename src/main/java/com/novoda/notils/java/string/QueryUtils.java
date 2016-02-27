@@ -1,4 +1,4 @@
-package com.novoda.notils.string;
+package com.novoda.notils.java.string;
 
 public class QueryUtils {
 

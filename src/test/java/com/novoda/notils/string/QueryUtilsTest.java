@@ -1,6 +1,8 @@
 package com.novoda.notils.string;
 
 
+import com.novoda.notils.java.string.QueryUtils;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

@@ -1,5 +1,7 @@
 package com.novoda.notils.caster;
 
+import com.novoda.notils.java.caster.Classes;
+
 import org.junit.Test;
 
 import static org.hamcrest.core.IsInstanceOf.instanceOf;

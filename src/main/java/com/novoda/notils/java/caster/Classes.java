@@ -1,4 +1,4 @@
-package com.novoda.notils.caster;
+package com.novoda.notils.java.caster;
 
 public final class Classes {
 

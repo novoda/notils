@@ -1,4 +1,4 @@
-package com.novoda.notils.date;
+package com.novoda.notils.java.date;
 
 import java.text.AttributedCharacterIterator;
 import java.text.DateFormatSymbols;

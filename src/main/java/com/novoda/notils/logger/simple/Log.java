@@ -1,6 +1,6 @@
 package com.novoda.notils.logger.simple;
 
-import com.novoda.notils.exception.DeveloperError;
+import com.novoda.notils.java.exception.DeveloperError;
 
 /**
  * Wrapper around Android Log that will print

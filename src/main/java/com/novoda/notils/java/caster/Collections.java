@@ -1,4 +1,4 @@
-package com.novoda.notils.caster;
+package com.novoda.notils.java.caster;
 
 import java.util.*;
 

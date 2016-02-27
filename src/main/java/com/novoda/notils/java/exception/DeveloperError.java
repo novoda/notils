@@ -1,4 +1,4 @@
-package com.novoda.notils.exception;
+package com.novoda.notils.java.exception;
 
 /**
  * Use for fast feedback when developing, can be used in places where you expect

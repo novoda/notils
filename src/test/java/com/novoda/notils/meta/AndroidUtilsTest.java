@@ -2,6 +2,8 @@ package com.novoda.notils.meta;
 
 import android.util.DisplayMetrics;
 
+import com.novoda.notils.java.AndroidUtils;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

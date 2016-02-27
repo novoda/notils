@@ -1,5 +1,7 @@
 package com.novoda.notils.string;
 
+import com.novoda.notils.java.string.StringUtils;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
