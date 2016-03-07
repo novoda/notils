@@ -1,8 +1,12 @@
+repositories {
+    jcenter()
+}
+
 apply plugin: 'java'
 apply plugin: 'bintray-release'
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
 }
 
 publish {
