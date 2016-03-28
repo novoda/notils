@@ -1,8 +1,11 @@
 package com.novoda.notils.caster;
 
+import com.novoda.notils.exception.DeveloperError;
+
 public final class Classes {
 
     private Classes() {
+        // static helper class
     }
 
     @SuppressWarnings("unchecked")
@@ -10,7 +13,7 @@ public final class Classes {
         try {
             return (T) implementor;
         } catch (ClassCastException e) {
-            throw new RuntimeException("The parent " + implementor.toString() + " does not inherit / implement the wanted interface", e);
+            throw new DeveloperError(implementor.toString() + " does not inherit / implement the wanted interface", e);
         }
     }
 
