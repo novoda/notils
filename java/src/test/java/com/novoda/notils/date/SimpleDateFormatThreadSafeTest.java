@@ -1,11 +1,11 @@
 package com.novoda.notils.date;
 
-import org.junit.Test;
-
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
+
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
@@ -23,7 +23,7 @@ public class SimpleDateFormatThreadSafeTest {
 
     @Test
     public void givenStringDateInISOFormat_WhenTimeZoneIsUTC_ThenUTCPlusOneTimeIsOneHourMore() {
-        // This test exercises British Summer Time (device) vs UTC (API)
+        // This test exercises UTC (API) vs British Summer Time (UTC + 1)
         SimpleDateFormatThreadSafe formatter = givenFormatterForTimeZone(timeZoneUTC());
 
         Date date = parseTestDate("2016-01-01T10:00:00Z", formatter);
