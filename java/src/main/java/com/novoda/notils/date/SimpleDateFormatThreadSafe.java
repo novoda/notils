@@ -30,11 +30,25 @@ public class SimpleDateFormatThreadSafe {
         this(new SimpleDateFormat(pattern, locale));
     }
 
+    public SimpleDateFormatThreadSafe(final String pattern, final TimeZone timeZone) {
+        this(new SimpleDateFormat(pattern), timeZone);
+    }
+
     public SimpleDateFormatThreadSafe(final SimpleDateFormat localSimpleDateFormat) {
         this.localSimpleDateFormat = new ThreadLocal<SimpleDateFormat>() {
             @Override
             protected SimpleDateFormat initialValue() {
                 return localSimpleDateFormat;
+            }
+        };
+    }
+
+    public SimpleDateFormatThreadSafe(final SimpleDateFormat simpleDateFormat, final TimeZone timeZone) {
+        this.localSimpleDateFormat = new ThreadLocal<SimpleDateFormat>() {
+            @Override
+            protected SimpleDateFormat initialValue() {
+                simpleDateFormat.setTimeZone(timeZone);
+                return simpleDateFormat;
             }
         };
     }
