@@ -2,6 +2,7 @@
 
 Never again need a .utils. package yur scurvy sea dogs!
 
+Notils comes in two modules - `notils-java` contains classes that don't depend on anything from the Android SDK, while `notils-android` contains classes that do.
 
 ## Description
 
@@ -32,7 +33,8 @@ repositories {
 }
 
 dependencies {
-    compile 'com.novoda:notils:2.2.16'
+    compile 'com.novoda:notils-java:3.0.0'
+    compile 'com.novoda:notils-android:3.0.0'
 }
 ```
 
