@@ -33,8 +33,8 @@ repositories {
 }
 
 dependencies {
-    compile 'com.novoda:notils-java:3.0.0'
-    compile 'com.novoda:notils-android:3.0.0'
+    compile 'com.novoda:notils-java:3.0.1'
+    compile 'com.novoda:notils-android:3.0.1'
 }
 ```
 
