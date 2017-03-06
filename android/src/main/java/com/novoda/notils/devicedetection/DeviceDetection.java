@@ -16,8 +16,8 @@ public class DeviceDetection {
     }
 
     private static X86Detector getX86Detector() {
-        DeviceAndroidVersion deviceAndroidVersion = DeviceAndroidVersion.newInstance();
-        if (deviceAndroidVersion.is21LollipopOrOver()) {
+        AndroidVersion androidVersion = AndroidVersion.newInstance();
+        if (androidVersion.is21LollipopOrOver()) {
             return new X86Detector(getSupportedAbis());
         } else {
             return new X86Detector(getLegacySupportedAbis());
