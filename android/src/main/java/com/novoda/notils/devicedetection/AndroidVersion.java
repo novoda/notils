@@ -4,26 +4,32 @@ import android.os.Build;
 
 public class AndroidVersion {
 
-    private final int androidVersion;
+    private final int osApiLevel;
+    private final String osVersionName;
 
     public static AndroidVersion newInstance() {
-        return new AndroidVersion(Build.VERSION.SDK_INT);
+        return new AndroidVersion(Build.VERSION.SDK_INT, Build.VERSION.RELEASE);
     }
 
-    AndroidVersion(int androidVersion) {
-        this.androidVersion = androidVersion;
+    AndroidVersion(int osApiLevel, String osVersionName) {
+        this.osApiLevel = osApiLevel;
+        this.osVersionName = osVersionName;
     }
 
     public boolean is18JellyBeanOrOver() {
-        return androidVersion >= Build.VERSION_CODES.JELLY_BEAN_MR2;
+        return osApiLevel >= Build.VERSION_CODES.JELLY_BEAN_MR2;
+    }
+
+    public boolean is19KitKat() {
+        return osApiLevel == Build.VERSION_CODES.KITKAT;
     }
 
     public boolean is19KitKatOrOver() {
-        return androidVersion >= Build.VERSION_CODES.KITKAT;
+        return osApiLevel >= Build.VERSION_CODES.KITKAT;
     }
 
     public boolean is21LollipopOrOver() {
-        return androidVersion >= Build.VERSION_CODES.LOLLIPOP;
+        return osApiLevel >= Build.VERSION_CODES.LOLLIPOP;
     }
 
     public boolean isPre21Lollipop() {
@@ -31,10 +37,14 @@ public class AndroidVersion {
     }
 
     public boolean is23MarshmallowOrOver() {
-        return androidVersion >= Build.VERSION_CODES.M;
+        return osApiLevel >= Build.VERSION_CODES.M;
     }
 
-    public int getVersion() {
-        return androidVersion;
+    public int apiLevel() {
+        return osApiLevel;
+    }
+
+    public String versionName() {
+        return osVersionName;
     }
 }
