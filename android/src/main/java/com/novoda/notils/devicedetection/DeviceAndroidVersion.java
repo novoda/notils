@@ -1,5 +1,7 @@
 package com.novoda.notils.devicedetection;
 
+import android.os.Build;
+
 public class DeviceAndroidVersion {
 
     private final int deviceOsVersion;

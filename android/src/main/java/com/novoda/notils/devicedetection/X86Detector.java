@@ -1,19 +1,12 @@
 package com.novoda.notils.devicedetection;
 
-public class X86Detector {
+import java.util.Arrays;
+
+class X86Detector {
 
     private static final String X86 = "x86";
 
     private final String[] supportedAbis;
-
-    public static X86Detector newInstance() {
-        DeviceAndroidVersion deviceAndroidVersion = DeviceAndroidVersion.newInstance();
-        if (deviceAndroidVersion.is21LollipopOrOver()) {
-            return new X86Detector(getSupportedAbis());
-        } else {
-            return new X86Detector(getLegacySupportedAbis());
-        }
-    }
 
     X86Detector(String... supportedAbis) {
         this.supportedAbis = Arrays.copyOf(supportedAbis, supportedAbis.length);
@@ -27,14 +20,4 @@ public class X86Detector {
         }
         return false;
     }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    private static String[] getSupportedAbis() {
-        return Build.SUPPORTED_ABIS;
-    }
-
-    private static String[] getLegacySupportedAbis() {
-        return new String[]{Build.CPU_ABI, Build.CPU_ABI2};
-    }
-
 }
