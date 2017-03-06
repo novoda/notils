@@ -1,0 +1,20 @@
+ext {
+    androidCompileSdkVersion = 23
+    androidBuildToolsVersion = '23.0.2'
+    androidMinSdkVersion = 14
+    androidTargetSdkVersion = 23 // should we be specifying this?
+
+    supportLibraryVersion = '23.1.1'
+
+    librariesBuild = [
+        androidGradleBuildTools: 'com.android.tools.build:gradle:1.2.3'
+    ]
+
+    libraries = [
+        supportAppCompatV7: "com.android.support:appcompat-v7:${supportLibraryVersion}"
+    ]
+
+    librariesTest = [
+        jUnit: 'junit:junit:4.12'
+    ]
+}
