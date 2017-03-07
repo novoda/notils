@@ -6,7 +6,6 @@ ext {
         androidSdk         : [
             compile   : 23,
             min       : 14,
-            target    : 23,
             buildTools: '23.0.2'
         ]
     ]
