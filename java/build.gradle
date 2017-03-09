@@ -5,10 +5,11 @@ repositories {
 apply plugin: 'java'
 apply plugin: 'bintray-release'
 
+sourceCompatibility = versions.sourceCompatibility
+targetCompatibility = versions.targetCompatibility
+
 dependencies {
-    testCompile 'junit:junit:4.12'
-    sourceCompatibility = 1.7
-    targetCompatibility = 1.7
+    testCompile libraries.test.jUnit
 }
 
 publish {

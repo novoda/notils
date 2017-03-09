@@ -1,0 +1,25 @@
+ext {
+    versions = [
+        sourceCompatibility: JavaVersion.VERSION_1_7,
+        targetCompatibility: JavaVersion.VERSION_1_7,
+        support            : '23.1.1',
+        androidSdk         : [
+            compile   : 23,
+            min       : 14,
+            buildTools: '23.0.2'
+        ]
+    ]
+
+    libraries = [
+        build: [
+            androidGradle : 'com.android.tools.build:gradle:1.2.3',
+            bintrayRelease: 'com.novoda:bintray-release:0.2.4'
+        ],
+        app: [
+            supportAppCompatV7: "com.android.support:appcompat-v7:${versions.support}"
+        ],
+        test: [
+            jUnit: 'junit:junit:4.12'
+        ]
+    ]
+}
