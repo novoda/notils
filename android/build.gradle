@@ -3,7 +3,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.0'
+        classpath libraries.build.androidGradle
     }
 }
 
@@ -15,12 +15,11 @@ apply plugin: 'com.android.library'
 apply plugin: 'bintray-release'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion versions.androidSdk.compile
+    buildToolsVersion versions.androidSdk.buildTools
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 25
+        minSdkVersion versions.androidSdk.min
         versionCode 1
         versionName "1.0"
     }
@@ -33,10 +32,10 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile libraries.app.supportAppCompatV7
     compile project(':java')
 
-    testCompile 'junit:junit:4.12'
+    testCompile libraries.test.jUnit
 }
 
 publish {
