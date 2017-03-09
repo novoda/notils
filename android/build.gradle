@@ -3,7 +3,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath librariesBuild.androidGradleBuildTools
+        classpath libraries.build.androidGradle
     }
 }
 
@@ -32,10 +32,10 @@ android {
 }
 
 dependencies {
-    compile libraries.supportAppCompatV7
+    compile libraries.app.supportAppCompatV7
     compile project(':java')
 
-    testCompile librariesTest.jUnit
+    testCompile libraries.test.jUnit
 }
 
 publish {

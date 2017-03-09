@@ -1,13 +1,12 @@
 buildscript {
+    apply from: 'dependencies.gradle'
     repositories {
         jcenter()
     }
     dependencies {
-        classpath 'com.novoda:bintray-release:0.2.4'
+        classpath libraries.build.bintrayRelease
     }
 }
-
-apply from: 'dependencies.gradle'
 
 allprojects {
     version = "3.0.2"

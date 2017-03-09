@@ -10,15 +10,16 @@ ext {
         ]
     ]
 
-    librariesBuild = [
-        androidGradleBuildTools: 'com.android.tools.build:gradle:1.2.3'
-    ]
-
     libraries = [
-        supportAppCompatV7: "com.android.support:appcompat-v7:${versions.support}"
-    ]
-
-    librariesTest = [
-        jUnit: 'junit:junit:4.12'
+        build: [
+            androidGradle : 'com.android.tools.build:gradle:1.2.3',
+            bintrayRelease: 'com.novoda:bintray-release:0.2.4'
+        ],
+        app: [
+            supportAppCompatV7: "com.android.support:appcompat-v7:${versions.support}"
+        ],
+        test: [
+            jUnit: 'junit:junit:4.12'
+        ]
     ]
 }
