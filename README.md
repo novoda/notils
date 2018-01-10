@@ -1,4 +1,4 @@
-# notils [![](https://ci.novoda.com/buildStatus/icon?job=notils)](http://ci.novoda.com/job/notils/lastBuild/console) [![](https://raw.githubusercontent.com/novoda/novoda/master/assets/btn_apache_lisence.png)](LICENSE.txt)
+# notils [![CI status](https://ci.novoda.com/buildStatus/icon?job=notils)](https://ci.novoda.com/job/notils/lastBuild/console) [![Download from Bintray](https://api.bintray.com/packages/novoda/maven/notils/images/download.svg)](https://bintray.com/novoda/maven/notils/_latestVersion) [![Apache 2.0 Licence](https://img.shields.io/github/license/novoda/notils.svg)](https://github.com/novoda/notils/blob/master/LICENSE.txt)
 
 Never again need a .utils. package yur scurvy sea dogs!
 
