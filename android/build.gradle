@@ -26,10 +26,10 @@ android {
 }
 
 dependencies {
-    compile libraries.app.supportAppCompatV7
-    compile project(':java')
+    implementation libraries.app.supportAppCompatV7
+    api project(':java')
 
-    testCompile libraries.test.jUnit
+    testImplementation libraries.test.jUnit
 }
 
 publish {
