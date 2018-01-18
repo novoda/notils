@@ -1,5 +1,6 @@
 buildscript {
     repositories {
+        google()
         jcenter()
     }
     dependencies {
@@ -8,6 +9,7 @@ buildscript {
 }
 
 repositories {
+    google()
     jcenter()
 }
 
@@ -16,18 +18,10 @@ apply plugin: 'bintray-release'
 
 android {
     compileSdkVersion versions.androidSdk.compile
-    buildToolsVersion versions.androidSdk.buildTools
 
     defaultConfig {
         minSdkVersion versions.androidSdk.min
         versionCode 1
-        versionName "1.0"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
     }
 }
 
