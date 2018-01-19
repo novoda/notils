@@ -21,6 +21,8 @@ notils contains a set of common classes that we use in our projects:
   - `DeveloperError` - custom exceptions for explicit declaration / faster feedback when something goes wrong
   - `SimpleTextWatcher` - simple implementation of `android.text.TextWatcher` with stub implementations of each method
   - `QueryUtils` - easily create placeholders for ContentResolver operations selection
+  - [DeviceDetection](https://github.com/novoda/notils/blob/master/android/src/main/java/com/novoda/notils/devicedetection/DeviceDetection.java) - to detect whether the user has `Amazon` or `Intel x86` devices.
+  - [AndroidVersion](https://github.com/novoda/notils/blob/master/android/src/main/java/com/novoda/notils/devicedetection/AndroidVersion.java) - to check the Android version in a nicer way.
 
 
 ## Adding to your project
