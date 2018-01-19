@@ -17,6 +17,6 @@ publish {
     groupId = 'com.novoda'
     artifactId = 'notils-java'
     publishVersion = project.version
-    description = 'Never again need a .utils. package yur scurvy Java sea dogs!'
+    desc = 'Never again need a .utils. package yur scurvy Java sea dogs!'
     website = 'https://github.com/novoda/NoTils'
 }

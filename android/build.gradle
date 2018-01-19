@@ -37,6 +37,6 @@ publish {
     groupId = 'com.novoda'
     artifactId = 'notils-android'
     publishVersion = project.version
-    description = 'Never again need a .utils. package yur scurvy Android sea dogs!'
+    desc = 'Never again need a .utils. package yur scurvy Android sea dogs!'
     website = 'https://github.com/novoda/NoTils'
 }
