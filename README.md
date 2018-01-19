@@ -1,4 +1,4 @@
-# notils [![CI status](https://ci.novoda.com/buildStatus/icon?job=notils)](https://ci.novoda.com/job/notils/lastBuild/console) [![Download from Bintray](https://api.bintray.com/packages/novoda/maven/notils/images/download.svg)](https://bintray.com/novoda/maven/notils/_latestVersion) [![Apache 2.0 Licence](https://img.shields.io/github/license/novoda/notils.svg)](https://github.com/novoda/notils/blob/master/LICENSE.txt)
+# notils [![CI status](https://ci.novoda.com/buildStatus/icon?job=notils)](https://ci.novoda.com/job/notils/lastBuild/console) [![Download from Bintray](https://api.bintray.com/packages/novoda/maven/notils-android/images/download.svg)](https://bintray.com/novoda/maven/notils-android/_latestVersion) [![Apache 2.0 Licence](https://img.shields.io/github/license/novoda/notils.svg)](https://github.com/novoda/notils/blob/master/LICENSE.txt)
 
 Never again need a .utils. package yur scurvy sea dogs!
 
@@ -10,7 +10,7 @@ notils contains a set of common classes that we use in our projects:
 
   - `AndroidUtils`, for showing the keyboard, checking running services, etc.
   - `ClassCaster` - to help with listeners between Activitys & Fragments
-  - No need to cast when referencing Views / Fragments
+  - No need to cast when finding Fragments
   - No need to double type your types when creating collections
   - Simple Fade animations in & out done for you
   - Simple `Log` to give to give automatic details of where the Log executed
@@ -33,8 +33,8 @@ repositories {
 }
 
 dependencies {
-    compile 'com.novoda:notils-java:3.0.2'
-    compile 'com.novoda:notils-android:3.0.2'
+    compile 'com.novoda:notils-java:3.1'
+    compile 'com.novoda:notils-android:3.1'
 }
 ```
 
@@ -46,7 +46,7 @@ Here are a few examples.
  * Use the `Views` class to avoid casting your views over and over!
  
  ```java
- TextView username = Views.findById(this, R.id.username); // this can be an Activity or a View.
+ UserFragment userFragment = Fragments.findFragmentById(fragmentmanager, R.id.userFragment);
  ```
 
  * Use `DeveloperError` to let other devs know a problem in the code or prevent potential issues:
