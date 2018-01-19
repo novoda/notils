@@ -9,15 +9,16 @@ public final class Views {
     }
 
     /**
-     * Simpler version of {@link View#findViewById(int)} which infers the target type.
+     * @deprecated Compile against API 26 and use {@link View#findViewById(int)}.
      */
     @SuppressWarnings({"unchecked", "UnusedDeclaration"})
+    @Deprecated
     public static <T extends View> T findById(View view, int id) {
         return (T) view.findViewById(id);
     }
 
     /**
-     * Simpler version of {@link Activity#findViewById(int)} which infers the target type.
+     * @deprecated Compile against API 26 and use {@link View#findViewById(int)}.
      */
     @SuppressWarnings({"unchecked", "UnusedDeclaration"})
     public static <T extends View> T findById(Activity activity, int id) {
