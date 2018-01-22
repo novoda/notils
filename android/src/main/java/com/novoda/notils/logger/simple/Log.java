@@ -16,8 +16,7 @@ public final class Log {
      * <p/>
      * Recommended you set this to {@code BuildConfig.DEBUG} in your class that extends Application
      */
-    @Deprecated
-    public static boolean SHOW_LOGS = false;
+    private static boolean SHOW_LOGS = false;
 
     private static boolean INITIALISED = false;
 
@@ -94,14 +93,6 @@ public final class Log {
         }
     }
 
-    /**
-     * @deprecated use (Throwable t, Object... msg)
-     */
-    @Deprecated
-    public static void w(String msg, Throwable t) {
-        w(t, msg);
-    }
-
     public static void w(Throwable t, Object... msg) {
         try {
             if (shouldShowLogs()) {
@@ -110,14 +101,6 @@ public final class Log {
         } catch (RuntimeException ignore) {
             logError(ignore);
         }
-    }
-
-    /**
-     * @deprecated use (Throwable t, Object... msg)
-     */
-    @Deprecated
-    public static void d(String msg, Throwable t) {
-        d(t, msg);
     }
 
     public static void d(Throwable t, Object... msg) {
@@ -130,14 +113,6 @@ public final class Log {
         }
     }
 
-    /**
-     * @deprecated use (Throwable t, Object... msg)
-     */
-    @Deprecated
-    public static void e(String msg, Throwable t) {
-        e(t, msg);
-    }
-
     public static void e(Throwable t, Object... msg) {
         try {
             if (shouldShowLogs()) {
@@ -146,14 +121,6 @@ public final class Log {
         } catch (RuntimeException ignore) {
             logError(ignore);
         }
-    }
-
-    /**
-     * @deprecated use (Throwable t, Object... msg)
-     */
-    @Deprecated
-    public static void wtf(String msg, Throwable t) {
-        wtf(t, msg);
     }
 
     public static void wtf(Throwable t, Object... msg) {
