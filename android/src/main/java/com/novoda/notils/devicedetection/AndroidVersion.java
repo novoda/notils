@@ -16,6 +16,14 @@ public class AndroidVersion {
         this.osVersionName = osVersionName;
     }
 
+    public boolean is16JellyBean() {
+        return osApiLevel == Build.VERSION_CODES.JELLY_BEAN;
+    }
+
+    public boolean is16JellyBeanOrOver() {
+        return osApiLevel >= Build.VERSION_CODES.JELLY_BEAN;
+    }
+
     public boolean is18JellyBeanOrOver() {
         return osApiLevel >= Build.VERSION_CODES.JELLY_BEAN_MR2;
     }
