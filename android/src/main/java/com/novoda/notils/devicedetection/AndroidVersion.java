@@ -40,6 +40,14 @@ public class AndroidVersion {
         return osApiLevel >= Build.VERSION_CODES.M;
     }
 
+    public boolean is24NougatOrOver() {
+        return osApiLevel >= Build.VERSION_CODES.N;
+    }
+
+    public boolean is26OreoOrOver() {
+        return osApiLevel >= Build.VERSION_CODES.O;
+    }
+
     public int apiLevel() {
         return osApiLevel;
     }
