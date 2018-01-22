@@ -10,17 +10,6 @@ public class Toaster {
 
     private final StackingToastDisplayer toastDisplayer;
 
-    /**
-     * A helper in Toasting messages to the screen
-     *
-     * @param context
-     * @deprecated this ctor will be made private, use {@link #newInstance(android.content.Context)}
-     */
-    @Deprecated
-    public Toaster(Context context) {
-        this(new StackingToastDisplayer(context.getApplicationContext()));
-    }
-
     Toaster(StackingToastDisplayer toastDisplayer) {
         this.toastDisplayer = toastDisplayer;
     }
