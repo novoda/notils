@@ -84,12 +84,28 @@ public class AndroidVersion {
         return osApiLevel >= Build.VERSION_CODES.N;
     }
 
+    public boolean is25Nougat() {
+        return osApiLevel == Build.VERSION_CODES.N_MR1;
+    }
+
+    public boolean is25NougatOrOver() {
+        return osApiLevel >= Build.VERSION_CODES.N_MR1;
+    }
+
     public boolean is26Oreo() {
         return osApiLevel == Build.VERSION_CODES.O;
     }
 
     public boolean is26OreoOrOver() {
         return osApiLevel >= Build.VERSION_CODES.O;
+    }
+
+    public boolean is27Oreo() {
+        return osApiLevel == Build.VERSION_CODES.O_MR1;
+    }
+
+    public boolean is27OreoOrOver() {
+        return osApiLevel >= Build.VERSION_CODES.O_MR1;
     }
 
     public int apiLevel() {
