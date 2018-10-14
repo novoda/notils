@@ -1,2 +1,2 @@
-include ':android'
+include ':android', ':demo'
 include ':java'

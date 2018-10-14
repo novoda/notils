@@ -1,13 +1,20 @@
 buildscript {
     apply from: 'dependencies.gradle'
     repositories {
+        google()
         jcenter()
     }
     dependencies {
+        classpath libraries.build.androidGradle
         classpath libraries.build.bintrayRelease
     }
 }
 
 allprojects {
     version = "3.1.5"
+    repositories {
+        jcenter()
+        mavenCentral()
+        google()
+    }
 }
