@@ -9,7 +9,7 @@ sourceCompatibility = versions.sourceCompatibility
 targetCompatibility = versions.targetCompatibility
 
 dependencies {
-    testCompile libraries.test.jUnit
+    testImplementation libraries.test.jUnit
 }
 
 publish {
