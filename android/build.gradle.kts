@@ -18,7 +18,7 @@ android {
 }
 
 dependencies {
-    implementation(Libraries.App.supportAppCompatV7)
+    implementation(Libraries.App.supportAppCompat)
     api(project(":java"))
 
     testImplementation(Libraries.Test.jUnit)

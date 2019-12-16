@@ -3,12 +3,11 @@ import org.gradle.api.JavaVersion
 object Versions {
   val sourceCompatibility = JavaVersion.VERSION_1_7
   val targetCompatibility = JavaVersion.VERSION_1_7
-  const val support = "27.0.2"
 
   object AndroidSdk {
 
-    val compile = 27
-    val min = 14
+    const val compile = 27
+    const val min = 14
 
   }
 
@@ -22,7 +21,7 @@ object Libraries {
   }
 
   object App {
-    const val supportAppCompatV7 = "com.android.support:appcompat-v7:${Versions.support}"
+    const val supportAppCompat = "androidx.appcompat:appcompat:1.1.0"
   }
 
   object Test {
