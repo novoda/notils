@@ -11,7 +11,7 @@ ext {
 
     libraries = [
         build: [
-            androidGradle : 'com.android.tools.build:gradle:3.0.1',
+            androidGradle : 'com.android.tools.build:gradle:3.5.3',
             bintrayRelease: 'com.novoda:bintray-release:0.8.0'
         ],
         app: [
