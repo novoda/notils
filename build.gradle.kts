@@ -9,6 +9,10 @@ buildscript {
     }
 }
 
+plugins {
+    id("org.sonarqube").version("2.7.1")
+}
+
 allprojects {
     version = "3.1.5"
     repositories {
