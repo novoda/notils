@@ -30,5 +30,7 @@ jobs:
        restore-keys:   gradle-cache
     - name: Run Checks
       run: ./gradlew build check --stacktrace --no-daemon
+    - name: SonarCloud Scan
+      run: ./gradlew sonarqube --stacktrace
     - name: Check Demo
       run: ./demo/gradlew build check --stacktrace --no-daemon
