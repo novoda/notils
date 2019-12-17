@@ -6,7 +6,7 @@ object Versions {
 
   object AndroidSdk {
 
-    const val compile = 27
+    const val compile = 29
     const val min = 14
 
   }
