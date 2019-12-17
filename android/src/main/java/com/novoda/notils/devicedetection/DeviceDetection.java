@@ -1,10 +1,11 @@
 package com.novoda.notils.devicedetection;
 
-import android.support.annotation.IntDef;
 import android.util.SparseArray;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+
+import androidx.annotation.IntDef;
 
 public class DeviceDetection {
 

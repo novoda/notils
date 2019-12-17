@@ -1,9 +1,10 @@
 package com.novoda.notils.fragment;
 
 import android.app.Activity;
-import android.support.v4.app.Fragment;
 
 import com.novoda.notils.caster.Classes;
+
+import androidx.fragment.app.Fragment;
 
 public class ListenableSupportFragment<L> extends Fragment {
 
