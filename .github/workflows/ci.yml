@@ -29,4 +29,4 @@ jobs:
       - name: Run Checks
         run: ./gradlew --no-daemon build check --stacktrace
       - name: Check Demo
-      run: ./demo/gradlew build check --stacktrace --no-daemon
+        run: ./demo/gradlew build check --stacktrace --no-daemon
