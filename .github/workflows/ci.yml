@@ -26,7 +26,7 @@ jobs:
       uses: actions/cache@v1
       with:
        path: .gradle/caches
-       key: gradle-cache-${{ hashFiles('**/*.gradle') }}
+       key: gradle-cache-${{ hashFiles('**/*.gradle*') }}
        restore-keys:   gradle-cache
     - name: Run Checks
       run: ./gradlew --no-daemon build check --stacktrace
