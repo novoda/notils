@@ -13,16 +13,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: set up JDK 1.8
-      uses: actions/setup-java@v1
-      with:
-        java-version: 1.8
-    - name: Cache dependencies
-      uses: actions/cache@v1
-      with:
-       path: .gradle/caches
-       key: gradle-cache-${{ hashFiles('**/*.gradle') }}
-       restore-keys:   gradle-cache
-    - name: Run Checks
-      run: ./gradlew --no-daemon build check --stacktrace
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      - name: set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          path: .gradle/caches
+          key: gradle-cache-${{ hashFiles('**/*.gradle*') }}
+          restore-keys:   gradle-cache
+      - name: Run Checks
+        run: ./gradlew --no-daemon build check --stacktrace
+      - name: Check Demo
+        run: ./demo/gradlew build check --stacktrace --no-daemon

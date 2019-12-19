@@ -1,12 +1,11 @@
 buildscript {
-    apply from: 'dependencies.gradle'
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath libraries.build.androidGradle
-        classpath libraries.build.bintrayRelease
+        classpath(Libraries.Build.androidGradle)
+        classpath(Libraries.Build.bintrayRelease)
     }
 }
 
