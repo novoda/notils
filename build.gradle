@@ -1,3 +1,5 @@
+apply plugin: "org.sonarqube"
+
 buildscript {
     apply from: 'dependencies.gradle'
     repositories {
@@ -18,5 +20,14 @@ allprojects {
         jcenter()
         mavenCentral()
         google()
+    }
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "novoda_notils"
+        property "sonar.organization", "novoda"
+        property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.login", System.getenv("SONAR_TOKEN")
     }
 }

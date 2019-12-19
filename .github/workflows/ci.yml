@@ -8,6 +8,7 @@ on:
 
 env:
   GRADLE_USER_HOME: .gradle
+  SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
 
 jobs:
   build:
