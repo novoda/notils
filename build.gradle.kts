@@ -16,7 +16,7 @@ plugins {
 sonarqube {
     properties {
         property("sonar.projectKey", "notils")
-        property("sonar.host.url", "https://sonar.novoda.com")
+        property("sonar.host.url", "https://sonarcloud.io")
         property("sonar.login", System.getenv("SONAR_TOKEN"))
     }
 }
