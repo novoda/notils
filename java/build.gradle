@@ -4,6 +4,7 @@ repositories {
 
 apply plugin: 'java'
 apply plugin: 'bintray-release'
+apply plugin: "org.sonarqube"
 
 sourceCompatibility = versions.sourceCompatibility
 targetCompatibility = versions.targetCompatibility
@@ -19,4 +20,13 @@ publish {
     publishVersion = project.version
     desc = 'Never again need a .utils. package yur scurvy Java sea dogs!'
     website = 'https://github.com/novoda/NoTils'
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "novoda_notils"
+        property "sonar.organization", "novoda"
+        property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.login", "db51835c9ef6beee947ff74671a963d9c1d910b8"
+    }
 }
