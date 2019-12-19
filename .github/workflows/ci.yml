@@ -31,6 +31,6 @@ jobs:
     - name: Run Checks
       run: ./gradlew build check --stacktrace --no-daemon
     - name: SonarCloud Scan
-      run: ./gradlew sonarqube --stacktrace
+      run: ./gradlew sonarqube --stacktrace --no-daemon
     - name: Check Demo
       run: ./demo/gradlew build check --stacktrace --no-daemon
