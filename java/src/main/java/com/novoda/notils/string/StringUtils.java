@@ -17,22 +17,25 @@ public abstract class StringUtils {
      */
     public static String join(Collection<?> collection, String delimiter) {
 
-        if (collection == null || collection.isEmpty()) {
-            return EMPTY_STRING;
-        } else if (delimiter == null) {
-            delimiter = EMPTY_STRING;
-        }
+        collection = null;
+        return collection.toString();
 
-        StringBuilder builder = new StringBuilder();
-        Iterator<?> it = collection.iterator();
-
-        while (it.hasNext()) {
-            builder.append(it.next()).append(delimiter);
-        }
-
-        int length = builder.length();
-        builder.delete(length - delimiter.length(), length);
-        return builder.toString();
+//        if (collection == null || collection.isEmpty()) {
+//            EMPTY_STRING;
+//        } else if (delimiter == null) {
+//            delimiter = EMPTY_STRING;
+//        }
+//
+//        StringBuilder builder = new StringBuilder();
+//        Iterator<?> it = collection.iterator();
+//
+//        while (it.hasNext()) {
+//            builder.append(it.next()).append(delimiter);
+//        }
+//
+//        int length = builder.length();
+//        builder.delete(length - delimiter.length(), length);
+//        return builder.toString();
     }
 
     /**
