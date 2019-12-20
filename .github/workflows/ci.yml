@@ -9,7 +9,7 @@ on:
 env:
   GRADLE_USER_HOME: .gradle
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
 
 jobs:
   build:
