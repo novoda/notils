@@ -1,6 +1,7 @@
 package com.novoda.notils.cursor;
 
 import android.database.Cursor;
+import java.util.ListIterator;
 
 import java.util.List;
 

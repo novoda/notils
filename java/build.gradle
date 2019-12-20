@@ -5,11 +5,12 @@ repositories {
 apply plugin: 'java'
 apply plugin: 'bintray-release'
 
+
 sourceCompatibility = versions.sourceCompatibility
 targetCompatibility = versions.targetCompatibility
 
 dependencies {
-    testCompile libraries.test.jUnit
+    testImplementation libraries.test.jUnit
 }
 
 publish {
@@ -20,3 +21,4 @@ publish {
     desc = 'Never again need a .utils. package yur scurvy Java sea dogs!'
     website = 'https://github.com/novoda/NoTils'
 }
+

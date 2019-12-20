@@ -11,8 +11,9 @@ ext {
 
     libraries = [
         build: [
-            androidGradle : 'com.android.tools.build:gradle:3.0.1',
-            bintrayRelease: 'com.novoda:bintray-release:0.8.0'
+            androidGradle : 'com.android.tools.build:gradle:3.5.3',
+            bintrayRelease: 'com.novoda:bintray-release:0.8.0',
+            sonar: 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.8'
         ],
         app: [
             supportAppCompatV7: "com.android.support:appcompat-v7:${versions.support}"
