@@ -1,4 +1,5 @@
 import org.gradle.api.JavaVersion
+import org.gradle.kotlin.dsl.PluginDependenciesSpecScope
 
 object Versions {
   val sourceCompatibility = JavaVersion.VERSION_1_7
@@ -28,4 +29,8 @@ object Libraries {
     const val jUnit = "junit:junit:4.12"
   }
 
+}
+
+fun PluginDependenciesSpecScope.sonar() {
+  id("org.sonarqube").version("2.7.1")
 }

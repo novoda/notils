@@ -10,15 +10,18 @@ buildscript {
 }
 
 plugins {
-    id("org.sonarqube").version("2.7.1")
+    sonar()
 }
 
 sonarqube {
     properties {
+        property("sonar.projectName", "NoTils")
+        property("sonar.projectDescription", "Never again need a .utils. package yur scurvy Java sea dogs!")
         property("sonar.projectKey", "novoda_notils")
         property("sonar.organization", "novoda")
         property("sonar.host.url", "https://sonarcloud.io")
         property("sonar.login", System.getenv("SONAR_TOKEN"))
+        property("sonar.scm.provider", "git")
     }
 }
 
