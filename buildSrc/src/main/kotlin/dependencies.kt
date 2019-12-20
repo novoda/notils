@@ -30,7 +30,3 @@ object Libraries {
   }
 
 }
-
-fun PluginDependenciesSpecScope.sonar() {
-  id("org.sonarqube").version("2.7.1")
-}
