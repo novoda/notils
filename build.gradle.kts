@@ -22,8 +22,18 @@ sonarqube {
         property("sonar.host.url", "https://sonarcloud.io")
         property("sonar.login", System.getenv("SONAR_TOKEN"))
         property("sonar.scm.provider", "git")
+        property("sonar.coverage.jacoco.xmlReportPaths", xmlReportPaths)
     }
 }
+
+val Project.xmlReportPaths
+    get() = allprojects.flatMap { it.testReportFolders }.joinToString(",")
+
+val Project.testReportFolders
+    get() = tasks
+        .map { it.name }
+        .filter { it.startsWith("test") }
+        .map { taskName -> "${project.buildDir}/test-results/$taskName" }
 
 allprojects {
     version = "3.1.5"
@@ -33,3 +43,4 @@ allprojects {
         google()
     }
 }
+
