@@ -1,5 +1,4 @@
 import org.gradle.api.JavaVersion
-import org.gradle.kotlin.dsl.PluginDependenciesSpecScope
 
 object Versions {
   val sourceCompatibility = JavaVersion.VERSION_1_7
