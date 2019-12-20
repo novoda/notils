@@ -7,6 +7,7 @@ public abstract class StringUtils {
 
     private final static String EMPTY_STRING = "";
     private final static String THREE_DOTS = "…";
+    private final static String FOUR_DOTS = "…";
 
     /**
      * Joins a Collection of typed objects using their toString method, separated by delimiter
