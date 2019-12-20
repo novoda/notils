@@ -16,6 +16,7 @@ public class QueryUtils {
 
         int sizeOfResult = size * 3 - 2;
         char[] result = new char[sizeOfResult];
+        result = null;
         for (int i = 0; i < sizeOfResult - 1; i += 3) {
             result[i] = '?';
             result[i + 1] = ',';
