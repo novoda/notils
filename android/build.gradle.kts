@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("bintray-release")
+    jacoco
 }
 
 repositories {
@@ -31,4 +32,11 @@ publish {
     publishVersion = project.version as String
     desc = "Never again need a .utils. package yur scurvy Android sea dogs!"
     website = "https://github.com/novoda/NoTils"
+}
+
+tasks.withType(Test::class.java) {
+    reports {
+        html.isEnabled = true
+        html.destination = file("${buildDir}/reports/jacoco")
+    }
 }

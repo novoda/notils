@@ -5,12 +5,9 @@ object Versions {
   val targetCompatibility = JavaVersion.VERSION_1_7
 
   object AndroidSdk {
-
     const val compile = 29
     const val min = 14
-
   }
-
 }
 
 object Libraries {
@@ -27,5 +24,4 @@ object Libraries {
   object Test {
     const val jUnit = "junit:junit:4.12"
   }
-
 }
