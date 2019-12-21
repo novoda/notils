@@ -2,6 +2,7 @@ package com.novoda.notils.caster;
 
 import android.app.Activity;
 import android.view.View;
+import android.widget.ImageView;
 
 public final class Views {
 
