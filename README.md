@@ -1,3 +1,5 @@
+# 🛑 THIS REPOSITORY IS OFFICIALLY NO LONGER UNDER MAINTENANCE since 10/02/2022 🛑
+
 # notils [![CI status](https://ci.novoda.com/buildStatus/icon?job=notils)](https://ci.novoda.com/job/notils/lastBuild/console) [![Download from Bintray](https://api.bintray.com/packages/novoda/maven/notils-android/images/download.svg)](https://bintray.com/novoda/maven/notils-android/_latestVersion) [![Apache 2.0 Licence](https://img.shields.io/github/license/novoda/notils.svg)](https://github.com/novoda/notils/blob/master/LICENSE.txt)
 
 Never again need a .utils. package yur scurvy sea dogs!
